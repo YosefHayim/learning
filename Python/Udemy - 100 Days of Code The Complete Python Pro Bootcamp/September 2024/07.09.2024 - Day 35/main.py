@@ -1,6 +1,9 @@
 import requests
 from config import api_key
 
+# The URL in the Chrome browser I tried to get the local temperature at holon,il
+# https://api.openweathermap.org/data/2.5/weather?q=holon,il&appid=faf110a59fa592f3bb08d8544ea30081
+
 weather_params = {
     "lon": 19.458599,
     "lat": 51.759048,
