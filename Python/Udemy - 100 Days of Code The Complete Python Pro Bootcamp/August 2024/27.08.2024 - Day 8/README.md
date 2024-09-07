@@ -1,12 +1,32 @@
-Key points of day 8:
-1 - Learning about functions with inputs.
-2 - Building Caesar Cipher project based on the ancient strategy to send decrypted and encrypted letters to armies.
-3 - In functions when I pass a parameter inside the parenthesis it's called parameter.
-4 - when I execute a function and pass to it a data in the parenthesis that's called argument.
-5 - There is something called Positional arguments which basically says if I pass 3 parameters lets say a,b,c then the arguments must match the same order of it.
-6 - There is something called Keyword arguments, which means when we execute the function I assign to it the parameter, so it identify it without having the same order.
-7 - Reading and understanding the tasks is the most important things. Cause of that I misunderstood and dived too deep without understanding where the issue is.
-8 - sometimes the missing of one two small square brackets/parenthesis/curly braces can impact the entire code.
-9 - Huge importance to the way the code is ordered in the conditions, I felt today very confused with the conditions in the ceasar cipher step 5 at the TODO 2...
-10 - While loops are fun and cute easy understanding, just need more practice of beginner-intermediate level exercises.
-11 - Keep using draw.io for building a strong core of fundamentals!
+## Day 8: Key Takeaways
+
+1. **Functions with Inputs**  
+   - Learned how to use functions with inputs (parameters).
+
+2. **Caesar Cipher Project**  
+   - Built a Caesar Cipher project based on the ancient technique of sending encrypted and decrypted messages to armies.
+
+3. **Parameters vs. Arguments**  
+   - When I define a function and include variables in parentheses, they are called parameters.  
+   - When I call the function and provide values for those variables, they are called arguments.
+
+4. **Positional Arguments**  
+   - Positional arguments require that the order of the arguments matches the order of the parameters when calling a function.
+
+5. **Keyword Arguments**  
+   - Keyword arguments allow passing arguments by assigning them directly to their corresponding parameters, without needing to follow the same order.
+
+6. **Understanding Tasks Before Coding**  
+   - Reading and fully understanding the tasks is crucial. I misunderstood the requirements initially, leading to confusion and unnecessary deep dives into the wrong areas.
+
+7. **Small Syntax Mistakes Matter**  
+   - A single missing bracket, parenthesis, or curly brace can have a big impact on the entire code.
+
+8. **Importance of Condition Order**  
+   - The order of conditions in the code is critical. I struggled with this in the Caesar Cipher step 5 at TODO 2.
+
+9. **Enjoying `while` Loops**  
+   - `while` loops are easy to understand and fun to use, but I need more practice with beginner-intermediate level exercises.
+
+10. **Continue Using draw.io**  
+   - Keep using draw.io to strengthen core fundamentals and visualize problem-solving.

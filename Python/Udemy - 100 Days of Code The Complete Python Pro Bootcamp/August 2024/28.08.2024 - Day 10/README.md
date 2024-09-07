@@ -1,19 +1,55 @@
-Key points of day 10:
-1 - Functions with Outputs is another type of functions with parameters
-2 - end day will build a calculator app.
-3 - The way functions with outputs works is by using the return keyword which returns it to the global scope.
-4 - I can either assign a variable to the function to get access to the global scope result of the function 
-5 - Or I can just add the method e.g. print to the entire function and e.g. it will print the return result.
-6 - I can do a nested function which means calling one function with another by having the result of it from the return keyword.
-7 - The use of the keyword returns converts to the pc that the operation in the function is over.
-8 - Everything that comes after the return won't execute, unless it's indented with a condition then it is in another scope.
-9 - Indentation matters: The return statement must be inside the function and indented correctly.
-10 - return ends the function: Once Python hits return, it stops executing the function and sends back the result.
-11 - Multiple return statements: You can have multiple return statements in a function, often used with conditions (e.g., if statements).
-12 - Did a very well exercise 10 of the leap year with the indentation of each if and else.
-13 - Docstrings are a more improved type of comment that allowed to do a multiple comments lines.
-14 - Angela Yu showed me the possibility of attaching only the function to a variable and then call that variable with the keyword arguments to pass the function parameters.
-15 - The project Calculator was I would say medium level since it required from me to follow the conditions and the indentation accordingly, anyway feeling I am getting better.
-16 - I am going to keep use the draw.io excellent tool!
-17 - Having repeating code shouldest be written, instead I should use other things which are loops.
-18 - Recession is calling the function inside itself.
+## Day 10: Key Takeaways
+
+1. **Functions with Outputs**  
+   - Functions with outputs are similar to functions with parameters, but they use the `return` keyword to send data back to the global scope.
+
+2. **Calculator Project**  
+   - Ended the day by building a calculator app.
+
+3. **Using the `return` Keyword**  
+   - The `return` keyword is used to send the result of a function back to the global scope.
+
+4. **Accessing Function Output**  
+   - You can assign the function's output to a variable to access it in the global scope.
+
+5. **Printing Function Output**  
+   - Alternatively, you can use a function like `print()` directly on the returned value.
+
+6. **Nested Functions**  
+   - You can nest functions by calling one function within another, using the `return` keyword to pass results between them.
+
+7. **Ending a Function with `return`**  
+   - The `return` keyword signals that the function's execution is complete.
+
+8. **Code After `return`**  
+   - Any code after the `return` statement won’t execute unless it's part of another scope (e.g., inside a condition).
+
+9. **Correct Indentation for `return`**  
+   - The `return` statement must be indented properly inside the function to work correctly.
+
+10. **Return Ends Execution**  
+   - Once Python encounters a `return` statement, it stops executing the function and returns the result.
+
+11. **Multiple Return Statements**  
+   - Functions can have multiple `return` statements, often used within conditional blocks.
+
+12. **Leap Year Exercise**  
+   - Successfully completed an exercise on leap years, focusing on correct indentation of `if` and `else` statements.
+
+13. **Docstrings**  
+   - Docstrings are multi-line comments that provide documentation for functions.
+
+14. **Assigning Functions to Variables**  
+   - Learned that I can assign a function to a variable, then call that variable with keyword arguments to pass parameters to the function.
+
+15. **Calculator Project Difficulty**  
+   - The calculator project was of medium difficulty, requiring attention to conditions and proper indentation. I feel like I’m improving.
+
+16. **Continuing with draw.io**  
+   - I will keep using draw.io to visualize my code logic and improve understanding.
+
+17. **Avoid Repeating Code**  
+   - Repeating code should be avoided by using loops or other techniques to handle repetition.
+
+18. **Recursion**  
+   - Recursion is when a function calls itself during its execution.

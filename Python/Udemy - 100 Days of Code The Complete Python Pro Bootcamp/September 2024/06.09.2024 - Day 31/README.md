@@ -1,2 +1,4 @@
-Key points of day 31:
-1 - Didn't learn anything new. just did a capstone project of previous last days
+## Day 31: Key Takeaways
+
+1. **Capstone Project**  
+   - Spent the day working on a capstone project, consolidating knowledge from the previous days. No new concepts were learned today.

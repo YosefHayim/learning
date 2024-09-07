@@ -1,4 +1,10 @@
-Key points of day 23:
-1 - Building a Capstone Project: Turtle Crossing Game
-2 - Was pretty easy, I used a lot of chatGPT, but it was mainly because I am lazy to read the document of the turtle. 
-3 - I understand every single part that is happening, the classes are being now clearer to understand and understanding how they work.
+## Day 23: Key Takeaways
+
+1. **Building a Capstone Project: Turtle Crossing Game**  
+   - Started working on a capstone project: the Turtle Crossing game.
+
+2. **Leaning on ChatGPT**  
+   - The project was relatively easy, but I used ChatGPT often due to being a bit lazy to read the Turtle documentation.
+
+3. **Improved Understanding of Classes**  
+   - Gained a clearer understanding of how classes work and how different parts of the code interact through Object-Oriented Programming.

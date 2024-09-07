@@ -1,3 +1,7 @@
-Key points of day 28:
-1 - Creating a Pomodoro GUI 
-2 - Canvas Widget, allows me to lay a thing one above the other. in my case to place the image on the GUI background.
+## Day 28: Key Takeaways
+
+1. **Creating a Pomodoro Timer GUI**  
+   - Worked on building a Pomodoro timer with a graphical user interface using Tkinter.
+
+2. **Canvas Widget in Tkinter**  
+   - The Canvas widget allows layering elements one above the other, such as placing an image as the background of the GUI.

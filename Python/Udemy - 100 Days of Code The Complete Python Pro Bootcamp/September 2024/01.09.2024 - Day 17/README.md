@@ -1,6 +1,16 @@
-Key points of day 17:
-1 - Learning on how to create Classes e.g. OOP
-2 - The attributes are the things the object has.
-3 - The methods are the things the object does.
-4 - When a function is attached to an object it is called a method.
-5 - Finally succeed to do a 2 challenges alone on this day, completed Part 2 and Part 4.
+## Day 17: Key Takeaways
+
+1. **Creating Classes (OOP)**  
+   - Learned how to create classes as part of Object-Oriented Programming (OOP).
+
+2. **Attributes**  
+   - Attributes are the properties or characteristics that an object has.
+
+3. **Methods**  
+   - Methods are the actions or behaviors that an object performs.
+
+4. **Methods vs. Functions**  
+   - When a function is attached to an object, it is referred to as a method.
+
+5. **Challenge Success**  
+   - Successfully completed two challenges independently: Part 2 and Part 4.

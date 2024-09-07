@@ -1,4 +1,10 @@
-Key points of day 20:
-1 - Modifying and making a code to an object for easier code reading and use.
-2 - Need to understand better the concepts of the Class and how to initialize things using packages,etc...
-3 - The game snake is pretty understandable but in the same time not so much...
+## Day 20: Key Takeaways
+
+1. **Refactoring Code into Objects**  
+   - Modified existing code to use objects, making it easier to read and reuse.
+
+2. **Understanding Classes**  
+   - Need to deepen my understanding of classes, especially how to initialize them and use packages effectively.
+
+3. **Snake Game Challenge**  
+   - The logic behind the Snake game is somewhat understandable but still requires more clarity to fully grasp.
