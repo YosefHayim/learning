@@ -17,7 +17,7 @@ def send_motivational_email():
                             msg=f"Subject:Quote of today!\n\n{random_quote}")
         connection.close()
 
-
+send_motivational_email()
 # using the module datetime as a dt shortcut like we do in server SQL
 # now = dt.datetime.now()
 #
