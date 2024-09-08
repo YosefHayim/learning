@@ -28,6 +28,12 @@
 7. **HTML: The Structure**  
    - HTML is responsible for building the **structure** of a website, much like a builder constructing the walls of a house.
    - It includes elements like images, buttons, text boxes, and more.
+   - HTML stands for **HyperText Markup Language**.
+   - Tags are the opening and closing elements in HTML, e.g., `<h1>text</h1>`. The text inside the tags is the element's content.
+   - There are 6 types of headings in HTML, from `<h1>` (the largest) to `<h6>` (the smallest).
+   - Lorem Ipsum: This is placeholder text often used during the design process of a website. It helps designers visualize how the content will look on the page without needing actual text. The text itself is nonsensical, derived from a piece of classical Latin literature, and serves as a way to focus on layout rather than content.
+   - Horizontal Rule element is a draw line that is divide between contexts, being used with <hr/>or <hr>
+   - Break Rule element is <br/> or <br>, used what it named to break the sentence and go a line down. like the \n in the Python.
 
 8. **CSS: The Style**  
    - CSS handles the **styling** of a website, such as colors, fonts, and layouts—similar to painters decorating a house.
@@ -45,5 +51,5 @@
     - By learning HTML, CSS, and JavaScript, you'll be able to create your own websites with custom designs, content, and functionality.
     - You can host these websites live on the internet for others to access.
 
-12. **Extensions in Visual Studio**
+12. **Extensions in Visual Studio**  
     - Extensions are like plugins that extend the functionality of VSCode.
