@@ -1,3 +1,5 @@
+## Day 42: Key Takeaways
+
 1. **HTML Boilerplate**
 
    - The basic structure of an HTML document, starting with `<!DOCTYPE html>` to declare HTML5.
