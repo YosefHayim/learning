@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Day 57 Exercising</title>
+</head>
+<body>
+
+<h1>Hello there {% if name %}{{ name }}{% else %}Guest{% endif %}!</h1>
+
+{% if gender and age %}
+  <h2>I think you are a {{ gender }},</h2>
+  <h3>and maybe {{ age }} years old.</h3>
+{% else%}
+<h1>Just another day of learning</h1>
+{% endif %}
+
+<a href="{{ url_for('get_blog') }}">Go To Blog</a>
+
+<footer>
+<p>Copyright {{ year }}. Built by Joseph</p>
+</footer>
+
+</body>
+</html>
