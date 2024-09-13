@@ -1,15 +1,17 @@
-## Day 58: Key Takeaways
+## Key Takeaways from Day 58
 
-1. **Today goals**
-   - Learn about Bootstrap Framework and how it helps in creating responsive websites.
-   - Understand how to use pre-made CSS files and components in Bootstrap.
+1. **Today goals**:
+
+   - Learn about Bootstrap and how it helps in responsive web design.
+   - Understand the use of pre-made CSS files and components.
    - Explore the 12-column layout system in Bootstrap.
-   - Practice implementing a Bootstrap card with Flexbox alignment.
+   - Implement a Bootstrap card using Flexbox alignment.
 
-2. **Things I learned or concluded from today's lesson**
-   - Bootstrap is a popular external CSS framework, providing pre-built components and styling.
-   - It’s built on top of Flexbox, enabling easy, responsive web design, including a Mobile First approach.
-   - Including Bootstrap in a project can be done via a CDN link for quick integration.
-   - Bootstrap’s major downside is class bloat, making HTML look cluttered.
-   - When using Bootstrap, you can easily override its styles through more specific custom CSS.
-   - Bootstrap is great for fast development but might not be ideal for highly customized websites.
+2. **Things learned or concluded**:
+   - Bootstrap is an external CSS framework offering pre-built components and styles.
+   - It uses Flexbox for responsive design and follows a Mobile First approach.
+   - Quick integration of Bootstrap is done through a CDN link.
+   - A downside of Bootstrap is class bloat, which can clutter the HTML.
+   - Custom CSS can override Bootstrap styles for customization.
+   - Bootstrap is efficient for fast development but less suitable for highly customized websites.
+   - CDN (Content Delivery Network) is a system that delivers content quickly across different servers.
