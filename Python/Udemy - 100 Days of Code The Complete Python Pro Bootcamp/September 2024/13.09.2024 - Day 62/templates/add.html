@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block title %}Add A New Cafe{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8">
+
+      <h1>Add a new cafe into the database</h1>
+
+  <form method="POST" action="{{ url_for('add_cafe') }}">
+    {{ form.hidden_tag() }}
+
+    <div>
+        {{ form.cafe.label }}<br>
+        {{ form.cafe(size=30) }}  <!-- Render cafe name input field -->
+    </div>
+
+    <div>
+        {{ form.location.label }}<br>
+        {{ form.location(size=30) }}  <!-- Render location input field -->
+    </div>
+
+    <div>
+        {{ form.open_time.label }}<br>
+        {{ form.open_time(size=30) }}  <!-- Render open time input field -->
+    </div>
+
+    <div>
+        {{ form.close_time.label }}<br>
+        {{ form.close_time(size=30) }}  <!-- Render close time input field -->
+    </div>
+
+    <div>
+        {{ form.coffee.label }}<br>
+        {{ form.coffee }}  <!-- Render coffee rank input field -->
+    </div>
+
+    <div>
+        {{ form.wifi.label }}<br>
+        {{ form.wifi }}  <!-- Render wifi rank input field -->
+    </div>
+
+    <div>
+        {{ form.power.label }}<br>
+        {{ form.power }}  <!-- Render power rank input field -->
+    </div>
+
+    <div>
+        {{ form.submit() }}  <!-- Render submit button -->
+    </div>
+</form>
+
+
+	  <p class="space-above"><a href="{{ url_for('cafes') }}">See all cafes</a></p>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
