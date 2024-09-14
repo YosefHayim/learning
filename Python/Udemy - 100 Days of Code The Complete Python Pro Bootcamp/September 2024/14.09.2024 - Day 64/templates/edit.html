@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Movie{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="heading">Edit {{ movie.title }}</h1>
+    <form method="POST">
+        {{ form.hidden_tag() }}  <!-- CSRF protection -->
+        <div>
+            {{ form.title.label }}<br>
+            {{ form.title(size=32) }}
+        </div>
+        <div>
+            {{ form.year.label }}<br>
+            {{ form.year(size=32) }}
+        </div>
+        <div>
+            {{ form.description.label }}<br>
+            {{ form.description(size=64) }}
+        </div>
+        <div>
+            {{ form.rating.label }}<br>
+            {{ form.rating(size=32) }}
+        </div>
+        <div>
+            {{ form.ranking.label }}<br>
+            {{ form.ranking(size=32) }}
+        </div>
+        <div>
+            {{ form.review.label }}<br>
+            {{ form.review(size=64) }}
+        </div>
+        <div>
+            {{ form.img_url.label }}<br>
+            {{ form.img_url(size=64) }}
+        </div>
+        <br>
+        {{ form.submit() }}
+    </form>
+</div>
+{% endblock %}
