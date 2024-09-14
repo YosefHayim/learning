@@ -1,4 +1,4 @@
-## Day 1: Key Takeaways
+## Section 1: Key Takeaways
 
 1. **How does the Internet work?**
 

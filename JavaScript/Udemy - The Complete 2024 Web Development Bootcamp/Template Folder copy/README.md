@@ -1,12 +1,12 @@
-## Day [NUM]: Key Takeaways
+## Section NUM: Key Takeaways
 
-1. **How does the Internet work?**
+1. **title**
 
    -
    -
    -
    -
 
-2. ## **How are requests handled?**
+2. ## **title?**
    -
    -
