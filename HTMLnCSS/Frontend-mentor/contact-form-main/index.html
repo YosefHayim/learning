@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<form >
+  <div class="father-container">
+    <h1>Contact Us</h1>
+    <label class="fName-label" for="fname">First name <span>*</span></label><br>
+    <input class="fName-input" type="text" id="fname" name="fname" ><br>
+
+    <label class="lName-label" for="lName">Last name <span>*</span></label><br>
+    <input  class="lName-input" type="text" id="lname" name="lname" ><br>
+
+    <label class="email-label" for="email">Email address <span>*</span></label><br>
+    <input type="email-input" id="email" name="email"><br>
+
+    <label class="query-type-label" for="Please select a query type">Query Type <span>*</span></label><br>
+    <div class="query-type-container">
+      <div class="general">
+        <input class="radio-general-input" type="radio" id="general" name="enquiry_type" value="general">
+        <label class="radio-general-label" for="general">General Enquiry</label><br>
+      </div>
+    
+      <div class="support">
+        <input class="radio-support-input" type="radio" id="support" name="enquiry_type" value="support">
+        <label class="radio-support-label" for="support">Support Request</label><br>
+      </div>
+
+    </div>
+
+    <label for="message" class="message">Message <span>*</span></label><br>
+    <textarea rows="10" cols="50"></textarea>
+
+    <div class="check-box-mark-container">
+      <br><input class="checkbox" type="checkbox" id="checkbox" name="checkbox" value="checkbox">
+      <label for="terms-agreement" class="terms-agreement-label">I consent to being contacted by the team <span>*</span></label><br>
+    </div>
+
+    <button class="submit">Submit</button>
+
+  </div>
+</form>
+</body>
+</html>
