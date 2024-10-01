@@ -60,14 +60,14 @@ img {
 .name-container {
   font-size: 1.4rem;
   margin-bottom: 0.3rem;
-  font-family: "Inter", sans-serif; /* Corrected font-family */
-  font-weight: 700; /* Corrected weight */
+  font-family: "Inter", sans-serif; 
+  font-weight: 700; 
   text-align: center;
 }
 
 .location-container {
   font-size: 0.8rem;
-  color: hsl(75, 94%, 57%); /* Green */
+  color: hsl(75, 94%, 57%); 
   margin-bottom: 0.3rem;
   text-align: center;
 }
@@ -97,7 +97,7 @@ img {
   display: flex;
   flex-direction: column;
   margin: 0.45rem;
-  background-color: hsl(0, 0%, 20%); /* Grey 700 */
+  background-color: hsl(0, 0%, 20%); 
   padding: 0.5rem;
   border-radius: 6px;
   width: 75%;
@@ -110,7 +110,7 @@ img {
 .twitter,
 .instagram {
   text-decoration: none;
-  color: hsl(0, 0%, 100%); /* White */
+  color: hsl(0, 0%, 100%);
 }
 
 .github-container:hover,
@@ -118,14 +118,14 @@ img {
 .linkedin-container:hover,
 .twitter-container:hover,
 .instagram-container:hover {
-  background-color: hsl(75, 94%, 57%); /* Green */
-  color: hsl(0, 0%, 100%); /* Text stays white on hover */
+  background-color: hsl(75, 94%, 57%); 
+  color: hsl(0, 0%, 100%); 
   font-weight: 700;
 }
 
 @media only screen and (max-width: 375px) {
   .profile-container {
-    width: 90%; /* Make profile-container responsive for mobile */
+    width: 90%;
   }
 
   .github-container,
@@ -133,12 +133,12 @@ img {
   .linkedin-container,
   .twitter-container,
   .instagram-container {
-    width: 100%; /* Ensure full width for social media links on mobile */
+    width: 100%; 
   }
 }
 
 @media only screen and (min-width: 1440px) {
   .profile-container {
-    width: 40%; /* Adjust profile-container width for larger screens */
+    width: 40%; 
   }
 }

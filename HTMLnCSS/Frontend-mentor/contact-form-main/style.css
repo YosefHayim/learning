@@ -103,16 +103,24 @@ input,textarea {
 }
 
 @media screen and (min-width: 1024px) {
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
   body {
   max-width: 900px;
-  height: 500px;
 }
-.father-container {
-  position: relative;
+
+form {
+  width: 1000px;
+  height: auto;
   display: flex;
   flex-direction: row;
-  align-content: stretch;
+  justify-content: flex-start;
+
 }
+
 input {
   margin-top: -10px;
   max-width:100%;
@@ -120,5 +128,6 @@ input {
   padding:-10px;
   margin: 15px;
   border: solid 1px hsl(187, 24%, 22%);
+  width:50%;
 }
 }
