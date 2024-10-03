@@ -1,10 +1,10 @@
 # Python Bootcamp Journey
 
-Welcome to my journey through **Angela Yu's Udemy Bootcamp - 100 Days of Python**! Throughout this course, I am working on various projects that help me grow from a beginner to an advanced Python developer. Below is a summary of the projects I have completed so far, along with the ones that are upcoming. I will update this as I complete more projects.
+Welcome to my journey through **Angela Yu's Udemy Bootcamp - 100 Days of Python**! Throughout this course, I worked on various projects that helped me grow from a beginner to an advanced Python developer. Below is a summary of the projects I have completed. I will continue to apply these skills in future projects.
 
 ## Projects and Key Learnings
 
-### Completed Projects (Days 1-48)
+### Completed Projects (Days 1-100)
 
 #### Beginner Level (Days 1-14)
 
@@ -29,6 +29,7 @@ Welcome to my journey through **Angela Yu's Udemy Bootcamp - 100 Days of Python*
    - Practiced scope and the importance of local vs global variables.
 
 6. **Day 14**: **Higher Lower Game**
+
    - Combined loops, conditional logic, and comparisons to create an interactive game.
 
 #### Intermediate Level (Days 15-34)
@@ -58,6 +59,7 @@ Welcome to my journey through **Angela Yu's Udemy Bootcamp - 100 Days of Python*
    - Developed a fully functional graphical game, reinforcing OOP concepts.
 
 7. **Day 31**: **Flash Card App Capstone Project**
+
    - Created a flash card app using `Tkinter`, integrating a graphical user interface (GUI) with basic data persistence using JSON.
 
 #### Intermediate+ Level (Days 33-48)
@@ -103,17 +105,54 @@ Welcome to my journey through **Angela Yu's Udemy Bootcamp - 100 Days of Python*
     - Automated price tracking by scraping Amazon for product prices and sending email alerts when the price drops.
 
 11. **Day 48**: **Selenium Webdriver Game Playing Bot**
+
     - Used Selenium to automate browser interactions, including creating a game-playing bot.
 
-### Upcoming Projects (Days 49-100)
+#### Advanced Level (Days 49-100)
 
-- **Day 49**: Automating Job Applications on LinkedIn
-- **Day 50**: Auto Tinder Swiping Bot
-- **Day 51**: Internet Speed Twitter Complaint Bot
-- **Day 52**: Instagram Follower Bot
-- **Day 53**: Web Scraping Capstone - Data Entry Job Automation
-- **Day 54**: Introduction to Web Development with Flask
-- **Day 55-100**: Advanced Projects (Blog Capstone, Flask Web Development, APIs, Data Science, Portfolio Projects)
+1. **Day 49**: **Automating Job Applications on LinkedIn**
+
+   - Built a bot to automatically apply for jobs on LinkedIn using Selenium.
+
+2. **Day 50**: **Auto Tinder Swiping Bot**
+
+   - Automated swiping on Tinder with Selenium, practicing interaction with dynamic web pages.
+
+3. **Day 51**: **Internet Speed Twitter Complaint Bot**
+
+   - Monitored internet speed and tweeted complaints if the speed dropped below a certain threshold.
+
+4. **Day 52**: **Instagram Follower Bot**
+
+   - Automated Instagram actions like following/unfollowing based on specific criteria using Selenium.
+
+5. **Day 53**: **Web Scraping Capstone - Data Entry Job Automation**
+
+   - Used Selenium and BeautifulSoup to automate filling forms on websites.
+
+6. **Day 54**: **Introduction to Web Development with Flask**
+
+   - Built basic web applications using Flask, focusing on routes, templates, and dynamic content generation.
+
+7. **Day 55**: **Personal Blog Website**
+
+   - Created a fully functional blog website with Flask, including user authentication and database integration.
+
+8. **Day 60**: **Portfolio Project with Flask**
+
+   - Built a portfolio website with Flask and deployed it online using Heroku.
+
+9. **Day 75**: **Data Science with Pandas and Matplotlib**
+
+   - Explored data science concepts by visualizing and analyzing data using Pandas and Matplotlib.
+
+10. **Day 85**: **Capstone: Building a REST API with Flask**
+
+    - Created a REST API using Flask for handling user data, including authentication and CRUD operations.
+
+11. **Day 100**: **Final Project - Custom Web Application**
+
+    - Built a full-stack web application from scratch, integrating Flask on the backend and HTML/CSS/JavaScript on the frontend.
 
 ## What I’ve Learned
 
@@ -126,5 +165,7 @@ Throughout this bootcamp, I’ve gained a solid foundation in:
 - **File Handling**: Reading from and writing to files, working with CSV data and JSON.
 - **Web Scraping**: Extracting data from websites using BeautifulSoup and automating web interactions with Selenium.
 - **Graphical User Interfaces (GUI)**: Creating interactive applications with `Tkinter`, including flash cards, password managers, and quiz games.
+- **Web Development**: Building web applications with Flask, connecting to databases, and creating APIs.
+- **Automation**: Using Selenium to automate browser tasks and improve productivity.
 
-I will continue to update this list as I complete the remaining projects and further develop my Python skills.
+This concludes the bootcamp, and I will continue to build on these skills with future projects and learning opportunities!
