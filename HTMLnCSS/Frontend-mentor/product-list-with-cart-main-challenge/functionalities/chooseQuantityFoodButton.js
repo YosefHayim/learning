@@ -1,10 +1,12 @@
 // chooseQuantityFoodButton.js
 
 const chooseQuantityFoodButton = (button)  => {
-  let count = 0;
+  let count = 1;
+  let add = 1;
 
   const svgIconIncrease = document.createElement('img');
   svgIconIncrease.src = `./assets/images/icon-increment-quantity.svg`;
+  svgIconIncrease.classList.add('increase-button')
   svgIconIncrease.style.border = '0.5px solid white';
   svgIconIncrease.style.borderRadius = '50%';
   svgIconIncrease.style.padding = '3px';
@@ -38,10 +40,11 @@ const chooseQuantityFoodButton = (button)  => {
       const svgIconDecrease = container.querySelector('.add-to-cart-svg-icon');
       if (svgIconDecrease) {
         svgIconDecrease.src = `./assets/images/icon-decrement-quantity.svg`;
+        svgIconDecrease.classList.add('decrease-button')
 
         svgIconDecrease.addEventListener('click', () => {
           if (count > 0) {
-            buttonText.textContent = `${--count}`;
+            buttonText.textContent = `${count -= add}`;
           } else {
             alert("You can't have negative quantity.");
           }
@@ -60,7 +63,6 @@ const chooseQuantityFoodButton = (button)  => {
       }
 
       svgIconIncrease.addEventListener('click', () => {
-        let add = 1
         buttonText.textContent = `${count += add}`;
       });
     }
