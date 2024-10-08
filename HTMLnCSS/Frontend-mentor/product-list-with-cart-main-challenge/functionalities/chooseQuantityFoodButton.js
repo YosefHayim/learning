@@ -30,6 +30,7 @@ const chooseQuantityFoodButton = (button)  => {
 
       const buttonText = button.closest('.add-to-cart-button');
       if (buttonText) {
+        console.log(buttonText);
         buttonText.textContent = `${count}`;
         buttonText.style.color = 'white';
         buttonText.style.fontWeight = '100';
