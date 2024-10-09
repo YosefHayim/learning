@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "Outfit";
+  src: url(./Outfit-VariableFont_wght.ttf);
+}
+
 :root {
   --color-white: hsl(0, 0%, 100%);
   --color-slate-300: hsl(212, 45%, 89%);
@@ -13,19 +18,38 @@
 
 html {
 width: 100%;
+
 }
 
 body {
+  font-family: "Outfit";
+  font-size: 16px;
+  margin-top: 100px;
   background: var(--color-slate-300);
 }
 
 img {
-  width: 350px;
-  height: 350px;
+  width: 450px;
+  height: 450px;
+  border-radius: 15px;
+  margin-top: -25px;
+}
+
+h1 {
+  color: var(--color-slate-900);
+  font-weight: 700;
+}
+
+
+p {
+  color: var(--color-slate-500);
+  font-size: 25px;
 }
 
 .card-container {
-  padding: 40px;
+  gap: 20px;
+  border-radius: 15px;
+  padding: 50px;
   background-color: var(--color-white);
   height: auto;
   width: 400px;
@@ -35,5 +59,4 @@ img {
   justify-content: center;
   align-items: center;
   text-align: center;
-  width: 400px;
 }
