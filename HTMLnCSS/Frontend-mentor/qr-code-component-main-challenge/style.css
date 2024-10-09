@@ -1,0 +1,39 @@
+:root {
+  --color-white: hsl(0, 0%, 100%);
+  --color-slate-300: hsl(212, 45%, 89%);
+  --color-slate-500: hsl(216, 15%, 48%);
+  --color-slate-900: hsl(218, 44%, 22%);
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+width: 100%;
+}
+
+body {
+  background: var(--color-slate-300);
+}
+
+img {
+  width: 350px;
+  height: 350px;
+}
+
+.card-container {
+  padding: 40px;
+  background-color: var(--color-white);
+  height: auto;
+  width: 400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 400px;
+}
