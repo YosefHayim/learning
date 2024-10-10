@@ -46,7 +46,6 @@ p {
   padding: 1rem;
   margin: 10rem;
   border-radius: 0.7rem;
-  height: auto;
   position: relative;
 }
 
@@ -127,24 +126,4 @@ img {
   background-color: hsl(75, 94%, 57%); 
   color: hsl(0, 0%, 100%); 
   font-weight: 700;
-}
-
-@media only screen and (max-width: 375px) {
-  .profile-container {
-    width: 90%;
-  }
-
-  .github-container,
-  .frontend-mentor-container,
-  .linkedin-container,
-  .twitter-container,
-  .instagram-container {
-    width: 100%; 
-  }
-}
-
-@media only screen and (min-width: 1440px) {
-  .profile-container {
-    width: 40%; 
-  }
 }
