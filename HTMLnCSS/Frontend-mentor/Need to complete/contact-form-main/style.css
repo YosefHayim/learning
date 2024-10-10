@@ -1,0 +1,199 @@
+:root {
+  /* Colors */
+    --green-200: hsl(148, 38%, 91%);
+    --green-600: hsl(169, 82%, 27%);
+    --red: hsl(0, 66%, 54%);
+  
+    /* Neutral Colors */
+    --white: hsl(0, 0%, 100%);
+    --grey-500: hsl(186, 15%, 59%);
+    --grey-900: hsl(187, 24%, 22%);
+  
+    /* Typography */
+    --font-size-labels: 16px;
+    --font-weight-regular: 400;
+    --font-weight-bold: 700;
+  }
+  
+  @font-face {
+  font-family: "Karla";
+    src: url(./assets/fonts/Karla-VariableFont_wght.ttf);
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body,html {
+    min-height: 100vh;
+  }
+  
+  h1 {
+    font-weight: var(--font-weight-bold);
+    color: var(--grey-900);
+    margin-bottom: 30px;
+  }
+  
+  span {
+    color: var(--green-600);
+  }
+  
+  body {
+    font-family: "Karla";
+    font-size: var(--font-size-labels);
+    background-color: hsl(148, 38%, 91%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .father-container {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  input {
+    height: 40px;
+    border-radius: 8px;
+    border: 1px solid var(--grey-500);
+  }
+  
+  .general input , .support input {
+    margin-left: 25px;
+  }
+  
+  .query-type-container {
+    display: grid;
+    position: relative;
+  }
+  
+  .general,.support {
+    border-radius: 8px;
+    border: 1px solid var(--grey-500);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .message {
+    margin-top: 20px;
+  }
+  
+  textarea {
+    border-radius: 8px;
+  }
+  
+  .submit {
+    margin-top: 30px;
+    border: none;
+    background: var(--green-600);
+    border-radius: 6px;
+    height: 45px;
+    color: white;
+    font-weight: var(--font-weight-regular);
+  }
+  
+  @media (min-width: 1024px) {
+  
+    .father-container {
+      max-width: 650px;
+      width: 650px;
+      display: grid;
+      grid-template-columns: auto;
+      grid-template-columns: auto;
+    }
+  
+    .fName-label,.fName-input {
+      grid-column-start: 1;
+    }
+  
+    .lName-label {
+      grid-column-start: 2;
+      grid-row-start: 2;
+      margin-left: 10px;
+    }
+  
+    .lName-input{
+      display: flex;
+      grid-column: 2;
+      grid-row: 4;
+      margin-left: 10px;
+    }
+  
+    .email-label {
+      grid-column: 1;
+    }
+  
+    #email {
+      display: grid;
+      grid-column: span 2;
+    }
+  
+    .query-type-container {
+      grid-column: 1 / span 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr; 
+      gap: 10px;
+    }
+
+    .check-box-mark-container{
+      grid-column: span 2;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      width: 100%;
+    }
+
+    .query-type-label {
+      grid-column: 1;
+      margin-bottom: 10px;
+    }
+
+    .email-label {
+      margin-bottom: 10px;
+    }
+  
+    .general, .support {
+    }
+    .message {
+      grid-column: 1;
+      margin-bottom: 10px;
+    }
+    
+    textarea {
+      display: grid;
+      grid-column: span 2;
+      height: calc(1.5em * 5);
+    }
+    .submit {
+      display: grid;
+      grid-column: span 2;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .submit:hover {
+      cursor: pointer;
+    }
+
+    .fName-label,.lName-label {
+      margin-bottom: -10px;
+    }
+    .terms-agreement-label {
+      margin-left: 15px;
+      color: var(--grey-900);
+    }
+
+    input {
+      height: 45px;
+    }
+
+  }
+  
