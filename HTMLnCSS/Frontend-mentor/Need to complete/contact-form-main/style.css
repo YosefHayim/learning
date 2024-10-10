@@ -148,7 +148,6 @@
       display: flex;
       justify-content: flex-start;
       align-items: center;
-      width: 100%;
     }
 
     .query-type-label {
@@ -179,7 +178,7 @@
       align-items: center;
     }
 
-    .submit:hover {
+    .submit:hover,.input:hover,.general:hover,.support:hover,.terms-agreement-label:hover,.checkbox:hover,#support:hover,#general:hover{
       cursor: pointer;
     }
 
@@ -193,6 +192,10 @@
 
     input {
       height: 45px;
+    }
+
+    input:valid {
+      color: var(--grey-900);
     }
 
   }
