@@ -1,0 +1,120 @@
+@font-face {
+  font-family: "Poppins";
+  src: url(./fonts/Poppins-Regular.ttf);
+}
+
+:root {
+  /* Primary Colors */
+  --red: hsl(0, 78%, 62%);
+  --cyan: hsl(180, 62%, 55%);
+  --orange: hsl(34, 97%, 64%);
+  --blue: hsl(212, 86%, 64%);
+
+  /* Neutral Colors */
+  --very-dark-blue: hsl(234, 12%, 34%);
+  --grayish-blue: hsl(229, 6%, 66%);
+  --very-light-gray: hsl(0, 0%, 98%);
+
+  --font-size-body: 15px;
+  --font-weight-light: 200;
+  --font-weight-regular: 400;
+  --font-weight-bold: 600;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,body {
+  min-height: 100vh;
+}
+
+body {
+  font-family: "Poppins";
+  background: var(--very-light-gray);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.pros-container {
+  justify-content: center;
+  align-items: center;
+  width: 340px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.card-container {
+  justify-content: center;
+  align-items: center;
+  width: 340px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 80px;
+  gap: 30px;
+  margin-bottom: 80px;
+}
+
+.first-h1 {
+  font-weight: var(--font-weight-light);
+  font-size: 24px;
+}
+
+.second-h1 {
+  font-size: 25px;
+  color: var(--very-dark-blue);
+}
+
+.title-area-text {
+  margin-top: 20px;
+  color: var(--grayish-blue);
+}
+
+.supervisor-container,.team-builder-container,.karma-container,.calculator-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: var(--very-dark-blue);
+  background: white;
+  width: inherit;
+  height: 170px;
+  padding: 40px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+}
+
+.symbol-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  align-items: flex-end;
+}
+
+.supervisor-line,.team-builder-line,.karma-line,.calculator-line {
+  border-radius: 10px 10px 0px 0px;
+  width: 415px;
+  margin-left: -40px;
+  margin-top: -40px;
+  margin-bottom: 25px;
+}
+.supervisor-line {
+  border: 3px solid var(--cyan);
+}
+
+.team-builder-line {
+  border: 3px solid var(--red);
+}
+
+.karma-line {
+  border: 3px solid var(--orange);
+}
+
+.calculator-line {
+  border: 3px solid var(--blue);
+
+}
