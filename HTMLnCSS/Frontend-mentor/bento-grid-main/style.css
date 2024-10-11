@@ -242,8 +242,6 @@ END OF EIGHT CONTAINER
   display: flex;
   flex-direction: column;
   border-radius: 10px;
-  justify-content: center;
-  align-items: flex-start;
   gap: 15px;
   padding: 25px;
 
