@@ -106,8 +106,7 @@
       max-width: 650px;
       width: 650px;
       display: grid;
-      grid-template-columns: auto;
-      grid-template-columns: auto;
+      grid-template-columns: 1fr 1fr;
     }
   
     .fName-label,.fName-input {
@@ -138,7 +137,6 @@
   
     .query-type-container {
       grid-column: 1 / span 2;
-      display: grid;
       grid-template-columns: 1fr 1fr; 
       gap: 10px;
     }
@@ -179,6 +177,7 @@
       grid-column: span 2;
       justify-content: center;
       align-items: center;
+      font-size: 15px;
     }
 
     .submit:hover,.input:hover,.general:hover,.support:hover,.terms-agreement-label:hover,.checkbox:hover,#support:hover,#general:hover{
@@ -195,14 +194,68 @@
 
     input {
       height: 45px;
+      padding: 10px;
     }
 
-    input:valid {
-      color: var(--grey-900);
-    }
     .checkbox {
       accent-color:var(--green-600);
       cursor: pointer;
     }
+
+  input:focus,.message-input:focus {
+    border: none; 
+    border: 2px solid var(--green-600);
+    outline: none;
+    border-radius: 8px;
+  }
+
+  /* Apply styling to .general or .support div when it contains a checked radio input */
+  .general:has(input[type="radio"]:checked),
+  .support:has(input[type="radio"]:checked) {
+    border: 2px solid var(--green-600);
+  }
+
+  .radio-support-input,.radio-general-input {
+    width: 20px;
+  }
+  input[type="radio"] {
+    accent-color: var(--green-600);
+  }
+
+  .support {
+    margin-left: 5px;
+  }
+
+  [class*="error-message"] {
+    color: var(--red);
+    grid-column: 1;
+    grid-row: auto;
+    grid-column-end: 3;
+    display: none;
+  }
+
+  .error-message-fName{
+    grid-row: 5;
+    margin-top: 10px;
+  }
+
+  .error-message-lName {
+    grid-column: 2;
+    grid-row: 5;
+    margin-top: 10px;
+
+  }
+
+  .error-message-email {
+    margin-top: 10px;
+    grid-row: 10;
+    margin-bottom: 25px;
+  }
+
+  .error-message-message {
+    margin-top: 10px;
+    margin-bottom: 25px;
+  }
+
   }
   
