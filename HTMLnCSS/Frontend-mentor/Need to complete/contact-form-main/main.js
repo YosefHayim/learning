@@ -1,51 +1,76 @@
+// Select the form and the success message container
 const form = document.querySelector('form');
 const successMessage = document.querySelector('.message-sent-container');
 
+// Add an event listener to handle form submission
 form.addEventListener('submit', (event) => {
-  event.preventDefault();
+  event.preventDefault(); // Prevent default form submission
 
-  let allFieldsValid = true;
+  let allFieldsValid = true; // Assume form is valid until we find an error
 
-  // List of form fields we want to validate
-  const fieldsToCheck = [
-    { element: form.elements['fname'], errorClass: 'fName' },
-    { element: form.elements['lname'], errorClass: 'lName' },
-    { element: form.elements['email'], errorClass: 'email' },
-    { element: form.elements['message-input'], errorClass: 'message' },
-    { element: form.elements['checkbox'], errorClass: 'submit', type: 'checkbox' },
-    { element: form.elements['enquiry_type'], errorClass: 'query-type', type: 'radio' }
-  ];
+  // Create FormData object from the form
+  const formData = new FormData(form);
 
-  fieldsToCheck.forEach((field) => {
-    const input = field.element; 
-    const errorElement = document.querySelector(`.error-message-${field.errorClass}`); // The error message element
-
-    // For checkboxes: make sure it is checked
-    if (field.type === 'checkbox' && !input.checked) {
-      errorElement.style.display = 'block'; // Show error
-      allFieldsValid = false;
-    } 
-    // For radio buttons: make sure one is selected
-    else if (field.type === 'radio' && !form.elements['enquiry_type'].value) {
-      errorElement.style.display = 'block'; // Show error
-      allFieldsValid = false;
-    } 
-    // For regular text fields: make sure there is text entered
-    else if (!field.type && input.value.trim() === "") {
-      input.style.border = '1px solid var(--red)'; // Show a red border
-      errorElement.style.display = 'block'; // Show error
-      allFieldsValid = false;
-    } 
-    // If the field is valid, hide any existing error message
-    else if (!field.type) {
-      input.style.border = '1px solid var(--grey-500)'; // Reset border
-      errorElement.style.display = 'none'; // Hide error
-    }
+  // Clear any previous error messages and reset styles
+  document.querySelectorAll('[class*="error-message"]').forEach(error => {
+    error.style.display = 'none';
+  });
+  form.querySelectorAll('input, textarea').forEach(input => {
+    input.style.border = '1px solid var(--grey-500)';
   });
 
+  // Check if 'fname' field is empty
+  if (!formData.get('fname').trim()) {
+    showError('fName');
+    allFieldsValid = false;
+  }
+
+  // Check if 'lname' field is empty
+  if (!formData.get('lname').trim()) {
+    showError('lName');
+    allFieldsValid = false;
+  }
+
+  // Check if 'email' field is empty
+  if (!formData.get('email').trim()) {
+    showError('email');
+    allFieldsValid = false;
+  }
+
+  // Check if 'message-input' field is empty
+  if (!formData.get('message-input').trim()) {
+    showError('message');
+    allFieldsValid = false;
+  }
+
+  // Check if checkbox is not checked
+  if (!formData.get('checkbox')) {
+    showError('submit');
+    allFieldsValid = false;
+  }
+
+  // Check if no radio button is selected
+  if (!formData.get('enquiry_type')) {
+    showError('query-type');
+    allFieldsValid = false;
+  }
+
+  // Show success message if all fields are valid
   if (allFieldsValid) {
     successMessage.style.display = 'flex';
   } else {
-    successMessage.style.display = 'none'; // Hide success message if not valid
+    successMessage.style.display = 'none';
   }
 });
+
+// Function to show error for a specific field
+function showError(fieldName) {
+  const errorElement = document.querySelector(`.error-message-${fieldName}`);
+  if (errorElement) {
+    errorElement.style.display = 'block';
+    const inputElement = form.elements[fieldName];
+    if (inputElement) {
+      inputElement.style.border = '1px solid var(--red)';
+    }
+  }
+}
