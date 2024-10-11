@@ -170,6 +170,9 @@
       display: grid;
       grid-column: span 2;
       height: calc(1.5em * 5);
+      padding: 15px;
+      font-family: var(--font-weight-regular);
+      color: var(--grey-900);
     }
     .submit {
       display: grid;
@@ -197,6 +200,9 @@
     input:valid {
       color: var(--grey-900);
     }
-
+    .checkbox {
+      accent-color:var(--green-600);
+      cursor: pointer;
+    }
   }
   
