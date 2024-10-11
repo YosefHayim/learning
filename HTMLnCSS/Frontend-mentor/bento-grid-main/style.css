@@ -3,6 +3,11 @@
   src: url(./fonts/DMSans-VariableFont_opsz\,wght.ttf);
 }
 
+@font-face {
+  font-family: "DM Sans Italic";
+  src: url(./fonts/DMSans-Italic-VariableFont_opsz\,wght.ttf);
+}
+
 :root {
   --purple-100: hsl(254, 88%, 90%);
   --purple-500: hsl(256, 67%, 59%);
@@ -11,7 +16,177 @@
   --white: hsl(0, 0%, 100%);
   --black: hsl(0, 0%, 7%);
   
-  --font-size-paragraph: 18px;
+  --regular-t-size: 18px;
   --font-weight-regular: 400;
   --font-weight-medium: 500;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,body {
+  min-height: 100vh;
+}
+
+body {
+  font-family: "DMSans";
+  font-size: var(--regular-t-size);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: lightgray;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  gap: 30px;
+}
+
+.first-container {
+  margin-top: 40px;
+  background: var(--purple-500);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--white);
+  border-radius: 10px;
+}
+
+.first-container-title {
+  text-align: center;
+  font-weight: 500;
+  font-size: 55px;
+}
+
+.tenX-text {
+  color: var(--yellow-500);
+}
+
+.italic-font {
+  font-family: "DM Sans Italic";
+}
+
+.illustration-five-stars-img {
+  width: 200px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.first-container-text {
+  color: var(--yellow-100);
+}
+
+/*\
+END OF FIRST CONTAINER
+\*/
+
+.second-container {
+  background: hsl(0, 0%, 100%);
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.second-container-text {
+  font-size: 30px;
+}
+
+/*\
+END OF SECOND CONTAINER
+\*/
+
+.third-container {
+  background: var(--yellow-500);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  font-size: 15px;
+}
+
+.third-container-title {
+  padding: 20px;
+}
+
+.third-img-container {
+  width: 250px;
+  margin-left: 20px;
+}
+
+/*\
+END OF THIRD CONTAINER
+\*/
+
+.fourth-container {
+  background: var(--purple-100);
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  border-radius: 10px;
+  font-weight: 500;
+  text-align: center;
+  font-size: x-large;
+  padding: 30px;
+  gap: 20px;
+}
+
+.fourth-container-title {
+  font-size: x-large;
+  font-weight: 600;
+}
+
+.fourth-img-container {
+  width: -webkit-fill-available;
+}
+
+/*\
+END OF FOURTH CONTAINER
+\*/
+
+.six-container {
+  background: var(--purple-500);
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  border-radius: 10px;
+  color: var(--white);
+  justify-content: center;
+  text-align: center;
+  padding: 50px;
+}
+
+.six-img-container {
+}
+
+.six-container-title {
+  margin-top: 40px;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 35px;
+  margin-bottom: -20px;
+}
+
+/*\
+END OF SIX CONTAINER
+\*/
+
+.seven-container {
+  background: var(--white);
+}
+
+.eight-container {
+  background:var(--yellow-100) ;
+}
+
+.nine-container{
+  background: var(--yellow-500);
 }
