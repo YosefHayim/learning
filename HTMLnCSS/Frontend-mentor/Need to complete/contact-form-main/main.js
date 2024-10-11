@@ -5,73 +5,36 @@ form.addEventListener('submit', (ev) => {
   
   let allValid = true;
 
-  // Validation for first name
-  const firstName = form.elements['fname'];
-  const firstNameError = document.querySelector('.error-message-fName');
-  if (firstName.value.trim() === "") {
-    firstName.style.border = '1px solid var(--red)';
-    firstNameError.style.display = 'block';
-    allValid = false;
-  } else {
-    firstName.style.border = '1px solid var(--grey-500)';
-    firstNameError.style.display = 'none';
-  }
 
-  // Validation for last name
-  const lastName = form.elements['lname'];
-  const lastNameError = document.querySelector('.error-message-lName');
-  if (lastName.value.trim() === "") {
-    lastName.style.border = '1px solid var(--red)';
-    lastNameError.style.display = 'block';
-    allValid = false;
-  } else {
-    lastName.style.border = '1px solid var(--grey-500)';
-    lastNameError.style.display = 'none';
-  }
+  // Check individual fields and show corresponding error messages if validation fails
+  const validations = [
+    { element: form.elements['fname'], errorClass: 'fName' },
+    { element: form.elements['lname'], errorClass: 'lName' },
+    { element: form.elements['email'], errorClass: 'email' },
+    { element: form.elements['message-input'], errorClass: 'message' },
+    { element: form.elements['checkbox'], errorClass: 'submit', type: 'checkbox' },
+    { element: form.elements['enquiry_type'], errorClass: 'query-type', type: 'radio' }
+  ];
 
-  // Validation for email
-  const email = form.elements['email'];
-  const emailError = document.querySelector('.error-message-email');
-  if (email.value.trim() === "") {
-    email.style.border = '1px solid var(--red)';
-    emailError.style.display = 'block';
-    allValid = false;
-  } else {
-    email.style.border = '1px solid var(--grey-500)';
-    emailError.style.display = 'none';
-  }
+  validations.forEach(({ element, errorClass, type }) => {
+    const errorElement = document.querySelector(`.error-message-${errorClass}`);
 
-  // Validation for query type (radio buttons)
-  const queryTypeError = document.querySelector('.error-message-query-type');
-  if (!form.elements['enquiry_type'].value) {
-    queryTypeError.style.display = 'block';
-    allValid = false;
-  } else {
-    queryTypeError.style.display = 'none';
-  }
-
-  // Validation for message
-  const message = form.elements['message-input'];
-  const messageError = document.querySelector('.error-message-message');
-  if (message.value.trim() === "") {
-    message.style.border = '1px solid var(--red)';
-    messageError.style.display = 'block';
-    allValid = false;
-  } else {
-    message.style.border = '1px solid var(--grey-500)';
-    messageError.style.display = 'none';
-  }
-
-  // Validation for consent checkbox
-  const consentCheckbox = form.elements['checkbox'];
-  const consentError = document.querySelector('.error-message-submit');
-  if (!consentCheckbox.checked) {
-    consentError.style.display = 'block';
-    allValid = false;
-  } else {
-    consentError.style.display = 'none';
-  }
+    if (type === 'checkbox' && !element.checked) {
+      errorElement.style.display = 'block';
+      allValid = false;
+    } else if (type === 'radio' && !form.elements['enquiry_type'].value) {
+      errorElement.style.display = 'block';
+      allValid = false;
+    } else if (!type && element.value.trim() === "") {
+      element.style.border = '1px solid var(--red)';
+      errorElement.style.display = 'block';
+      allValid = false;
+    } else if (!type) {
+      element.style.border = '1px solid var(--grey-500)';
+    }
+  });
 
   if (allValid) {
+    // Code to proceed with form submission or further processing
   }
 });
