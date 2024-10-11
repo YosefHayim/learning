@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
   <link rel="stylesheet" href="style.css">
+  <title>contact-form-main</title>
 </head>
 <body>
 <form >
@@ -20,43 +21,32 @@
     <label class="fName-label" for="fname">First Name <span>*</span></label><br>
     <input class="fName-input" type="text" id="fname" name="fname" ><br>
     <span class="error-message-fName">This field is required</span>
-
-
     <label class="lName-label" for="lName">Last Name <span>*</span></label><br>
     <input  class="lName-input" type="text" id="lname" name="lname" ><br>
     <span class="error-message-lName">This field is required</span>
-
-
     <label class="email-label" for="email">Email Address <span>*</span></label><br>
     <input type="email-input" id="email" name="email" pattern=".*@.*\.com" title="Email must contain '@' and end with '.com'"><br>
     <span class="error-message-email">Please enter a valid email address</span>
-
-
     <label class="query-type-label" for="Please select a query type">Query Type <span>*</span></label><br>
     <div class="query-type-container">
       <div class="general">
         <input class="radio-general-input" type="radio" id="general" name="enquiry_type" value="general">
         <label class="radio-general-label" for="general">General Enquiry</label><br>
       </div>
-    
       <div class="support">
         <input class="radio-support-input" type="radio" id="support" name="enquiry_type" value="support">
         <label class="radio-support-label" for="support">Support Request</label><br>
       </div>
       <span class="error-message-query-type">Please select a query type</span>
     </div>
-
     <label for="message" class="message">Message <span>*</span></label><br>
     <textarea name="message-input" class="message-input" rows="15" cols="50"></textarea>
     <span class="error-message-message">This field is required</span>
-
-
     <div class="check-box-mark-container">
       <br><input class="checkbox" type="checkbox" id="checkbox" name="checkbox" value="checkbox">
       <label for="terms-agreement" class="terms-agreement-label">I consent to being contacted by the team <span>*</span></label><br>
     </div>
     <span class="error-message-submit">To submit this form, please consent to being contacted</span>
-
     <button class="submit">Submit</button>
   </div>
 </form>
