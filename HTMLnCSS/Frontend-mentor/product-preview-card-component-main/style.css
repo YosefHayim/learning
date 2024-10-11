@@ -1,0 +1,193 @@
+@font-face {
+  font-family: "Montserrat";
+  src: url(./fonts/Montserrat-VariableFont_wght.ttf);
+}
+
+@font-face {
+  font-family: "Fraunces";
+  src: url(./fonts/Fraunces-VariableFont_SOFT\,WONK\,opsz\,wght.ttf);
+}
+
+:root {
+  --dark-cyan: hsl(158, 36%, 37%);
+  --cream: hsl(30, 38%, 92%);
+  --very-dark-blue: hsl(212, 21%, 14%);
+  --dark-grayish-blue: hsl(228, 12%, 48%);
+  --white: hsl(0, 0%, 100%);
+
+  --font-size: 14px;
+  --font-weight-regular: 500;
+  --font-weight-bold: 700;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,body {
+  height: 100vh;
+}
+
+body {
+  font-size: var(--font-size);
+  background: var(--cream);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-container {
+  width:350px;
+  background: var(--white);
+  border-radius: 10px;
+}
+
+.second-part-container{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 25px;
+}
+
+.second-part-container h2 {
+  text-transform: uppercase;
+  font-family: "Montserrat";
+  font-weight: var(--font-weight-regular);
+  color: var(--dark-grayish-blue);
+  line-height: 35px;
+}
+
+.prefume-text {
+  margin-top: -15px;
+  font-size: small;
+  letter-spacing: 3px;
+
+}
+
+.product-title-text {
+  line-height: 35px;
+  margin-top: -10px;
+  width: fit-content;
+  font-size: xx-large;
+  color: var(--very-dark-blue);
+  font-weight: var(--font-weight-bold);
+}
+
+.p-text {
+  color: var(--dark-grayish-blue);
+  font-family: 'Montserrat';
+  font-size: small;
+  font-weight: var(--font-weight-regular);
+  line-height: 20px;
+  width: -webkit-fill-available;
+  padding: 10px;
+}
+
+
+img {
+  width: -webkit-fill-available;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.button-container {
+  display: flex;
+  background: var(--dark-cyan);
+  justify-content: center;
+  padding: 5px;
+  border-radius: 8px;
+}
+
+.price-container{
+  gap: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  font-family: "Fraunces";
+  font-size: medium;
+}
+
+.price-container h1 {
+  color: var(--dark-cyan);
+  font-size: 30px;
+}
+
+.discount-price {
+  font-size: x-small;
+  text-decoration: line-through;
+}
+
+.icon-cart {
+  width: 15px;
+  padding: 10px;
+}
+
+button {
+  border: none;
+  background: none;
+  color: var(--white);
+  font-weight: var(--font-weight-bold);
+}
+
+.desktop-image{
+  display: none;
+}
+
+@media (min-width:1024px) {
+
+  .desktop-image {
+    display: flex;
+    border-top-left-radius: 10px;  
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 0px;  
+    border-bottom-right-radius: 0px;
+  }
+
+  .card-container {
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+  }
+
+  .img-container {
+    display: flex;
+    width: 300px;
+    height: 450px;
+  }
+
+  .prefume-image {
+    display: none;
+  }
+
+  .second-part-container {
+    justify-content: space-evenly;
+    width: 250px;
+  }
+
+  .product-title-text{
+    font-size: 40px;
+  }
+
+  .p-text {
+    margin-top: -10px;
+  }
+
+  .discount-price{
+    font-size: 15px;
+  }
+
+  .button-container {
+    margin-bottom: -10px;
+  }
+
+  .button-container:hover {
+    background: hsl(158, 42%, 22%);
+    cursor: pointer;
+  }
+  
+  .add-to-cart-text{
+    cursor: pointer;
+  }
+}
