@@ -116,5 +116,10 @@ body {
 
 .calculator-line {
   border: 3px solid var(--blue);
+}
 
+@media screen and (min-width: 1024px) {
+  body {
+    display: grid;
+  }
 }
