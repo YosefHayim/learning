@@ -91,12 +91,17 @@ img {
   border-radius: 6px;
 }
 
-.email-label {
+.email-label,.invalid-email-label {
   font-weight: var(--font-weight-bold);
   color: var(--color-dark-slate-grey);
   font-size: 10px;
   margin-bottom: 10px;
   margin-top: 20px;
+}
+
+.invalid-email-label{
+  display: none;
+  color: var(--color-tomato);
 }
 
 .email-input {
@@ -110,8 +115,18 @@ input::placeholder {
   color: var(--color-grey)
 }
 
-/* Success message area */
+button:hover {
+  cursor: pointer;
+}
 
+.email-labels {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Success message area */
 
 .icon-success-message {
   display: none;
@@ -119,22 +134,10 @@ input::placeholder {
   margin-left: 10px;
 }
 
-/* .subscribe-img{
-  display: none;
-} */
-
 .thanks-for-sub-title {
   margin-top: -10px;
   display: none;
 }
-
-/* .stay-updated-title {
-  display: none;
-}
-
-.first-sentence {
-  display: none;
-} */
 
 .confirmation-text-success-message {
   font-size: 15px;
@@ -146,18 +149,6 @@ input::placeholder {
 span {
   font-weight: var(--font-weight-bold);
 }
-
-/* .single-pro-container {
-  display: none;
-}
-
-.email-label,.email-input {
-  display: none;
-}
-
-.subscribe-button {
-  display: none;
-} */
 
 .dissmiss-button-sucess-message {
   display: none;

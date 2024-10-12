@@ -20,7 +20,7 @@
       <p class="first-sentence">Join 60,000+ product managers receiving monthly updates on:</p>
 
       <p class="confirmation-text-success-message">
-        A confirmation email has been sent to <span>ash@loremcompany.com</span>.
+        A confirmation email has been sent to <span class="email-user-provided">ash@loremcompany.com</span>.
         Please open it and click the button inside to confirm your subscription.
       </p>
 
@@ -40,13 +40,17 @@
         </div>
         
         <div class="provide-email-container">
-          <label name="email" for="email" type="email" class="email-label">Email address</label>
-          <input name="email" for="email" type="email" placeholder="email@company.com" class="email-input">
+          <div class="email-labels">
+            <label name="email" for="email" type="email" class="email-label">Email address</label>
+            <label for="invalid-email" class="invalid-email-label">Valid email required</label>
+          </div>
           <button class="dissmiss-button-sucess-message">Dismiss message</button>
+          <input type="email" name="email" placeholder="email@company.com" class="email-input" required>
           <button class="subscribe-button">Subscribe to monthly newsletter</button>
         </div>
       </div>
     </div>
   </main>
+  <script type="module" src="main.js"></script>
 </body>
 </html>
