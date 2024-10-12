@@ -41,7 +41,6 @@ body {
   width:350px;
   display: flex;
   flex-direction: column;
-  background: #f8f8ff6e;
 }
 
 .subscribe-img-desktop {
@@ -51,10 +50,6 @@ body {
 h1 {
   font-weight: var(--font-weight-bold);
   font-size: 40px;
-}
-
-img {
-  width: -webkit-fill-available;
 }
 
 .pros-icon {
@@ -113,6 +108,7 @@ img {
   border-radius: 8px;
   border: 1px solid var(--color-grey);
   margin-bottom: 20px;
+  cursor: pointer;
 }
 
 input::placeholder {
@@ -146,7 +142,7 @@ button:hover {
 .confirmation-text-success-message {
   font-size: 15px;
   margin-top: 5px;
-  margin-bottom: 200px;
+  margin-bottom: 250px;
   display: none;
 }
 
@@ -156,6 +152,12 @@ span {
 
 .dissmiss-button-sucess-message {
   display: none;
+}
+
+.icon-success-message-mobile {
+  display: none;
+  width: 60px;
+  margin-bottom: 20px;
 }
 
 
@@ -191,7 +193,7 @@ span {
     }
 
     .first-sentence {
-      font-size: 17px;
+      font-size: 15px;
     }
 
     .provide-email-container {
@@ -202,6 +204,17 @@ span {
       display: none;
       margin-bottom: 30px;
       margin-left: 0px;
+    }
+
+    .dissmiss-button-sucess-message:hover,.subscribe-button:hover {
+    color: var(--color-white);
+    background: var(--color-tomato); 
+    box-shadow: 0px 40px 100px rgba(0, 0, 0, 0.3);
+
+    }
+
+    .confirmation-text-success-message {
+      margin-bottom: 30px;
     }
 
 }

@@ -7,6 +7,7 @@ const fatherContainer = document.querySelector('.father-container')
 const confirmationTxtMessage = document.querySelector('.confirmation-text-success-message')
 const thanksForSubTitle = document.querySelector('.thanks-for-sub-title')
 const proContainer = document.querySelector('.pros-container')
+const successImageMobile = document.querySelector('.icon-success-message-mobile')
 
 buttonSubscribe.addEventListener('click', (ev) => {
   ev.preventDefault();
@@ -35,21 +36,23 @@ buttonSubscribe.addEventListener('click', (ev) => {
     width: 450px;
     flex-direction: column;
     padding: 50px;
-    height: 450px;
     justify-content: center;`
 
   confirmationTxtMessage.style.cssText = `
-    font-size: 17px;
     width: -webkit-fill-available;
-    margin-bottom: 30px;`
+    line-height: 25px;
+    `
 
   thanksForSubTitle.style.cssText = `
   font-weight: var(--font-weight-bold);
+  font-size: 55px;
 `
   proContainer.style.cssText = `
   padding: 0px;
 
 `
+  successImageMobile.style.cssText = `
+  display: block;`
 
   // Show the success message elements
   const elementsToDisplay = document.querySelectorAll(`
