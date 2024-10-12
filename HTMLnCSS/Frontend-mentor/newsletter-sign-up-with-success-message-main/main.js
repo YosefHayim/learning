@@ -11,10 +11,8 @@ buttonSubscribe.addEventListener('click', (ev) => {
 
   // Check for a valid email format (basic validation)
   if (!emailUserEnterValue.includes('@') || !emailUserEnterValue.includes('.')) {
-    emailLabel.style.display = `none`
     emailInvalidLabel.style.cssText = `
     display: block;
-    margin-left: 220px;
     `
     inputE.style.cssText = `
     border: 1px solid var(--color-tomato);

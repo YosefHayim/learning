@@ -153,3 +153,44 @@ span {
 .dissmiss-button-sucess-message {
   display: none;
 }
+
+
+@media screen and (min-width:1024px) {
+  body {
+    background: var(--color-charcoal-grey);
+  }
+
+  .father-container {
+    width: 900px;
+    background-color: white;
+    flex-direction: row-reverse;
+    padding: 20px;
+    border-radius: 30px;
+  }
+
+    .subscribe-img {
+      display: none;
+    }
+
+    .subscribe-img-desktop {
+      width: auto;
+    }
+
+    .pros-container {
+      justify-content: space-evenly;
+      padding: 55px;
+    }
+
+    .pro-one,.pro-two,.pro-three {
+      width: max-content;
+    }
+
+    .first-sentence {
+      font-size: 17px;
+    }
+
+    .provide-email-container {
+      margin-bottom: 10px;
+    }
+
+}
