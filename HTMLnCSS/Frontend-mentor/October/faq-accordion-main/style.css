@@ -17,16 +17,26 @@
 * {
   padding: 0;
   margin: 0;
-  
+  box-sizing: border-box;
 }
 
+html,body {
+  min-height: 100vh;
+}
+
+
 body {
+  background-image: url(./assets/images/background-pattern-mobile.svg);
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: contain;
   display: flex;
   flex-direction: column;
   background-color: var(--light-pink);
   font-size: 16px;
   font-family: "Work Sans";
   align-items: center;
+  justify-content: center;
 }
 
 img {
@@ -56,15 +66,12 @@ h1 {
 .card-container {
   padding: 30px;
   top: -140px;
-  position: relative;
-  z-index: 9999;
   border-radius: 10px;
   background-color: white;
   width: 380px;
-  height: auto;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  position:relative;
 }
 
 .faq-container {
@@ -93,13 +100,14 @@ h3 {
   background: none;
   border: none;
   cursor: pointer;
+  margin-left: -50px;
 }
 
 hr {
   margin-bottom: 20px;
   margin-top: 20px;
   height: 1px; 
-  background-color: var(--light-pink); /* Change color if needed */
+  background-color: var(--light-pink);
   border: none; 
 }
 
@@ -119,24 +127,18 @@ p {
 }
 
 @media screen and (min-width: 1024px) {
-  * {
-    margin: 0;
-    padding: 0;
-  }
 
-  .hero-image-area {
-    width: 100%;
-    content: url(./assets/images/background-pattern-desktop.svg);
+  body {
+    background-image: url(./assets/images/background-pattern-desktop.svg);
   }
   
   br {
     display: none;
   }
   .card-container {
-    max-width: 100%;
     width: 570px;
-    box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.1); /* Horizontal offset, Vertical offset, Blur radius, Color */
-
+    box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.1); 
+    top: -160px;
   }
 
   p {
