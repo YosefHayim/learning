@@ -44,6 +44,10 @@ body {
   background: #f8f8ff6e;
 }
 
+.subscribe-img-desktop {
+  display: none;
+}
+
 h1 {
   font-weight: var(--font-weight-bold);
   font-size: 40px;
@@ -173,6 +177,7 @@ span {
     }
 
     .subscribe-img-desktop {
+      display: block;
       width: auto;
     }
 
@@ -191,6 +196,12 @@ span {
 
     .provide-email-container {
       margin-bottom: 10px;
+    }
+
+    .icon-success-message {
+      display: none;
+      margin-bottom: 30px;
+      margin-left: 0px;
     }
 
 }

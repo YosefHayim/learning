@@ -3,6 +3,10 @@ const buttonSubscribe = document.querySelector('.subscribe-button');
 const emailUserShown = document.querySelector('.email-user-provided');
 const emailLabel = document.querySelector('.email-label')
 const emailInvalidLabel = document.querySelector('.invalid-email-label')
+const fatherContainer = document.querySelector('.father-container')
+const confirmationTxtMessage = document.querySelector('.confirmation-text-success-message')
+const thanksForSubTitle = document.querySelector('.thanks-for-sub-title')
+const proContainer = document.querySelector('.pros-container')
 
 buttonSubscribe.addEventListener('click', (ev) => {
   ev.preventDefault();
@@ -22,6 +26,31 @@ buttonSubscribe.addEventListener('click', (ev) => {
     return
   }
 
+  // keep hidden the emailInvalid after everything is okay
+  emailInvalidLabel.style.cssText = `
+  display: none;
+  `
+
+  fatherContainer.style.cssText = `
+    width: 450px;
+    flex-direction: column;
+    padding: 50px;
+    height: 450px;
+    justify-content: center;`
+
+  confirmationTxtMessage.style.cssText = `
+    font-size: 17px;
+    width: -webkit-fill-available;
+    margin-bottom: 30px;`
+
+  thanksForSubTitle.style.cssText = `
+  font-weight: var(--font-weight-bold);
+`
+  proContainer.style.cssText = `
+  padding: 0px;
+
+`
+
   // Show the success message elements
   const elementsToDisplay = document.querySelectorAll(`
     .icon-success-message, 
@@ -35,6 +64,7 @@ buttonSubscribe.addEventListener('click', (ev) => {
 
   // Hide the subscription input elements
   const elementsToHide = document.querySelectorAll(`
+    .subscribe-img-desktop,
     .subscribe-img, 
     .stay-updated-title, 
     .first-sentence, 
