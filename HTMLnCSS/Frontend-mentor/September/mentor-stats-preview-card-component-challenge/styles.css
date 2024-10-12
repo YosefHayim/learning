@@ -54,6 +54,10 @@ body {
   width: -webkit-fill-available;
 }
 
+.desktop-img {
+  display: none;
+}
+
 .image-wrapper::after {
   content: "";
   position: absolute;
