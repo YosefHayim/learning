@@ -1,0 +1,190 @@
+@font-face {
+  font-family: "Lexend Deca";
+  src: url(./fonts/LexendDeca-VariableFont_wght.ttf);
+}
+
+@font-face {
+  font-family: "Big Shoulders Display";
+  src: url(./fonts/BigShouldersDisplay-VariableFont_wght.ttf);
+}
+
+:root {
+  --bright-orange: hsl(31, 77%, 52%);
+  --dark-cyan: hsl(184, 100%, 22%);
+  --very-dark-cyan: hsl(179, 100%, 13%);
+  --transparent-white: hsla(0, 0%, 100%, 0.75);
+  --very-light-gray: hsl(0, 0%, 95%);
+  
+  --font-weight-regular: 400;
+  --font-weight-bold: 700;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body,html {
+  min-height: 100vh;
+}
+
+body {
+  font-size: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+h1 {
+  font-size: 50px;
+  color: var(--very-light-gray);
+  font-family: "Big Shoulders Display";
+  text-transform: uppercase;
+}
+
+p {
+  font-size: 18px;
+  color: var(--very-light-gray);
+  font-family: "Lexend Deca";
+  line-height: 30px;
+  font-weight: var(--font-weight-regular);
+}
+
+button {
+  border: none;
+  background: white;
+  border-radius: 50px;
+  padding: 15px;
+  font-size: 15px;
+  width: 150px;
+  font-weight: var(--font-weight-bold);
+}
+
+button:hover {
+  background-color: transparent;
+  border: 2px solid white;
+  cursor: pointer;
+  color: white;
+}
+
+
+.first-container {
+  border-radius: 10px 10px 0px 0px;
+  background: var(--bright-orange);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px;
+  gap: 30px;
+}
+
+body > main > div > div.first-container > button {
+  color: var(--bright-orange);
+}
+
+body > main > div > div.first-container > button:hover {
+  color: white;
+}
+
+
+.second-container {
+  background: var(--dark-cyan);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px;
+  gap: 30px;
+}
+
+body > main > div > div.second-container > button {
+  color: var(--dark-cyan);
+}
+
+body > main > div > div.second-container > button:hover {
+  color: white;
+}
+
+.third-container {
+  background: var(--very-dark-cyan);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px;
+  gap: 30px;
+  border-radius: 0px 0px 10px 10px;
+}
+
+body > main > div > div.third-container > button {
+  color: var(--very-dark-cyan);
+}
+
+body > main > div > div.third-container > button:hover {
+  color: white;
+}
+
+@media screen and (min-width: 1024px) {
+body {
+  flex-direction: row;
+}
+
+img{
+  width: 80px;
+  margin-top: -70px;
+}
+.card-container {
+  align-items: normal;
+  flex-direction: row;
+  width: -webkit-fill-available;
+  padding: 50px;
+  height: 700px;
+  justify-content: center;
+
+}
+
+.first-container,.second-container,.third-container {
+  align-items: normal;
+  border-radius: 0px 0px 0px 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+}
+
+.first-container {
+  border-radius: 10px 0px 0px 10px;
+}
+
+.third-container {
+  border-radius: 0px 10px 10px 0px;
+}
+
+h1 {
+  margin-top: -40px;
+}
+
+p {
+  width: 250px;
+  margin-top: -60px;
+}
+
+button {
+  width: 170px;
+  margin-bottom: -50px;
+}
+
+}
