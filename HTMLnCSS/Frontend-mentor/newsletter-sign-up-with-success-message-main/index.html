@@ -10,40 +10,42 @@
 <body>
   <main>
     <div class="father-container">
-      <img src="./assets/images/illustration-sign-up-mobile.svg" alt="illustration-sign-up-mobile"></img>
+      <img src="./assets/images/icon-success.svg" alt="icon-success" class="icon-success-message">
+      <img src="./assets/images/illustration-sign-up-mobile.svg" alt="illustration-sign-up-mobile" class="subscribe-img"></img>
     <div class="pros-container">
 
-      <h1>Stay updated!</h1>
+      <h1 class="stay-updated-title">Stay updated!</h1>
+      <h1 class="thanks-for-sub-title">Thanks for subscribing!</h1>
 
       <p class="first-sentence">Join 60,000+ product managers receiving monthly updates on:</p>
+
+      <p class="confirmation-text-success-message">
+        A confirmation email has been sent to <span>ash@loremcompany.com</span>.
+        Please open it and click the button inside to confirm your subscription.
+      </p>
+
         <div class="single-pro-container">
-          <p class="pro-one"> <img src="./assets/images/icon-success.svg" alt="icon-success" class="pros-icon">Product discovery and building what matters</p>
+          <img src="./assets/images/icon-success.svg" alt="icon-success" class="pros-icon">
+          <p class="pro-one">Product discovery and building what matters</p>
         </div>
 
         <div class="single-pro-container">
-          <p class="pro-two"><img src="./assets/images/icon-success.svg" alt="icon-success" class="pros-icon">Measuring to ensure updates are a success</pro-two>
+          <img src="./assets/images/icon-success.svg" alt="icon-success" class="pros-icon">
+          <p class="pro-two">Measuring to ensure updates are a success</pro-two>
         </div>
 
         <div class="single-pro-container">
-          <p class="pro-three"><img src="./assets/images/icon-success.svg" alt="icon-success" class="pros-icon">And much more!</p>
+          <img src="./assets/images/icon-success.svg" alt="icon-success" class="pros-icon">
+          <p class="pro-three">And much more!</p>
         </div>
         
         <div class="provide-email-container">
-          <label name="email" for="email" type="email">Email address</label>
-          <input name="email" for="email" type="email" placeholder="email@company.com">
+          <label name="email" for="email" type="email" class="email-label">Email address</label>
+          <input name="email" for="email" type="email" placeholder="email@company.com" class="email-input">
+          <button class="dissmiss-button-sucess-message">Dismiss message</button>
           <button class="subscribe-button">Subscribe to monthly newsletter</button>
         </div>
       </div>
-
-    </div>
-    <div class="success-message-container">
-      <img src="./assets/images/icon-success.svg" alt="">
-      <h1>Thanks for subscribing!</h1>
-      <p>
-        A confirmation email has been sent to <span>ash@loremcompany.com</span>.
-        Please open it and click the button inside to confirm your subscription.
-        <button class="dissmiss-button">Dismiss message</button>
-      </p>
     </div>
   </main>
 </body>

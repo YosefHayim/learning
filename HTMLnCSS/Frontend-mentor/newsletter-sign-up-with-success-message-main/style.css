@@ -26,6 +26,7 @@ html,body {
 }
 
 body {
+  font-size: var(--font-size-body);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -36,10 +37,16 @@ body {
 .father-container {
   overflow: hidden;
   border-radius: 10px;
-  background: gray;
-  width:320px;
+  background: white;
+  width:350px;
   display: flex;
   flex-direction: column;
+  background: #f8f8ff6e;
+}
+
+h1 {
+  font-weight: var(--font-weight-bold);
+  font-size: 40px;
 }
 
 img {
@@ -48,9 +55,11 @@ img {
 
 .pros-icon {
   width: 20px;
+  margin-right: 15px;
 }
 
 .pros-container {
+  color: var(--color-dark-slate-grey);
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -61,27 +70,95 @@ img {
 .single-pro-container {
   display: flex;
   flex-direction: row;
-  gap: 15px;
-  align-items: center; 
-  justify-content: start;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
 
+.provide-email-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: normal;
+}
+
+.subscribe-button,.dissmiss-button-sucess-message {
+  border: none;
+  padding: 15px;
+  font-weight: var(--font-weight-bold);
+  color: white;
+  background: var(--color-dark-slate-grey);
+  border-radius: 6px;
+}
+
+.email-label {
+  font-weight: var(--font-weight-bold);
+  color: var(--color-dark-slate-grey);
+  font-size: 10px;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+.email-input {
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid var(--color-grey);
+  margin-bottom: 20px;
+}
+
+input::placeholder {
+  color: var(--color-grey)
+}
+
+/* Success message area */
 
 
+.icon-success-message {
+  display: none;
+  width: 60px;
+  margin-left: 10px;
+}
 
+/* .subscribe-img{
+  display: none;
+} */
 
+.thanks-for-sub-title {
+  margin-top: -10px;
+  display: none;
+}
 
+/* .stay-updated-title {
+  display: none;
+}
 
+.first-sentence {
+  display: none;
+} */
 
+.confirmation-text-success-message {
+  font-size: 15px;
+  margin-top: 5px;
+  margin-bottom: 200px;
+  display: none;
+}
 
+span {
+  font-weight: var(--font-weight-bold);
+}
 
+/* .single-pro-container {
+  display: none;
+}
 
+.email-label,.email-input {
+  display: none;
+}
 
+.subscribe-button {
+  display: none;
+} */
 
-
-
-
-.success-message-container{
+.dissmiss-button-sucess-message {
   display: none;
 }
