@@ -1,0 +1,87 @@
+@font-face {
+  font-family: "Roboto";
+  src: url(./fonts/Roboto-Regular.ttf);
+}
+
+:root {
+  --color-tomato: hsl(4, 100%, 67%);
+  --color-dark-slate-grey: hsl(234, 29%, 20%);
+  --color-charcoal-grey: hsl(235, 18%, 26%);
+  --color-grey: hsl(231, 7%, 60%);
+  --color-white: hsl(0, 0%, 100%);
+
+  --font-size-body: 16px;
+  --font-weight-regular: 400;
+  --font-weight-bold: 700;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,body {
+  min-height: 100vh;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Roboto";
+}
+
+.father-container {
+  overflow: hidden;
+  border-radius: 10px;
+  background: gray;
+  width:320px;
+  display: flex;
+  flex-direction: column;
+}
+
+img {
+  width: -webkit-fill-available;
+}
+
+.pros-icon {
+  width: 20px;
+}
+
+.pros-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 15px;
+  padding: 20px;
+}
+
+.single-pro-container {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  align-items: center; 
+  justify-content: start;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.success-message-container{
+  display: none;
+}
