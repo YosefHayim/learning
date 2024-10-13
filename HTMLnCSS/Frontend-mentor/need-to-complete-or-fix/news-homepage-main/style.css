@@ -276,6 +276,7 @@ a {
   .father-container {
     display: grid;
     grid-gap: 30px;
+    justify-items: normal;
   }
 
   .first-section-container {
@@ -291,7 +292,8 @@ a {
   .third-section-container {
     flex-direction: row;
     grid-row: 3;
-    grid-column: 1 / -1;
+    grid-column: span 3;
+    justify-content: space-evenly;
     gap: 0px;
   }
 
