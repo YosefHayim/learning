@@ -36,15 +36,12 @@ body,.father-container{
   justify-content: center;
 }
 
-.icon-menu-close {
-  display: none;
-}
-
 .top-container-mobile {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding: 20px;
+  width: -webkit-fill-available;
 }
 
 .logo,.icon-menu {
@@ -152,15 +149,157 @@ p {
   max-width: 100%;
 }
 
-.navbar-container {
-  background-color: white;
-  color: var(--dark-grayish-blue);
-  display: none;
+/* Clicking on the navbar */
+
+ul {
+  display: flex;
   flex-direction: column;
-  align-items: center;
-  
+  justify-content: center;
+  align-items: flex-start;
 }
 
 li {
-  list-style: none;
+  font-weight: var(--font-weight-regular);
+  color: var(--very-dark-blue);
+}
+
+a {
+
+  text-decoration: none; 
+  color: inherit; 
+}
+
+/* Semi-transparent overlay for the background */
+.overlay {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5); /* Dimmed background */
+  z-index: 900;
+}
+
+/* Navbar slide-in panel from the right */
+.navbar-container {
+  display: flex; 
+  flex-direction: column; 
+  align-items: flex-start; 
+  justify-content: center; 
+  position: fixed; /* Fixes the navbar relative to the viewport, making it stay visible during scroll */
+  top: 0;
+  right: 0; /* Positions the navbar on the right side of the screen */
+  width: 70%; /* Makes the navbar 70% of the viewport width */
+  height: 100vh; /* Sets the height to fill the entire viewport */
+  background-color: var(--off-white); /* Sets the background color */
+  transform: translateX(100%); /* Moves the navbar off-screen to the right initially */
+  transition: transform 0.3s ease-in-out; /* Smoothly transitions the navbar when sliding in/out */
+  z-index: 1000; /* Ensures the navbar appears above other elements with lower z-index values */
+}
+
+.navbar-container ul {
+  padding: 20px; 
+  list-style-type: none; 
+}
+
+.navbar-container li {
+  margin: 20px 0; 
+  font-size: 20px;
+}
+
+/* Close icon within navbar container */
+.icon-menu-close {
+  position: absolute; /* Positions the icon relative to the nearest positioned ancestor */
+  top: 20px; /* Positions the icon 20px from the top of the navbar */
+  right: 20px; /* Positions the icon 20px from the right of the navbar */
+  cursor: pointer; /* Changes the cursor to a pointer, indicating it's clickable */
+  display: none; /* Hides the close icon by default */
+  z-index: 1100; /* Ensures the close icon appears above the navbar content */
+}
+
+/* Show the navbar container when active */
+.navbar-container.active {
+  transform: translateX(0); /* Slides the navbar into view from the right */
+}
+
+.navbar-container.active .icon-menu-close {
+  display: block; /* Shows the close icon when the navbar is active */
+}
+
+.overlay.active {
+  display: block; /* Shows the overlay when active */
+}
+
+.img-web-3-desktop {
+  display: none;
+}
+
+
+@media screen and (min-width:1024px) {
+
+  .img-web-3-desktop {
+    display: block;
+  }
+
+  .img-web-3-mobile {
+    display: none;
+  }
+
+  .icon-menu-close {
+    display: none;
+  }
+
+  .icon-menu {
+    display: none;
+  }
+
+  .logo {
+    width: 100px;
+  }
+  
+  .navbar-container {
+    position: initial;
+    top: initial;
+    right: initial;
+    width: auto;
+    height: initial;
+    transform: initial;
+    transition: initial;
+    grid-column: 3;
+  }
+
+  ul {
+    flex-direction: row;
+    gap: 50px;
+  }
+  .father-container {
+    display: grid;
+    grid-gap: 30px;
+  }
+
+  .first-section-container {
+    align-self: flex-start;
+  }
+
+  .second-section-container {
+      justify-content: space-between;
+      grid-column: 3;
+      height: 60vh;
+    }
+    
+  .third-section-container {
+    flex-direction: row;
+    grid-row: 3;
+    grid-column: 1 / -1;
+    gap: 0px;
+  }
+
+
+  .second-section-container h3 {
+  }
+
+  .second-section-container p {
+
+  }
 }
