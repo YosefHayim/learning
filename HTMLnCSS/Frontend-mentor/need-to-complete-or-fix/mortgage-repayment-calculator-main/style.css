@@ -43,16 +43,117 @@ body {
 }
 
 form {
-  width: 330px;
+  gap: 15px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
+  align-items: normal;
+  width: 280px;
+}
+
+label {
+  font-size: 12px;
+  color: var(--color-slate-900);
 }
 
 .amount-container,.term-container,.interest-rate-container,.mortgage-type-container,.query-type-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  gap: 5px;
+}
+
+.query-type-container {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.radio-btn-label {
+  border: 1px solid var(--color-slate-900);
+  padding: 8px;
+  border-radius: 4px;
+  font-weight: var(--font-weight-bold);
+  height: 20px;
+}
+
+.repayment-only-radio,.interest-only-radio {
+  margin-right: 10px;
+}
+
+
+.clear-all-btn {
+  background: none;
+  border: none;
+  color: var(--color-slate-700);
+  font-weight: var(--font-weight-regular);
+  text-decoration: underline;
+  text-align: start;
+}
+
+h3 {
+  color: var(--color-slate-900);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: -5px;
+}
+
+input {
+  border-radius: 4px;
+  border: 1px solid var(--color-slate-700);
+  cursor: pointer;
+}
+
+.mortgage-input {
+  height: 35px;
+}
+
+.illustration-empty {
+  background: var(--color-slate-900);
+  width: 150px;
+}
+
+.icon-calculator {
+  width: 20px;
+}
+
+.calculator-payments-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background: var(--color-lime);
+  border-radius: 30px;
+  padding: 10px;
+  gap: 5px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+button {
+  border: none;
+  background: none;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-slate-900);
+}
+
+.results-shown-here-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--color-slate-900);
+  gap: 20px;
+  padding: 20px;
+}
+
+.results-shown-here-title {
+  color: var(--color-white);
+}
+
+p {
+  color: var(--color-slate-500);
+  line-height: 23px;
+  font-size: 13px;
+  text-align: center;
 }
