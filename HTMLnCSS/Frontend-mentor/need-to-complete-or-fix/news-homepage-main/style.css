@@ -36,6 +36,9 @@ body,.father-container{
   justify-content: center;
 }
 
+.icon-menu-close {
+  display: none;
+}
 
 .top-container-mobile {
   display: flex;
@@ -78,8 +81,8 @@ body,.father-container{
 .article-container {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
+  align-items: stretch;
+  justify-content: space-evenly;
   gap: 15px;
 }
 
@@ -133,6 +136,9 @@ p {
   text-transform: uppercase;
   color: var(--very-dark-blue);
   cursor: pointer;
+  width: 150px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .father-container {
@@ -147,5 +153,14 @@ p {
 }
 
 .navbar-container {
+  background-color: white;
+  color: var(--dark-grayish-blue);
   display: none;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+li {
+  list-style: none;
 }
