@@ -210,6 +210,7 @@ a {
 
 /* Close icon within navbar container */
 .icon-menu-close {
+  width: 25px;
   position: absolute; /* Positions the icon relative to the nearest positioned ancestor */
   top: 20px; /* Positions the icon 20px from the top of the navbar */
   right: 20px; /* Positions the icon 20px from the right of the navbar */
