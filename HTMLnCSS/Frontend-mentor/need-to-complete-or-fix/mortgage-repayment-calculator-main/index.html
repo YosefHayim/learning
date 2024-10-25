@@ -11,24 +11,30 @@
   <main>
     <form>
       <div class="user-selection-container">
-        <h3>Mortgage Calculator</h3>
-        <button class="clear-all-btn">Clear All</button>
+        <div class="title-and-btn-container">
+          <h3>Mortgage Calculator</h3>
+          <button class="clear-all-btn">Clear All</button>
+        </div>
         <div class="amount-container">
           <span class="currency-symbol">£</span>
           <label for="mortgage-amount" class="mortgage-amount">Mortgage Amount</label>
           <input type="text" id="mortgage-amount" class="mortgage-input" name="mortgage-amount">
+          <p class="warning-text">This field is required</p>
         </div>
 
-        <div class="term-container">
-          <span class="years-symbol">years</span>
-          <label for="mortgage-term" class="mortgage-term">Mortgage Term</label>
-          <input type="text" id="mortgage-term" class="mortgage-input" name="mortgage-term">
-        </div>
-
-        <div class="interest-rate-container">
-          <span class="percent-symbol">%</span>
-          <label for="interest-rate" class="interest-rate">Interest Rate</label>
-          <input type="text" id="interest-rate" class="mortgage-input" name="mortgage-percent">
+        <div class="term-and-interest-container">
+          <div class="term-container">
+            <span class="years-symbol">years</span>
+            <label for="mortgage-term" class="mortgage-term">Mortgage Term</label>
+            <input type="text" id="mortgage-term" class="mortgage-input" name="mortgage-term">
+            <p class="warning-text">This field is required</p>
+          </div>
+          <div class="interest-rate-container">
+            <span class="percent-symbol">%</span>
+            <label for="interest-rate" class="interest-rate">Interest Rate</label>
+            <input type="text" id="interest-rate" class="mortgage-input" name="mortgage-percent">
+            <p class="warning-text">This field is required</p>
+          </div>
         </div>
 
         <div class="mortgage-type-container">
@@ -46,7 +52,8 @@
                 Interest Only
               </label>
             </div>
-          </div>          
+          </div>
+          <p class="warning-text">This field is required</p>      
         </div>
 
         <div class="calculator-payments-container">
@@ -54,8 +61,9 @@
           <button>
             Calculate Repayments
           </button>
-        </div>
+        </div>       
       </div>
+
       <!-- Empty results start -->
       <div class="results-shown-here-container">
         <img src="./assets/images/illustration-empty.svg" alt="illustration-empty" class="illustration-empty">
@@ -90,6 +98,7 @@
           </div>
         </div>
       </div>
+      
       <!-- Completed results end -->
     </form>
   </main>
