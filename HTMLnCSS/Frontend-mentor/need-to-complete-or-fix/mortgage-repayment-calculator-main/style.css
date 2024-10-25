@@ -40,6 +40,63 @@ body {
 
 .complete-result-container {
   display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: var(--color-slate-900);
+  position: absolute;
+  bottom: 0;
+  color: var(--color-lime);
+  padding: 20px;
+  text-align: left;
+  height: 280px;
+}
+
+.complete-result-container > .your-results-plus-paragraph-container > h3 {
+  color: white;
+}
+
+.your-results-plus-paragraph-container > p {
+  margin-top: 20px;
+  text-align: left;
+  line-height: 20px;
+  font-size: 12px;
+  margin-bottom: 20px;
+}
+
+.second-part-your-results {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  background-color: hsl(202deg 59.64% 10.65%);
+  gap: 10px;
+  border-radius: 8px;
+  padding: 5px;
+  padding-left: 10px;
+}
+
+.first-hr {
+  width: 102%;
+  color: var(--color-lime);
+  border: 2px solid;
+  border-radius: 50px 50px 0px 0px;
+  transform: translate(-7px, -4px);
+}
+
+hr {
+  width: 95%;
+  border: 0.1px solid var(--color-slate-900);
+}
+
+.total-you-repay-over-the-term-container > h3 {
+  color: white;
+  margin-bottom: 10px;
+}
+
+.your-monthly-payments-container > p {
+  font-size: 12.8px;
 }
 
 .user-selection-container {
@@ -48,7 +105,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: unset;
-  gap: 20px;
+  gap: 10px;
 }
 
 form {
@@ -64,6 +121,7 @@ form {
 label {
   font-size: 12px;
   color: var(--color-slate-500);
+  font-weight: 500;
 }
 
 .amount-container,.term-container,.interest-rate-container,.mortgage-type-container,.query-type-container {
@@ -80,20 +138,6 @@ label {
   justify-content: center;
   align-items: stretch;
 }
-
-.radio-btn-label {
-  border: 1px solid var(--color-slate-900);
-  padding: 8px;
-  border-radius: 4px;
-  font-weight: 900;
-  height: 20px;
-  color: var(--color-slate-900);
-}
-
-.repayment-only-radio,.interest-only-radio {
-  margin-right: 10px;
-}
-
 .clear-all-btn {
   background: none;
   border: none;
@@ -114,6 +158,7 @@ input {
   border: 1px solid var(--color-slate-700);
   cursor: pointer;
   padding-left: 10px;
+  font-weight: bold;
 }
 
 .mortgage-input {
@@ -139,6 +184,12 @@ input {
   padding: 10px;
   gap: 5px;
   cursor: pointer;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.calculator-payments-container:hover {
+  background-color: hsl(61deg 70% 52% / 60%);
 }
 
 button {
@@ -158,6 +209,7 @@ button {
   padding: 20px;
   position: absolute;
   bottom: 0;
+  /* display: none; */
 }
 
 .results-shown-here-title {
@@ -175,14 +227,67 @@ p {
   padding-left: 40px;
   background: linear-gradient(to right, var(--color-slate-100) 32px, white 20px);
   border: 1px solid var(--color-slate-700);
-  font-weight: bold;
   color: var(--color-slate-900);
 }
 
 .currency-symbol {
-  width: 11px;
-  transform: translate(10px, 53px);
-  color: var(--color-slate-500);
   font-weight: bold;
+  color: var(--color-slate-700);
+  transform: translate(10px, 52px);
+  width: 1px;
+}
 
+#mortgage-term {
+  padding-left: 10px;
+  background: linear-gradient(to left, var(--color-slate-100) 55px, white 20px);
+  border: 1px solid var(--color-slate-700);
+  color: var(--color-slate-900);
+}
+
+#interest-rate {
+  padding-left: 10px;
+  background: linear-gradient(to left, var(--color-slate-100) 40px, white 20px);
+  border: 1px solid var(--color-slate-700);
+  color: var(--color-slate-900);
+}
+
+.years-symbol {
+  width: 1px;
+  transform: translate(204px, 50px);
+  font-size: 13px;
+  font-weight: bold;
+  color: var(--color-slate-700);
+}
+
+.percent-symbol {
+  width: 1px;
+  transform: translate(221px, 52px);
+  font-weight: bold;
+  color: var(--color-slate-700);
+}
+
+.repayment-container, .interest-container {
+  display: flex;
+  flex-direction: row; 
+  align-items: center;
+  width: 100%;
+}
+
+.radio-btn-label {
+  width: 100%;
+  border: 1px solid var(--color-slate-900);
+  border-radius: 4px;
+  font-weight: 900;
+  color: var(--color-slate-900);
+  display: flex;
+  align-items: center;
+  height: 35px;
+  padding-left: 10px;
+}
+
+input[type='radio'] {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  margin-right: 8px;
 }
