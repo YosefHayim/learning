@@ -16,6 +16,25 @@ const getAllUsers = catchAsync(async (req, res, next) => {
     .json({ status: "Success", totalUsers: users.length, response: users });
 });
 
+const getUserById = catchAsync(async (req, res, next) => {
+  const userId = req.params.id;
+
+  if (!userId) {
+    return next(new Error("Please provide id in the url."));
+  }
+
+  const findUser = await User.findOne({ _id: userId });
+
+  if (!findUser) {
+    return next(new Error("There is no such user in database"));
+  }
+
+  res.status(200).json({
+    status: "success",
+    data: findUser,
+  });
+});
+
 const SignUp = catchAsync(async (req, res, next) => {
   const { name, email, password, passwordConfirm } = req.body;
 
@@ -91,4 +110,54 @@ const logout = catchAsync(async (req, res, next) => {
 
 const updatePassword = catchAsync(async (req, res, next) => {});
 
-module.exports = { logout, login, SignUp, getAllUsers, updatePassword };
+const deactivateUser = catchAsync(async (req, res, next) => {
+  const findUser = await User.findById(req.user._id);
+
+  if (!findUser) {
+    return next(new Error("The user doesn't exist in database."));
+  }
+  findUser.active = false;
+
+  await findUser.save({ validateBeforeSave: false });
+
+  res.status(204).json({
+    status: "success",
+    response: "User has been successfully deleted",
+  });
+});
+
+const reactiveUser = catchAsync(async (req, res, next) => {
+  const email = req.body.email.trim();
+
+  if (!email) {
+    return next(new Error(`Wrong email provided: ${email}`));
+  }
+
+  const findUser = await User.findOne({ email, active: false });
+  await findUser.save({ validateBeforeSave: false });
+
+  if (!findUser) {
+    return next(
+      new Error(`There is no user in the database with this email: ${email}`)
+    );
+  }
+
+  findUser.active = true;
+  await findUser.save();
+
+  res.status(200).json({
+    status: "success",
+    response: "User has been successfully reactivated",
+  });
+});
+
+module.exports = {
+  logout,
+  login,
+  SignUp,
+  getAllUsers,
+  updatePassword,
+  deactivateUser,
+  reactiveUser,
+  getUserById,
+};

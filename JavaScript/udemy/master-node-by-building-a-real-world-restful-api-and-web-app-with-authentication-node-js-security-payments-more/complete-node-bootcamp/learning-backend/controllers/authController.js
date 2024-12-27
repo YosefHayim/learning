@@ -49,7 +49,7 @@ const grantedAccess = catchAsync(async (req, res, next) => {
       new Error("User recently changed password! Please log in again.")
     );
   }
-  req.userId = currentUser._id;
+  req.user = currentUser;
   next();
 });
 

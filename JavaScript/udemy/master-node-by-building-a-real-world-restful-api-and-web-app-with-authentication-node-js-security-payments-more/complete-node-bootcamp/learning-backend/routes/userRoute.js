@@ -5,17 +5,24 @@ const {
   login,
   logout,
   updatePassword,
+  deactivateUser,
+  reactiveUser,
+  getUserById,
 } = require("../controllers/userController");
 const { grantedAccess } = require("../controllers/authController");
 
 const router = express.Router();
 
 router.get("/", getAllUsers);
+router.get("/:id", getUserById);
+
 router.post("/signUp", SignUp);
 router.post("/login", login);
 router.post("/logout", logout);
+router.post("/reactivate", reactiveUser);
+
 router.patch("/update/password", grantedAccess, updatePassword);
 router.put("/");
-router.delete("/");
+router.delete("/", deactivateUser);
 
 module.exports = router;
