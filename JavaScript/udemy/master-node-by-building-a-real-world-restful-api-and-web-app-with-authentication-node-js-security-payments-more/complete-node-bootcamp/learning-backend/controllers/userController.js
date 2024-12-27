@@ -2,7 +2,7 @@ const User = require("../models/userModel");
 const { catchAsync } = require("../utils/wrapperFn");
 const { generateToken, verifyToken } = require("./authController");
 
-exports.getAllUsers = catchAsync(async (req, res, next) => {
+const getAllUsers = catchAsync(async (req, res, next) => {
   // Find all users documents
   const users = await User.find();
 
@@ -16,7 +16,7 @@ exports.getAllUsers = catchAsync(async (req, res, next) => {
     .json({ status: "Success", totalUsers: users.length, response: users });
 });
 
-exports.SignUp = catchAsync(async (req, res, next) => {
+const SignUp = catchAsync(async (req, res, next) => {
   const { name, email, password, passwordConfirm } = req.body;
 
   // If one of the fields empty or not accurate
@@ -35,7 +35,7 @@ exports.SignUp = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.login = catchAsync(async (req, res, next) => {
+const login = catchAsync(async (req, res, next) => {
   const { email, password } = req.body;
 
   // Check if email and password exist
@@ -78,7 +78,7 @@ exports.login = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.logout = catchAsync(async (req, res, next) => {
+const logout = catchAsync(async (req, res, next) => {
   // If user enter this route than we clear the cookie with "clear"
   res.cookie("cookie", "clear", {
     expires: new Date(Date.now() + 10 * 1000),
@@ -88,3 +88,7 @@ exports.logout = catchAsync(async (req, res, next) => {
     status: "success",
   });
 });
+
+const updatePassword = catchAsync(async (req, res, next) => {});
+
+module.exports = { logout, login, SignUp, getAllUsers, updatePassword };

@@ -2,14 +2,14 @@ const jwt = require("jsonwebtoken");
 const { catchAsync } = require("../utils/wrapperFn");
 const User = require("../models/userModel");
 
-generateToken = (id) => {
+const generateToken = (id) => {
   // Generating token once user logged in
   return jwt.sign({ id }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES_IN,
   });
 };
 
-verifyToken = (token) => {
+const verifyToken = (token) => {
   // Verify the token that was provided
   return jwt.verify(token, process.env.JWT_SECRET, function (err, decoded) {
     if (err) throw Error("Error occurred durning verify token of user: ", err);
@@ -17,7 +17,7 @@ verifyToken = (token) => {
   });
 };
 
-grantedAccess = catchAsync(async (req, res, next) => {
+const grantedAccess = catchAsync(async (req, res, next) => {
   //  Getting token and check if it's there
   let token;
   if (req.headers.authorization) {
@@ -35,7 +35,7 @@ grantedAccess = catchAsync(async (req, res, next) => {
   const decoded = verifyToken(token);
 
   // Check if the user still exists
-  const currentUser = await User.findById(decoded.id);
+  const currentUser = await User.findOne({ _id: decoded.id });
 
   if (!currentUser) {
     return next(
@@ -49,7 +49,7 @@ grantedAccess = catchAsync(async (req, res, next) => {
       new Error("User recently changed password! Please log in again.")
     );
   }
-
+  req.userId = currentUser._id;
   next();
 });
 

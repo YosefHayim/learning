@@ -4,16 +4,17 @@ const {
   SignUp,
   login,
   logout,
+  updatePassword,
 } = require("../controllers/userController");
 const { grantedAccess } = require("../controllers/authController");
 
 const router = express.Router();
 
-router.get("/", grantedAccess, getAllUsers);
+router.get("/", getAllUsers);
 router.post("/signUp", SignUp);
 router.post("/login", login);
 router.post("/logout", logout);
-router.patch("/update-password");
+router.patch("/update/password", grantedAccess, updatePassword);
 router.put("/");
 router.delete("/");
 
