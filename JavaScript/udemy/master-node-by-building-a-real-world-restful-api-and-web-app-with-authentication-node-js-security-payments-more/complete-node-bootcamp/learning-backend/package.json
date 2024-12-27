@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "type": "commonjs",
-"scripts": {
-  "start:dev": "NODE_ENV=development nodemon app.js",
-  "start:prod": "NODE_ENV=production node app.js",
-  "test": "echo \"Error: no test specified\" && exit 1"
-},
+  "scripts": {
+    "start:dev": "nodemon app.js",
+    "start:prod": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -23,6 +23,7 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.9.2",
     "morgan": "^1.10.0",
+    "validator": "^13.12.0",
     "winston": "^3.17.0"
   }
 }

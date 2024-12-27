@@ -1,6 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
+const cookieParser = require("cookie-parser");
+const helmet = require("helmet");
 
 const limiter = require("./middlewares/rateLimit");
 const errorHandler = require("./middlewares/errorHandler");
@@ -13,6 +15,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 connectDb();
 
+app.use(helmet());
 app.use(limiter);
 app.use(loggerInfo);
 app.use(
@@ -23,6 +26,7 @@ app.use(
 );
 app.use(express.json());
 app.use(morgan("tiny"));
+app.use(cookieParser());
 
 app.get("/", (req, res) => {
   res.status(200).json({
