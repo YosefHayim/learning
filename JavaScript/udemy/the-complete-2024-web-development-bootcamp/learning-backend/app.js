@@ -7,22 +7,14 @@ const errorHandler = require("./middlewares/errorHandler");
 const undefinedRoute = require("./middlewares/undefinedRoutes");
 const connectDb = require("./config/connectDb");
 const userRoute = require("./routes/userRoute");
-const logger = require("./middlewares/logger");
+const loggerInfo = require("./middlewares/logger");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 connectDb();
 
-app.use((req, res, next) => {
-  logger.info({
-    method: req.method,
-    url: req.url,
-    headers: req.headers,
-    body: req.body,
-  });
-  next();
-});
-
+app.use(limiter);
+app.use(loggerInfo);
 app.use(
   cors({
     origin: "http://localhost:3000",
@@ -31,7 +23,6 @@ app.use(
 );
 app.use(express.json());
 app.use(morgan("tiny"));
-app.use(limiter);
 
 app.get("/", (req, res) => {
   res.status(200).json({
