@@ -13,6 +13,11 @@ const { grantedAccess } = require("../controllers/authController");
 
 const router = express.Router();
 
+router.param("id", (req, res, next, val) => {
+  console.log(`ID is: ${val}`);
+  next();
+});
+
 router.get("/", getAllUsers);
 router.get("/:id", getUserById);
 

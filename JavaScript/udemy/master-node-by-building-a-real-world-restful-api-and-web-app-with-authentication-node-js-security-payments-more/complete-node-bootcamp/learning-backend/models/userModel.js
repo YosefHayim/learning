@@ -57,8 +57,25 @@ const userSchema = new mongoose.Schema(
   { versionKey: false }
 );
 
-userSchema.pre("create", function (next) {
+// Document middleware: runs before .save() and .create()
+userSchema.pre("save", function (next) {
+  console.log(`Will save document of user.`);
+  this.start = Date.now();
+  next();
+});
+
+userSchema.pre(/^find/, function (next) {
   this.__v = undefined;
+
+  // Exclude inactive users from the query
+  this.find({ active: { $ne: false } });
+  next();
+});
+
+userSchema.post("save", function (doc, next) {
+  console.log(`Finish save doc: ${doc}`);
+  console.log(`Query took: ${Date.now() - this.start} milliseconds`);
+
   next();
 });
 

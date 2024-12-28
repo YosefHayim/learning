@@ -16,17 +16,17 @@ const PORT = process.env.PORT || 3000;
 connectDb();
 
 app.use(helmet());
-app.use(limiter);
+app.use(express.json());
+app.use(cookieParser());
 app.use(loggerInfo);
+app.use(limiter);
 app.use(
   cors({
     origin: "http://localhost:3000",
     withCredentials: true,
   })
 );
-app.use(express.json());
-app.use(morgan("tiny"));
-app.use(cookieParser());
+app.use(morgan("dev"));
 
 app.get("/", (req, res) => {
   res.status(200).json({
