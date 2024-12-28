@@ -31,7 +31,6 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: [true, "Please provide a password"],
       minlength: 8,
-      select: false,
     },
     passwordConfirm: {
       type: String,
@@ -58,8 +57,24 @@ const userSchema = new mongoose.Schema(
 );
 
 // Document middleware: runs before .save() and .create()
+userSchema.pre("save", async function (next) {
+  // Only hash the password if it has been modified (or is new)
+  if (!this.isModified("password")) return next();
+
+  try {
+    this.password = await bcrypt.hash(
+      this.password + process.env.BCRYPT_PW,
+      10
+    );
+
+    next();
+  } catch (err) {
+    console.log(`Error occurred during hashing password: `, err);
+    next();
+  }
+});
+
 userSchema.pre("save", function (next) {
-  console.log(`Will save document of user.`);
   this.start = Date.now();
   next();
 });
@@ -72,10 +87,8 @@ userSchema.pre(/^find/, function (next) {
   next();
 });
 
-userSchema.post("save", function (doc, next) {
-  console.log(`Finish save doc: ${doc}`);
+userSchema.post("save", function (next) {
   console.log(`Query took: ${Date.now() - this.start} milliseconds`);
-
   next();
 });
 

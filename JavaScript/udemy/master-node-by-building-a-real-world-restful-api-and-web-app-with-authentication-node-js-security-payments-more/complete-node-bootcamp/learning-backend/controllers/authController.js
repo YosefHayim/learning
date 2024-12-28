@@ -43,12 +43,6 @@ const grantedAccess = catchAsync(async (req, res, next) => {
     );
   }
 
-  // Check if user changed password after the token was issued
-  if (currentUser.changedPasswordAfter(decoded.iat)) {
-    return next(
-      new Error("User recently changed password! Please log in again.")
-    );
-  }
   req.user = currentUser;
   next();
 });

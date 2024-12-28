@@ -18,7 +18,7 @@ router.param("id", (req, res, next, val) => {
   next();
 });
 
-router.get("/", getAllUsers);
+router.get("/", grantedAccess, getAllUsers);
 router.get("/:id", getUserById);
 
 router.post("/signUp", SignUp);

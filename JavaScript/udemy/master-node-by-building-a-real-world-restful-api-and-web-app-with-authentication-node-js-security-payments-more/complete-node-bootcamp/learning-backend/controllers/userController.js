@@ -1,5 +1,5 @@
 const User = require("../models/userModel");
-const APIFeatures = require("../utils/APIFeatures");
+const APIFeatures = require("../utils/apiFeatures");
 const { catchAsync } = require("../utils/wrapperFn");
 const { generateToken } = require("./authController");
 
@@ -75,13 +75,7 @@ const login = catchAsync(async (req, res, next) => {
   }
 
   // Check if password is correct
-  const isValidate = await isFoundUser.correctPassword(
-    password,
-    isFoundUser.password
-  );
-
-  if (!isValidate) {
-    return next(new Error("Invalid email or password."));
+  if (isFoundUser.password === password) {
   }
 
   // define cookie options
@@ -93,7 +87,6 @@ const login = catchAsync(async (req, res, next) => {
 
   // Generating the token and sending to client
   const token = generateToken(isFoundUser._id);
-
   res.cookie("cookie", token, cookieOptions);
 
   res.status(200).json({
@@ -113,7 +106,32 @@ const logout = catchAsync(async (req, res, next) => {
   });
 });
 
-const updatePassword = catchAsync(async (req, res, next) => {});
+const updatePassword = catchAsync(async (req, res, next) => {
+  const { currentPassword, newPassword, confirmNewPassword } = req.body;
+
+  if (!currentPassword || !newPassword || !confirmNewPassword) {
+    return next(new Error("One of the fields is missing."));
+  }
+
+  if (newPassword !== confirmNewPassword) {
+    return next(new Error("Passwords do not match."));
+  }
+
+  if (
+    req.user.password === currentPassword &&
+    newPassword === confirmNewPassword
+  ) {
+    req.user.password = newPassword;
+    req.user.passwordConfirm = confirmNewPassword;
+    await req.user.save();
+
+    res.status(201).json({
+      status: "success",
+      response: "New password has been successfully set.",
+      data: req.user,
+    });
+  }
+});
 
 const deactivateUser = catchAsync(async (req, res, next) => {
   const findUser = await User.findById(req.user._id);
