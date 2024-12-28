@@ -67,12 +67,15 @@ const userSchema = new mongoose.Schema(
   { versionKey: false }
 );
 
-userSchema.pre("save", function (next) {
+userSchema.pre("save", async function (next) {
   // Only hash the password if it has been modified (or is new)
   if (!this.isModified("password")) return next();
 
   try {
-    this.password = bcrypt.hash(this.password + process.env.BCRYPT_PW, 10);
+    this.password = await bcrypt.hash(
+      this.password + process.env.BCRYPT_PW,
+      10
+    );
     this.passwordConfirm = undefined;
 
     next();
@@ -106,7 +109,10 @@ userSchema.methods.updatePassword = async function (
   confirmNewPassword
 ) {
   // Verify current password
-  const isPasswordCorrect = bcrypt.compare(currentPassword, this.password);
+  const isPasswordCorrect = await bcrypt.compare(
+    currentPassword,
+    this.password
+  );
   if (!isPasswordCorrect) {
     throw new Error("Current password is incorrect.");
   }
