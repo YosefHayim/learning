@@ -28,6 +28,6 @@ router.post("/reactivate", reactiveUser);
 
 router.patch("/update/password", grantedAccess, updatePassword);
 router.put("/");
-router.delete("/", deactivateUser);
+router.delete("/", grantedAccess, deactivateUser);
 
 module.exports = router;

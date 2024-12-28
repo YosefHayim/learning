@@ -80,15 +80,20 @@ userSchema.pre("save", function (next) {
 });
 
 userSchema.pre(/^find/, function (next) {
-  this.__v = undefined;
-
-  // Exclude inactive users from the query
-  this.find({ active: { $ne: false } });
+  if (!this.getQuery().includeInactive) {
+    // Exclude inactive users unless explicitly included
+    this.find({ active: { $ne: false } });
+  } else {
+    // Remove the flag from the query so it doesn't affect database queries
+    this.setQuery({ ...this.getQuery(), includeInactive: undefined });
+  }
   next();
 });
 
-userSchema.post("save", function (next) {
+userSchema.post("save", function (doc, next) {
+  console.log(`Finish save doc: ${doc}`);
   console.log(`Query took: ${Date.now() - this.start} milliseconds`);
+
   next();
 });
 

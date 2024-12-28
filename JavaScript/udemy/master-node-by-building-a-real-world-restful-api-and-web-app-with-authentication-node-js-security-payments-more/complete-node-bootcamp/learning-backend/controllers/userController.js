@@ -143,7 +143,7 @@ const deactivateUser = catchAsync(async (req, res, next) => {
 
   await findUser.save({ validateBeforeSave: false });
 
-  res.status(204).json({
+  res.status(200).json({
     status: "success",
     response: "User has been successfully deleted",
   });
@@ -156,8 +156,12 @@ const reactiveUser = catchAsync(async (req, res, next) => {
     return next(new Error(`Wrong email provided: ${email}`));
   }
 
-  const findUser = await User.findOne({ email, active: false });
-  await findUser.save({ validateBeforeSave: false });
+  // Find inactive user explicitly
+  const findUser = await User.findOne({
+    email,
+    active: false,
+    includeInactive: true,
+  });
 
   if (!findUser) {
     return next(
@@ -165,8 +169,9 @@ const reactiveUser = catchAsync(async (req, res, next) => {
     );
   }
 
+  // Reactivate the user
   findUser.active = true;
-  await findUser.save();
+  await findUser.save({ validateBeforeSave: false });
 
   res.status(200).json({
     status: "success",
