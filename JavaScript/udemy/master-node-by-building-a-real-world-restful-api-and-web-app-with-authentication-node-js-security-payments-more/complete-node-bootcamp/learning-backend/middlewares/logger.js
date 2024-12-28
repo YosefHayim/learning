@@ -8,6 +8,7 @@ const logger = winston.createLogger({
 
 const loggerInfo = (req, res, next) => {
   logger.info({
+    requestedAt: new Date(),
     method: req.method,
     url: req.url,
     headers: req.headers,

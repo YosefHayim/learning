@@ -1,13 +1,18 @@
 const User = require("../models/userModel");
+const APIFeatures = require("../utils/APIFeatures");
 const { catchAsync } = require("../utils/wrapperFn");
-const { generateToken, verifyToken } = require("./authController");
+const { generateToken } = require("./authController");
 
 const getAllUsers = catchAsync(async (req, res, next) => {
-  // Find all users documents
-  const users = await User.find();
+  const features = new APIFeatures(User.find(), req.query)
+    .filter()
+    .sort()
+    .limitFields()
+    .paginate();
 
-  // If the user is not valid
-  if (!users) {
+  const users = await features.query;
+
+  if (!users || users.length === 0) {
     return next(new Error("No Users documents found in database"));
   }
 
