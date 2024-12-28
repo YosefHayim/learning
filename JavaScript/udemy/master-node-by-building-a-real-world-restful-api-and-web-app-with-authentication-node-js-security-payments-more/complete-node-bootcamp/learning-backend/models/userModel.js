@@ -109,10 +109,7 @@ userSchema.methods.updatePassword = async function (
   confirmNewPassword
 ) {
   // Verify current password
-  const isPasswordCorrect = bcrypt.compare(
-    currentPassword,
-    this.password
-  );
+  const isPasswordCorrect = bcrypt.compare(currentPassword, this.password);
   if (!isPasswordCorrect) {
     throw new Error("Current password is incorrect.");
   }
