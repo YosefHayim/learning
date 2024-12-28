@@ -123,7 +123,13 @@ const login = catchAsync(async (req, res, next) => {
 const confirmEmailAddress = catchAsync(async (req, res, next) => {
   const token = req.query.token;
 
-  console.log(token);
+  if (req.user.emailVerified) {
+    res.status(200).json({
+      status: "Success",
+      message: "Your email has been already verified.",
+    });
+    return;
+  }
 
   // Check if the token matches and hasn't expired
   if (
@@ -135,12 +141,16 @@ const confirmEmailAddress = catchAsync(async (req, res, next) => {
     req.user.emailVerificationExpires = undefined;
     await req.user.save();
 
+    sendEmail({
+      to: req.user.email,
+      subject: "Your account has been verified",
+      html: `<p>enjoy our robust backend platform`,
+    });
+
     res.status(200).json({
       status: "success",
       message: "Email successfully verified!",
     });
-  } else {
-    return next(new Error("Invalid or expired token, please try again."));
   }
 });
 
@@ -169,6 +179,11 @@ const updatePassword = catchAsync(async (req, res, next) => {
     confirmNewPassword
   );
 
+  sendEmail({
+    to: req.user.email,
+    subject: "Your account password has been updated",
+    html: `<p>enjoy our robust backend platform`,
+  });
   res.status(200).json({
     status: "success",
     message: "New password has been successfully set.",
