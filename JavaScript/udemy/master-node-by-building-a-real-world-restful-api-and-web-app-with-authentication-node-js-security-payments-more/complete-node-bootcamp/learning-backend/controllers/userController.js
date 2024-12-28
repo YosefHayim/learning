@@ -1,5 +1,6 @@
 const User = require("../models/userModel");
 const APIFeatures = require("../utils/apiFeatures");
+const sendEmail = require("../utils/email");
 const { catchAsync } = require("../utils/wrapperFn");
 const { generateToken } = require("./authController");
 
@@ -52,6 +53,16 @@ const SignUp = catchAsync(async (req, res, next) => {
   if (!newUser) {
     return next(new Error("Error has been occurred durning creating user."));
   }
+
+  const mailOptions = {
+    from: "robustBackend@gmail.com",
+    to: email,
+    subject: `${name}, Welcome to robustBackend Website`,
+    html: `<h1>Enjoy ${name}</h1>`,
+  };
+
+  sendEmail(mailOptions);
+
   res.status(200).json({
     status: "success",
     response: "User has been successfully created.",
