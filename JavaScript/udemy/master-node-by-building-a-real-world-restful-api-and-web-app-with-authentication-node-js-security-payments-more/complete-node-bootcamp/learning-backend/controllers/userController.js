@@ -1,5 +1,6 @@
 const User = require("../models/userModel");
 const APIFeatures = require("../utils/apiFeatures");
+const cookieOptions = require("../utils/cookieOptions");
 const sendEmail = require("../utils/email");
 const { catchAsync } = require("../utils/wrapperFn");
 const { generateToken } = require("./authController");
@@ -44,28 +45,40 @@ const getUserById = catchAsync(async (req, res, next) => {
 const SignUp = catchAsync(async (req, res, next) => {
   const { name, email, password, passwordConfirm } = req.body;
 
-  // If one of the fields empty or not accurate
+  // If one of the fields is missing
   if (!name || !email || !password || !passwordConfirm) {
     return next(new Error("One of the fields is missing."));
   }
-  const newUser = await User.create({ name, email, password, passwordConfirm });
+
+  // Create user with email token and expiration
+  const newUser = await User.create({
+    name,
+    email,
+    password,
+    passwordConfirm,
+  });
 
   if (!newUser) {
-    return next(new Error("Error has been occurred durning creating user."));
+    return next(new Error("Error occurred during user creation."));
   }
 
+  // Send confirmation email
   const mailOptions = {
     from: "robustBackend@gmail.com",
     to: email,
-    subject: `${name}, Welcome to robustBackend Website`,
-    html: `<h1>Enjoy ${name}</h1>`,
+    subject: `Hi ${name}, welcome aboard`,
+    html: `<h1>Welcome to the robust backend website, ${name}!</h1>
+    <p> your email address by providing this code: http://localhost:3000/api/user/?token=${newUser.emailVerificationToken}</p>`,
   };
 
-  sendEmail(mailOptions);
+  await sendEmail(mailOptions);
+
+  const token = generateToken(newUser._id);
+  res.cookie("cookie", token, cookieOptions);
 
   res.status(200).json({
     status: "success",
-    response: "User has been successfully created.",
+    message: "User created successfully. Please confirm your email to log in.",
     data: newUser,
   });
 });
@@ -89,21 +102,46 @@ const login = catchAsync(async (req, res, next) => {
   if (isFoundUser.password === password) {
   }
 
-  // define cookie options
-  const cookieOptions = {
-    expiresIn: new Date(
-      Date.now() + process.env.JWT_EXPIRES_IN * 24 * 60 * 60 * 1000
-    ), // Convert to milliseconds
-  };
-
   // Generating the token and sending to client
   const token = generateToken(isFoundUser._id);
   res.cookie("cookie", token, cookieOptions);
 
+  if (!isFoundUser.emailVerified) {
+    res.status(200).json({
+      status: "success",
+      message: "Login successful. Please verify your email address.",
+    });
+    return;
+  }
+
   res.status(200).json({
     status: "success",
-    message: "Login successful",
+    message: "Login successful.",
   });
+});
+
+const confirmEmailAddress = catchAsync(async (req, res, next) => {
+  const token = req.query.token;
+
+  console.log(token);
+
+  // Check if the token matches and hasn't expired
+  if (
+    req.user.emailVerificationToken === token &&
+    req.user.emailVerificationExpires > Date.now()
+  ) {
+    req.user.emailVerified = true;
+    req.user.emailVerificationToken = undefined;
+    req.user.emailVerificationExpires = undefined;
+    await req.user.save();
+
+    res.status(200).json({
+      status: "success",
+      message: "Email successfully verified!",
+    });
+  } else {
+    return next(new Error("Invalid or expired token, please try again."));
+  }
 });
 
 const logout = catchAsync(async (req, res, next) => {
@@ -124,24 +162,17 @@ const updatePassword = catchAsync(async (req, res, next) => {
     return next(new Error("One of the fields is missing."));
   }
 
-  if (newPassword !== confirmNewPassword) {
-    return next(new Error("Passwords do not match."));
-  }
+  // Call the instance method on the user
+  await req.user.updatePassword(
+    currentPassword,
+    newPassword,
+    confirmNewPassword
+  );
 
-  if (
-    req.user.password === currentPassword &&
-    newPassword === confirmNewPassword
-  ) {
-    req.user.password = newPassword;
-    req.user.passwordConfirm = confirmNewPassword;
-    await req.user.save();
-
-    res.status(201).json({
-      status: "success",
-      response: "New password has been successfully set.",
-      data: req.user,
-    });
-  }
+  res.status(200).json({
+    status: "success",
+    message: "New password has been successfully set.",
+  });
 });
 
 const deactivateUser = catchAsync(async (req, res, next) => {
@@ -156,7 +187,7 @@ const deactivateUser = catchAsync(async (req, res, next) => {
 
   res.status(200).json({
     status: "success",
-    response: "User has been successfully deleted",
+    response: "User has been successfully de-activated",
   });
 });
 
@@ -190,6 +221,48 @@ const reactiveUser = catchAsync(async (req, res, next) => {
   });
 });
 
+const resendEmailVerificationToken = catchAsync(async (req, res, next) => {
+  const { email } = req.body;
+
+  if (!email) {
+    return next(
+      new Error(
+        "You must provide an email to receive a new verification token."
+      )
+    );
+  }
+
+  // Find the user by email
+  const findUser = await User.findOne({ email });
+
+  if (!findUser) {
+    return next(new Error("No such email exists."));
+  }
+
+  // Check if the email is already verified
+  if (findUser.emailVerified) {
+    return next(new Error("Email is already verified."));
+  }
+
+  // Generate a new email verification token
+  findUser.generateEmailVerificationToken();
+  await findUser.save();
+
+  // Send the new token to the user's email (pseudo-code for email sending)
+  sendEmail({
+    to: findUser.email,
+    subject: "Verify Your Email",
+    text: `Your email verification token is: ${findUser.emailVerificationToken}`,
+    html: `<p>Use the following token to verify your email: <b>${findUser.emailVerificationToken}</b></p>`,
+  });
+
+  res.status(200).json({
+    status: "success",
+    message:
+      "A new email verification token has been sent to your email address.",
+  });
+});
+
 module.exports = {
   logout,
   login,
@@ -199,4 +272,6 @@ module.exports = {
   deactivateUser,
   reactiveUser,
   getUserById,
+  confirmEmailAddress,
+  resendEmailVerificationToken,
 };

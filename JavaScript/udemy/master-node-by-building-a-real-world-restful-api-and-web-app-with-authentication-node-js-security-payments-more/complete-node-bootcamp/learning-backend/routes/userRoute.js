@@ -8,6 +8,8 @@ const {
   deactivateUser,
   reactiveUser,
   getUserById,
+  confirmEmailAddress,
+  resendEmailVerificationToken,
 } = require("../controllers/userController");
 const { grantedAccess } = require("../controllers/authController");
 
@@ -18,10 +20,12 @@ router.param("id", (req, res, next, val) => {
   next();
 });
 
-router.get("/", grantedAccess, getAllUsers);
+router.get("/", getAllUsers);
 router.get("/:id", getUserById);
+router.get("/email/verification", grantedAccess, confirmEmailAddress);
 
 router.post("/signUp", SignUp);
+router.post("/email/resend/verification", resendEmailVerificationToken);
 router.post("/login", login);
 router.post("/logout", logout);
 router.post("/reactivate", reactiveUser);

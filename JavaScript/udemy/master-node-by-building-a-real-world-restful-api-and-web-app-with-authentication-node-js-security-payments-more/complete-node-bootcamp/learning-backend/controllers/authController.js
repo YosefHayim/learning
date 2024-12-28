@@ -1,6 +1,12 @@
 const jwt = require("jsonwebtoken");
 const { catchAsync } = require("../utils/wrapperFn");
-const User = require("../models/userModel");
+const crypto = require("crypto");
+
+// Generate a random token for email confirmation
+const confirmEmailToken = (length = 32) => {
+  const emailToken = crypto.randomBytes(length).toString("hex"); // Convert to hexadecimal format
+  return emailToken;
+};
 
 const generateToken = (id) => {
   // Generating token once user logged in
@@ -18,6 +24,8 @@ const verifyToken = (token) => {
 };
 
 const grantedAccess = catchAsync(async (req, res, next) => {
+  const User = require("../models/userModel");
+
   //  Getting token and check if it's there
   let token;
   if (req.headers.authorization) {
@@ -44,7 +52,14 @@ const grantedAccess = catchAsync(async (req, res, next) => {
   }
 
   req.user = currentUser;
+  // console.log(req.user);
+
   next();
 });
 
-module.exports = { verifyToken, grantedAccess, generateToken };
+module.exports = {
+  verifyToken,
+  grantedAccess,
+  generateToken,
+  confirmEmailToken,
+};

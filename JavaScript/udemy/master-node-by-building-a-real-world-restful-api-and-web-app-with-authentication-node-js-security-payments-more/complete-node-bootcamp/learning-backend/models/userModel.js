@@ -1,7 +1,7 @@
-const crypto = require("crypto");
 const mongoose = require("mongoose");
 const validator = require("validator");
 const bcrypt = require("bcrypt");
+const { confirmEmailToken } = require("../controllers/authController");
 
 const userSchema = new mongoose.Schema(
   {
@@ -15,6 +15,16 @@ const userSchema = new mongoose.Schema(
       unique: true,
       lowercase: true,
       validate: [validator.isEmail, "Please provide a valid email"],
+    },
+    emailVerified: {
+      type: Boolean,
+      default: false,
+    },
+    emailVerificationToken: {
+      type: String,
+    },
+    emailVerificationExpires: {
+      type: Date,
     },
     photo: {
       type: String,
@@ -33,7 +43,9 @@ const userSchema = new mongoose.Schema(
     },
     passwordConfirm: {
       type: String,
-      required: [true, "Please confirm your password"],
+      required: function () {
+        return this.isNew; // This is being required only when there is a new document.
+      },
       validate: {
         // This only works on CREATE and SAVE!!!
         validator: function (el) {
@@ -55,16 +67,13 @@ const userSchema = new mongoose.Schema(
   { versionKey: false }
 );
 
-// Document middleware: runs before .save() and .create()
-userSchema.pre("save", async function (next) {
+userSchema.pre("save", function (next) {
   // Only hash the password if it has been modified (or is new)
   if (!this.isModified("password")) return next();
 
   try {
-    this.password = await bcrypt.hash(
-      this.password + process.env.BCRYPT_PW,
-      10
-    );
+    this.password = bcrypt.hash(this.password + process.env.BCRYPT_PW, 10);
+    this.passwordConfirm = undefined;
 
     next();
   } catch (err) {
@@ -74,7 +83,9 @@ userSchema.pre("save", async function (next) {
 });
 
 userSchema.pre("save", function (next) {
-  this.start = Date.now();
+  if (this.isNew || this.isModified("email")) {
+    this.generateEmailVerificationToken();
+  }
   next();
 });
 
@@ -89,12 +100,32 @@ userSchema.pre(/^find/, function (next) {
   next();
 });
 
-userSchema.post("save", function (doc, next) {
-  console.log(`Finish save doc: ${doc}`);
-  console.log(`Query took: ${Date.now() - this.start} milliseconds`);
+userSchema.methods.updatePassword = async function (
+  currentPassword,
+  newPassword,
+  confirmNewPassword
+) {
+  // Verify current password
+  const isPasswordCorrect = bcrypt.compare(currentPassword, this.password);
+  if (!isPasswordCorrect) {
+    throw new Error("Current password is incorrect.");
+  }
 
-  next();
-});
+  // Check if new passwords match
+  if (newPassword !== confirmNewPassword) {
+    throw new Error("New passwords do not match.");
+  }
+
+  // Update the password
+  this.password = newPassword;
+  this.passwordConfirm = undefined; // Exclude confirm password
+  await this.save();
+};
+
+userSchema.methods.generateEmailVerificationToken = function () {
+  this.emailVerificationExpires = Date.now() + 10 * 60 * 1000; // Token valid for 10 minutes
+  this.emailVerificationToken = confirmEmailToken(); // Generate a new token
+};
 
 const User = mongoose.model("Users", userSchema);
 
