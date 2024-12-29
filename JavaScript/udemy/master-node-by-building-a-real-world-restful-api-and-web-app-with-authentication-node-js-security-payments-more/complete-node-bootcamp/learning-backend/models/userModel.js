@@ -76,6 +76,15 @@ const userSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+userSchema.pre(/^find/, function (next) {
+  // 'this' refers to the query
+  this.populate({
+    path: "reviews",
+    select: "rating comment",
+  });
+  next();
+});
+
 userSchema.pre("save", async function (next) {
   // Only hash the password if it has been modified (or is new)
   if (!this.isModified("password")) return next();

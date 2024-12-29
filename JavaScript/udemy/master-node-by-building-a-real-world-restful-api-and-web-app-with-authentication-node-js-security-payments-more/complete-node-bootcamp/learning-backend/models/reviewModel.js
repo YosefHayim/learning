@@ -23,6 +23,17 @@ const reviewSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+reviewSchema.post("save", async function () {
+  const review = this;
+  try {
+    await mongoose.model("Users").findByIdAndUpdate(review.userId, {
+      $push: { reviews: review._id },
+    });
+  } catch (err) {
+    console.error("Error updating user's reviews array:", err);
+  }
+});
+
 const Review = mongoose.model("Reviews", reviewSchema);
 
 module.exports = Review;
