@@ -19,6 +19,7 @@ const reviewSchema = new mongoose.Schema(
       ref: "Users",
       required: [true, "Review must belong to a user."],
     },
+    commentsOfReview: [{ type: mongoose.Schema.ObjectId, ref: "Comments" }],
   },
   { timestamps: true }
 );

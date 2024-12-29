@@ -8,6 +8,7 @@ const limiter = require("./middlewares/rateLimit");
 const errorHandler = require("./middlewares/errorHandler");
 const undefinedRoute = require("./middlewares/undefinedRoutes");
 const connectDb = require("./config/connectDb");
+const commentRoute = require("./routes/commentRoute");
 const userRoute = require("./routes/userRoute");
 const reviewRoute = require("./routes/reviewRoute");
 const loggerInfo = require("./middlewares/logger");
@@ -36,8 +37,9 @@ app.get("/", (req, res) => {
   });
 });
 
-app.use("/api/review", reviewRoute);
 app.use("/api/user", userRoute);
+app.use("/api/review", reviewRoute);
+app.use("/api/comment", commentRoute);
 
 app.all("*", undefinedRoute);
 app.use(errorHandler);
