@@ -62,7 +62,11 @@ const SignUp = catchAsync(async (req, res, next) => {
     return next(new Error("Error occurred during user creation."));
   }
 
+<<<<<<< HEAD
   // // Send confirmation email
+=======
+  // Send confirmation email
+>>>>>>> 3a03832d9287893ba8d1a29ccba5f008b9c7c226
   // const mailOptions = {
   //   from: "robustBackend@gmail.com",
   //   to: email,

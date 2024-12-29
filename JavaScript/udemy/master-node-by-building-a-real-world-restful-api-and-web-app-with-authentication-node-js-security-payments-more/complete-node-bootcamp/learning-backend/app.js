@@ -9,6 +9,7 @@ const errorHandler = require("./middlewares/errorHandler");
 const undefinedRoute = require("./middlewares/undefinedRoutes");
 const connectDb = require("./config/connectDb");
 const userRoute = require("./routes/userRoute");
+const reviewRoute = require("./routes/reviewRoute");
 const loggerInfo = require("./middlewares/logger");
 
 const app = express();
@@ -35,6 +36,7 @@ app.get("/", (req, res) => {
   });
 });
 
+app.use("/api/review", reviewRoute);
 app.use("/api/user", userRoute);
 
 app.all("*", undefinedRoute);
