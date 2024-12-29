@@ -62,6 +62,7 @@ const userSchema = new mongoose.Schema(
       default: true,
       select: false,
     },
+    reviews: [{ type: mongoose.Schema.ObjectId, ref: "Reviews" }],
     location: {
       type: {
         type: String,
@@ -71,17 +72,17 @@ const userSchema = new mongoose.Schema(
       coordinates: [Number],
       firstAddress: String,
     },
-    reviews: [{ type: mongoose.Schema.ObjectId, ref: "Reviews" }],
   },
   { timestamps: true }
 );
 
-// userSchema.pre(/^find/, function (next) {
-//   this.populate({
-//     path: "reviews",
-//     select: "-__v",
-//   });
-// });
+userSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: "reviews",
+    select: "-__v",
+  });
+  next();
+});
 
 userSchema.pre("save", async function (next) {
   // Only hash the password if it has been modified (or is new)
