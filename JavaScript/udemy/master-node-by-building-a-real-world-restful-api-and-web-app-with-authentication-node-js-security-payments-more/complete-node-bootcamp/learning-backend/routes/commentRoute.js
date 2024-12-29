@@ -11,9 +11,9 @@ const { grantedAccess } = require("../controllers/authController");
 
 const router = express.Router();
 
+router.get("/:id", grantedAccess, getCommentById);
 router.get("/", grantedAccess, getAllComments);
 router.get("/:reviewId", grantedAccess, getCommentsByReviewId);
-router.get("/:id", grantedAccess, getCommentById);
 router.post("/:id", grantedAccess, addCommentByReviewId);
 router.put("/:id", grantedAccess, updateCommentById);
 router.delete("/:id", grantedAccess, deleteCommentById);

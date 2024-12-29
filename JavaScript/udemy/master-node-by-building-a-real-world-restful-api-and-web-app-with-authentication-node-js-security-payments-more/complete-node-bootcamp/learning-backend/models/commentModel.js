@@ -15,25 +15,25 @@ const commentSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-commentSchema.pre(/^find/, function (next) {
-  // 'this' refers to the query
-  this.populate({
-    path: "reviewId",
-    select: "rating comment",
-  });
-  next();
-});
+// commentSchema.pre(/^find/, function (next) {
+//   // 'this' refers to the query
+//   this.populate({
+//     path: "reviewId",
+//     select: "rating comment",
+//   });
+//   next();
+// });
 
-commentSchema.post("save", async function () {
-  const comment = this; // 'this' refers to the comment being saved
-  try {
-    await mongoose.model("Reviews").findByIdAndUpdate(comment.reviewId, {
-      $push: { commentsOfReview: comment._id },
-    });
-  } catch (err) {
-    console.error("Error updating comment reply to the review:", err);
-  }
-});
+// commentSchema.post("save", async function () {
+//   const comment = this; // 'this' refers to the comment being saved
+//   try {
+//     await mongoose.model("Reviews").findByIdAndUpdate(comment.reviewId, {
+//       $push: { commentsOfReview: comment._id },
+//     });
+//   } catch (err) {
+//     console.error("Error updating comment reply to the review:", err);
+//   }
+// });
 
 const Comment = mongoose.model("Comments", commentSchema);
 
