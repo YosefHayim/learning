@@ -24,6 +24,14 @@ const reviewSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+reviewSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: "commentsOfReview",
+    select:"comment -_id"
+  });
+  next();
+});
+
 reviewSchema.post("save", async function () {
   const review = this;
   try {

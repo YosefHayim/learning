@@ -1,5 +1,4 @@
 const Comment = require("../models/commentModel");
-const Review = require("../models/reviewModel");
 const APIFeatures = require("../utils/apiFeatures");
 const { catchAsync } = require("../utils/wrapperFn");
 
@@ -103,6 +102,8 @@ const updateCommentById = catchAsync(async (req, res, next) => {
 });
 
 const getCommentsByReviewId = catchAsync(async (req, res, next) => {
+  const Review = require("../models/reviewModel");
+
   const reviewId = req.params.id;
 
   if (!reviewId) {

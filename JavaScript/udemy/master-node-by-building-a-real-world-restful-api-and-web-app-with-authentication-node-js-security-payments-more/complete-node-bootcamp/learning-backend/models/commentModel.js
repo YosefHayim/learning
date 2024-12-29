@@ -16,16 +16,16 @@ const commentSchema = new mongoose.Schema(
 );
 
 commentSchema.post("save", async function () {
-  const comment = this;
+  const comment = this; // 'this' refers to the comment being saved
   try {
     await mongoose.model("Reviews").findByIdAndUpdate(comment.reviewId, {
-      $push: { commentsOfReview: review._id },
+      $push: { commentsOfReview: comment._id },
     });
   } catch (err) {
     console.error("Error updating comment reply to the review:", err);
   }
 });
 
-const Comment = mongoose.model("comments", commentSchema);
+const Comment = mongoose.model("Comments", commentSchema);
 
 module.exports = Comment;
