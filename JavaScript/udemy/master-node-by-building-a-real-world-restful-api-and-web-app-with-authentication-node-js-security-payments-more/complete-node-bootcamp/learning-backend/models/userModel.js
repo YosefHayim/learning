@@ -32,7 +32,7 @@ const userSchema = new mongoose.Schema(
     },
     role: {
       type: String,
-      enum: ["user", "guide", "lead-guide", "admin"],
+      enum: ["user", "admin", "guest"],
       default: "user",
       select: false,
     },
@@ -82,6 +82,7 @@ userSchema.pre(/^find/, function (next) {
     path: "reviews",
     select: "rating comment",
   });
+
   next();
 });
 

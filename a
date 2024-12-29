@@ -1,0 +1,106 @@
+[1mdiff --git a/JavaScript/udemy/master-node-by-building-a-real-world-restful-api-and-web-app-with-authentication-node-js-security-payments-more/complete-node-bootcamp/learning-backend/controllers/authController.js b/JavaScript/udemy/master-node-by-building-a-real-world-restful-api-and-web-app-with-authentication-node-js-security-payments-more/complete-node-bootcamp/learning-backend/controllers/authController.js[m
+[1mindex ea939a7..068ff84 100644[m
+[1m--- a/JavaScript/udemy/master-node-by-building-a-real-world-restful-api-and-web-app-with-authentication-node-js-security-payments-more/complete-node-bootcamp/learning-backend/controllers/authController.js[m
+[1m+++ b/JavaScript/udemy/master-node-by-building-a-real-world-restful-api-and-web-app-with-authentication-node-js-security-payments-more/complete-node-bootcamp/learning-backend/controllers/authController.js[m
+[36m@@ -35,9 +35,7 @@[m [mconst grantedAccess = catchAsync(async (req, res, next) => {[m
+   }[m
+ [m
+   if (!token) {[m
+[31m-    return next([m
+[31m-      new Error("You are not logged in! Please log in to get access.")[m
+[31m-    );[m
+[32m+[m[32m    return next(new Error("Please log in to get access."));[m
+   }[m
+   // Verify token[m
+   const decoded = verifyToken(token);[m
+[36m@@ -47,7 +45,7 @@[m [mconst grantedAccess = catchAsync(async (req, res, next) => {[m
+ [m
+   if (!currentUser) {[m
+     return next([m
+[31m-      new Error("The user belonging to this token does no longer exist.")[m
+[32m+[m[32m      new Error("You are not logged in or you this user does not exist")[m
+     );[m
+   }[m
+ [m
+[1mdiff --git a/JavaScript/udemy/master-node-by-building-a-real-world-restful-api-and-web-app-with-authentication-node-js-security-payments-more/complete-node-bootcamp/learning-backend/logs.log b/JavaScript/udemy/master-node-by-building-a-real-world-restful-api-and-web-app-with-authentication-node-js-security-payments-more/complete-node-bootcamp/learning-backend/logs.log[m
+[1mindex 201d2e3..27bd6e0 100644[m
+[1m--- a/JavaScript/udemy/master-node-by-building-a-real-world-restful-api-and-web-app-with-authentication-node-js-security-payments-more/complete-node-bootcamp/learning-backend/logs.log[m
+[1m+++ b/JavaScript/udemy/master-node-by-building-a-real-world-restful-api-and-web-app-with-authentication-node-js-security-payments-more/complete-node-bootcamp/learning-backend/logs.log[m
+[36m@@ -210,3 +210,24 @@[m
+ {"level":"info","message":{"body":{"comment":"this is a test to reply to a review as a comment dsadasdsa"},"headers":{"accept":"*/*","accept-encoding":"gzip, deflate, br","cache-control":"no-cache","connection":"keep-alive","content-length":"80","content-type":"application/json","cookie":"cookie=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NzE4MjhhMWZjZDdkMjc3NDRiMWNhOCIsImlhdCI6MTczNTQ5MjI0MiwiZXhwIjoxNzQzMjY4MjQyfQ.LZCf03Jid4zRdFaRG6YDRHDNfIvopvcikL7NkecVr8M","host":"localhost:3000","postman-token":"0884ba97-03e3-46cf-9866-9afb0d4fcc10","user-agent":"PostmanRuntime/7.43.0"},"method":"POST","requestedAt":"2024-12-29T17:29:58.437Z","url":"/api/comment/677182ab1fcd7d27744b1cae"}}[m
+ {"level":"info","message":{"body":{},"headers":{"accept":"*/*","accept-encoding":"gzip, deflate, br","cache-control":"no-cache","connection":"keep-alive","cookie":"cookie=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NzE4MjhhMWZjZDdkMjc3NDRiMWNhOCIsImlhdCI6MTczNTQ5MjI0MiwiZXhwIjoxNzQzMjY4MjQyfQ.LZCf03Jid4zRdFaRG6YDRHDNfIvopvcikL7NkecVr8M","host":"localhost:3000","postman-token":"a4653aca-dd05-4637-aa6e-89bf566a5c98","user-agent":"PostmanRuntime/7.43.0"},"method":"GET","requestedAt":"2024-12-29T17:30:17.883Z","url":"/api/comment/67718716162b8d19b7a782f2"}}[m
+ {"level":"info","message":{"body":{},"headers":{"accept":"*/*","accept-encoding":"gzip, deflate, br","cache-control":"no-cache","connection":"keep-alive","cookie":"cookie=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NzE4MjhhMWZjZDdkMjc3NDRiMWNhOCIsImlhdCI6MTczNTQ5MjI0MiwiZXhwIjoxNzQzMjY4MjQyfQ.LZCf03Jid4zRdFaRG6YDRHDNfIvopvcikL7NkecVr8M","host":"localhost:3000","postman-token":"32f7c8de-8560-4f07-8733-dcf9365523c1","user-agent":"PostmanRuntime/7.43.0"},"method":"GET","requestedAt":"2024-12-29T17:31:10.612Z","url":"/api/comment/67718716162b8d19b7a782f2"}}[m
+[32m+[m[32m{"level":"info","message":{"body":{},"headers":{"accept":"*/*","accept-encoding":"gzip, deflate, br","cache-control":"no-cache","connection":"keep-alive","cookie":"cookie=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NzE4MjhhMWZjZDdkMjc3NDRiMWNhOCIsImlhdCI6MTczNTQ5MjI0MiwiZXhwIjoxNzQzMjY4MjQyfQ.LZCf03Jid4zRdFaRG6YDRHDNfIvopvcikL7NkecVr8M","host":"localhost:3000","postman-token":"619268f3-accd-4cb0-92cb-87a77d049487","user-agent":"PostmanRuntime/7.43.0"},"method":"GET","requestedAt":"2024-12-29T18:50:48.845Z","url":"/api/user/"}}[m
+[32m+[m[32m{"level":"info","message":{"body":{},"headers":{"accept":"*/*","accept-encoding":"gzip, deflate, br","cache-control":"no-cache","connection":"keep-alive","cookie":"cookie=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NzE4MjhhMWZjZDdkMjc3NDRiMWNhOCIsImlhdCI6MTczNTQ5MjI0MiwiZXhwIjoxNzQzMjY4MjQyfQ.LZCf03Jid4zRdFaRG6YDRHDNfIvopvcikL7NkecVr8M","host":"localhost:3000","postman-token":"8e62eb0f-d07c-4e44-96c0-9ae768afa5e0","user-agent":"PostmanRuntime/7.43.0"},"method":"GET","requestedAt":"2024-12-29T19:16:30.313Z","url":"/api/user/"}}[m
+[32m+[m[32m{"level":"info","message":{"body":{},"headers":{"accept":"*/*","accept-encoding":"gzip, deflate, br","cache-control":"no-cache","connection":"keep-alive","cookie":"cookie=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NzE4MjhhMWZjZDdkMjc3NDRiMWNhOCIsImlhdCI6MTczNTQ5MjI0MiwiZXhwIjoxNzQzMjY4MjQyfQ.LZCf03Jid4zRdFaRG6YDRHDNfIvopvcikL7NkecVr8M","host":"localhost:3000","postman-token":"850bca18-3227-4fc7-9afd-33332e8a6ca6","user-agent":"PostmanRuntime/7.43.0"},"method":"GET","requestedAt":"2024-12-29T19:17:15.443Z","url":"/api/user/67719fe7866eb5fe1adc5533"}}[m
+[32m+[m[32m{"level":"info","message":{"body":{},"headers":{"accept":"*/*","accept-encoding":"gzip, deflate, br","cache-control":"no-cache","connection":"keep-alive","cookie":"cookie=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NzE4MjhhMWZjZDdkMjc3NDRiMWNhOCIsImlhdCI6MTczNTQ5MjI0MiwiZXhwIjoxNzQzMjY4MjQyfQ.LZCf03Jid4zRdFaRG6YDRHDNfIvopvcikL7NkecVr8M","host":"localhost:3000","postman-token":"7c3538af-2ff4-443d-af46-ca63cf0251cc","user-agent":"PostmanRuntime/7.43.0"},"method":"GET","requestedAt":"2024-12-29T19:17:20.805Z","url":"/api/review/"}}[m
+[32m+[m[32m{"level":"info","message":{"body":{},"headers":{"accept":"*/*","accept-encoding":"gzip, deflate, br","cache-control":"no-cache","connection":"keep-alive","cookie":"cookie=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NzE4MjhhMWZjZDdkMjc3NDRiMWNhOCIsImlhdCI6MTczNTQ5MjI0MiwiZXhwIjoxNzQzMjY4MjQyfQ.LZCf03Jid4zRdFaRG6YDRHDNfIvopvcikL7NkecVr8M","host":"localhost:3000","postman-token":"306d5753-d22b-40d1-ace0-78e20f2e7bb2","user-agent":"PostmanRuntime/7.43.0"},"method":"GET","requestedAt":"2024-12-29T19:17:47.030Z","url":"/api/review/"}}[m
+[32m+[m[32m{"level":"info","message":{"body":{"email":"yosefisabag@gmail.com","name":"yosef","password":"123456789","passwordConfirm":"123456789"},"headers":{"accept":"*/*","accept-encoding":"gzip, deflate, br","cache-control":"no-cache","connection":"keep-alive","content-length":"127","content-type":"application/json","cookie":"cookie=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NzE4MjhhMWZjZDdkMjc3NDRiMWNhOCIsImlhdCI6MTczNTQ5MjI0MiwiZXhwIjoxNzQzMjY4MjQyfQ.LZCf03Jid4zRdFaRG6YDRHDNfIvopvcikL7NkecVr8M","host":"localhost:3000","postman-token":"d2fa42e5-d9c1-4342-a92c-5573a6ff7140","user-agent":"PostmanRuntime/7.43.0"},"method":"POST","requestedAt":"2024-12-29T19:18:00.943Z","url":"/api/user/signup"}}[m
+[32m+[m[32m{"level":"info","message":{"body":{"email":"yosefisabag@gmail.com","password":"123456789"},"headers":{"accept":"*/*","accept-encoding":"gzip, deflate, br","cache-control":"no-cache","connection":"keep-alive","content-length":"70","content-type":"application/json","cookie":"cookie=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NzFhMDY4YjE0MmE3NjBkYzA4MjA2NCIsImlhdCI6MTczNTQ5OTg4MSwiZXhwIjoxNzQzMjc1ODgxfQ.TV-fpq444fUxuTM7R8t1Qq3gNExOYZ7zapTwIfDCcOI","host":"localhost:3000","postman-token":"d8ecdeee-a9f3-4fb3-9335-69fbe35f4083","user-agent":"PostmanRuntime/7.43.0"},"method":"POST","requestedAt":"2024-12-29T19:18:06.424Z","url":"/api/user/login"}}[m
+[32m+[m[32m{"level":"info","message":{"body":{},"headers":{"accept":"*/*","accept-encoding":"gzip, deflate, br","cache-control":"no-cache","connection":"keep-alive","cookie":"cookie=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NzFhMDY4YjE0MmE3NjBkYzA4MjA2NCIsImlhdCI6MTczNTQ5OTg4NiwiZXhwIjoxNzQzMjc1ODg2fQ.R5LbuyYHvcDKXoW9lY0eo_VHmOvIrSUJPHjzETgnFaE","host":"localhost:3000","postman-token":"d1399703-b773-415d-974e-e8a7e271ba39","user-agent":"PostmanRuntime/7.43.0"},"method":"GET","requestedAt":"2024-12-29T19:18:10.095Z","url":"/api/review/"}}[m
+[32m+[m[32m{"level":"info","message":{"body":{},"headers":{"accept":"*/*","accept-encoding":"gzip, deflate, br","cache-control":"no-cache","connection":"keep-alive","cookie":"cookie=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NzFhMDY4YjE0MmE3NjBkYzA4MjA2NCIsImlhdCI6MTczNTQ5OTg4NiwiZXhwIjoxNzQzMjc1ODg2fQ.R5LbuyYHvcDKXoW9lY0eo_VHmOvIrSUJPHjzETgnFaE","host":"localhost:3000","postman-token":"c118cf96-fe2a-4e8e-9dfc-f0bd0e356140","user-agent":"PostmanRuntime/7.43.0"},"method":"GET","requestedAt":"2024-12-29T19:18:25.225Z","url":"/api/review/67719fe7866eb5fe1adc5503"}}[m
+[32m+[m[32m{"level":"info","message":{"body":{},"headers":{"accept":"*/*","accept-encoding":"gzip, deflate, br","cache-control":"no-cache","connection":"keep-alive","cookie":"cookie=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NzFhMDY4YjE0MmE3NjBkYzA4MjA2NCIsImlhdCI6MTczNTQ5OTg4NiwiZXhwIjoxNzQzMjc1ODg2fQ.R5LbuyYHvcDKXoW9lY0eo_VHmOvIrSUJPHjzETgnFaE","host":"localhost:3000","postman-token":"f2c02c5e-e344-40c4-899b-0a63d02c8c90","user-agent":"PostmanRuntime/7.43.0"},"method":"GET","requestedAt":"2024-12-29T19:18:30.994Z","url":"/api/review/"}}[m
+[32m+[m[32m{"level":"info","message":{"body":{},"headers":{"accept":"*/*","accept-encoding":"gzip, deflate, br","cache-control":"no-cache","connection":"keep-alive","cookie":"cookie=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NzFhMDY4YjE0MmE3NjBkYzA4MjA2NCIsImlhdCI6MTczNTQ5OTg4NiwiZXhwIjoxNzQzMjc1ODg2fQ.R5LbuyYHvcDKXoW9lY0eo_VHmOvIrSUJPHjzETgnFaE","host":"localhost:3000","postman-token":"f79243ce-8fe8-4083-b6b1-c5976814ae20","user-agent":"PostmanRuntime/7.43.0"},"method":"GET","requestedAt":"2024-12-29T19:18:34.944Z","url":"/api/user/67719fe7866eb5fe1adc5503"}}[m
+[32m+[m[32m{"level":"info","message":{"body":{"comment":"test adding dsadsa","rating":5},"headers":{"accept":"*/*","accept-encoding":"gzip, deflate, br","cache-control":"no-cache","connection":"keep-alive","content-length":"57","content-type":"application/json","cookie":"cookie=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NzFhMDY4YjE0MmE3NjBkYzA4MjA2NCIsImlhdCI6MTczNTQ5OTg4NiwiZXhwIjoxNzQzMjc1ODg2fQ.R5LbuyYHvcDKXoW9lY0eo_VHmOvIrSUJPHjzETgnFaE","host":"localhost:3000","postman-token":"4f3f11b8-c8b6-46fd-9bee-7214ec57f991","user-agent":"PostmanRuntime/7.43.0"},"method":"POST","requestedAt":"2024-12-29T19:24:34.004Z","url":"/api/review/677182701fcd7d27744b1ca4"}}[m
+[32m+[m[32m{"level":"info","message":{"body":{},"headers":{"accept":"*/*","accept-encoding":"gzip, deflate, br","cache-control":"no-cache","connection":"keep-alive","cookie":"cookie=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NzFhMDY4YjE0MmE3NjBkYzA4MjA2NCIsImlhdCI6MTczNTQ5OTg4NiwiZXhwIjoxNzQzMjc1ODg2fQ.R5LbuyYHvcDKXoW9lY0eo_VHmOvIrSUJPHjzETgnFaE","host":"localhost:3000","postman-token":"f3b68f69-7588-4bdc-a2ec-a3667924d1ce","user-agent":"PostmanRuntime/7.43.0"},"method":"GET","requestedAt":"2024-12-29T19:24:45.114Z","url":"/api/user/"}}[m
+[32m+[m[32m{"level":"info","message":{"body":{},"headers":{"accept":"*/*","accept-encoding":"gzip, deflate, br","cache-control":"no-cache","connection":"keep-alive","cookie":"cookie=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NzFhMDY4YjE0MmE3NjBkYzA4MjA2NCIsImlhdCI6MTczNTQ5OTg4NiwiZXhwIjoxNzQzMjc1ODg2fQ.R5LbuyYHvcDKXoW9lY0eo_VHmOvIrSUJPHjzETgnFaE","host":"localhost:3000","postman-token":"68c734c8-893e-49e9-890b-e29d6957b129","user-agent":"PostmanRuntime/7.43.0"},"method":"GET","requestedAt":"2024-12-29T19:28:23.809Z","url":"/api/comment/"}}[m
+[32m+[m[32m{"level":"info","message":{"body":{},"headers":{"accept":"*/*","accept-encoding":"gzip, deflate, br","cache-control":"no-cache","connection":"keep-alive","cookie":"cookie=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NzFhMDY4YjE0MmE3NjBkYzA4MjA2NCIsImlhdCI6MTczNTQ5OTg4NiwiZXhwIjoxNzQzMjc1ODg2fQ.R5LbuyYHvcDKXoW9lY0eo_VHmOvIrSUJPHjzETgnFaE","host":"localhost:3000","postman-token":"87151eab-f815-4c1c-bd7e-35a7d58498b3","user-agent":"PostmanRuntime/7.43.0"},"method":"GET","requestedAt":"2024-12-29T19:44:18.974Z","url":"/api/user/"}}[m
+[32m+[m[32m{"level":"info","message":{"body":{},"headers":{"accept":"*/*","accept-encoding":"gzip, deflate, br","cache-control":"no-cache","connection":"keep-alive","cookie":"cookie=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NzFhMDY4YjE0MmE3NjBkYzA4MjA2NCIsImlhdCI6MTczNTQ5OTg4NiwiZXhwIjoxNzQzMjc1ODg2fQ.R5LbuyYHvcDKXoW9lY0eo_VHmOvIrSUJPHjzETgnFaE","host":"localhost:3000","postman-token":"e0013a4e-134f-4b55-80d5-102d961c819d","user-agent":"PostmanRuntime/7.43.0"},"method":"GET","requestedAt":"2024-12-29T19:44:29.027Z","url":"/api/review/"}}[m
+[32m+[m[32m{"level":"info","message":{"body":{},"headers":{"accept":"*/*","accept-encoding":"gzip, deflate, br","cache-control":"no-cache","connection":"keep-alive","cookie":"cookie=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NzFhMDY4YjE0MmE3NjBkYzA4MjA2NCIsImlhdCI6MTczNTQ5OTg4NiwiZXhwIjoxNzQzMjc1ODg2fQ.R5LbuyYHvcDKXoW9lY0eo_VHmOvIrSUJPHjzETgnFaE","host":"localhost:3000","postman-token":"e6971791-b356-49fe-ad0f-b9fac539994b","user-agent":"PostmanRuntime/7.43.0"},"method":"GET","requestedAt":"2024-12-29T19:44:52.047Z","url":"/api/review/"}}[m
+[32m+[m[32m{"level":"info","message":{"body":{"email":"yosefisabag@gmail.com","name":"yosef","password":"123456789","passwordConfirm":"123456789"},"headers":{"accept":"*/*","accept-encoding":"gzip, deflate, br","cache-control":"no-cache","connection":"keep-alive","content-length":"127","content-type":"application/json","cookie":"cookie=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NzFhMDY4YjE0MmE3NjBkYzA4MjA2NCIsImlhdCI6MTczNTQ5OTg4NiwiZXhwIjoxNzQzMjc1ODg2fQ.R5LbuyYHvcDKXoW9lY0eo_VHmOvIrSUJPHjzETgnFaE","host":"localhost:3000","postman-token":"776d2711-02cb-4697-a314-656b6c70f7e5","user-agent":"PostmanRuntime/7.43.0"},"method":"POST","requestedAt":"2024-12-29T19:45:02.322Z","url":"/api/user/signup"}}[m
+[32m+[m[32m{"level":"info","message":{"body":{},"headers":{"accept":"*/*","accept-encoding":"gzip, deflate, br","cache-control":"no-cache","connection":"keep-alive","cookie":"cookie=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NzFhNmJlMGVmZmYyNTgyZWE4MTBiOSIsImlhdCI6MTczNTUwMTUwMiwiZXhwIjoxNzQzMjc3NTAyfQ.Mt-ZoedU1zOjIlSb-ZfzPYsOTsYLZNyANPy0NqWIbPg","host":"localhost:3000","postman-token":"38b6634e-c3cb-43d1-bd36-0d53d3c20107","user-agent":"PostmanRuntime/7.43.0"},"method":"GET","requestedAt":"2024-12-29T19:45:08.506Z","url":"/api/review/"}}[m
+[32m+[m[32m{"level":"info","message":{"body":{},"headers":{"accept":"*/*","accept-encoding":"gzip, deflate, br","cache-control":"no-cache","connection":"keep-alive","cookie":"cookie=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NzFhNmJlMGVmZmYyNTgyZWE4MTBiOSIsImlhdCI6MTczNTUwMTUwMiwiZXhwIjoxNzQzMjc3NTAyfQ.Mt-ZoedU1zOjIlSb-ZfzPYsOTsYLZNyANPy0NqWIbPg","host":"localhost:3000","postman-token":"9b925f55-8408-4469-ac8a-09bc5390ffa8","user-agent":"PostmanRuntime/7.43.0"},"method":"GET","requestedAt":"2024-12-29T19:45:22.404Z","url":"/api/user/6771a68c64422d0982f0ed1d"}}[m
+[32m+[m[32m{"level":"info","message":{"body":{},"headers":{"accept":"*/*","accept-encoding":"gzip, deflate, br","cache-control":"no-cache","connection":"keep-alive","cookie":"cookie=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NzFhNmJlMGVmZmYyNTgyZWE4MTBiOSIsImlhdCI6MTczNTUwMTUwMiwiZXhwIjoxNzQzMjc3NTAyfQ.Mt-ZoedU1zOjIlSb-ZfzPYsOTsYLZNyANPy0NqWIbPg","host":"localhost:3000","postman-token":"e2e4c8a7-4e01-41a4-8931-84ec72896f74","user-agent":"PostmanRuntime/7.43.0"},"method":"GET","requestedAt":"2024-12-29T19:46:15.712Z","url":"/api/user/6771a68c64422d0982f0ed1d"}}[m
+[1mdiff --git a/JavaScript/udemy/master-node-by-building-a-real-world-restful-api-and-web-app-with-authentication-node-js-security-payments-more/complete-node-bootcamp/learning-backend/models/commentModel.js b/JavaScript/udemy/master-node-by-building-a-real-world-restful-api-and-web-app-with-authentication-node-js-security-payments-more/complete-node-bootcamp/learning-backend/models/commentModel.js[m
+[1mindex f0118b1..d23cc30 100644[m
+[1m--- a/JavaScript/udemy/master-node-by-building-a-real-world-restful-api-and-web-app-with-authentication-node-js-security-payments-more/complete-node-bootcamp/learning-backend/models/commentModel.js[m
+[1m+++ b/JavaScript/udemy/master-node-by-building-a-real-world-restful-api-and-web-app-with-authentication-node-js-security-payments-more/complete-node-bootcamp/learning-backend/models/commentModel.js[m
+[36m@@ -15,6 +15,15 @@[m [mconst commentSchema = new mongoose.Schema([m
+   { timestamps: true }[m
+ );[m
+ [m
+[32m+[m[32mcommentSchema.pre(/^find/, function (next) {[m
+[32m+[m[32m  // 'this' refers to the query[m
+[32m+[m[32m  this.populate({[m
+[32m+[m[32m    path: "reviewId",[m
+[32m+[m[32m    select: "rating comment",[m
+[32m+[m[32m  });[m
+[32m+[m[32m  next();[m
+[32m+[m[32m});[m
+[32m+[m
+ commentSchema.post("save", async function () {[m
+   const comment = this; // 'this' refers to the comment being saved[m
+   try {[m
+[1mdiff --git a/JavaScript/udemy/master-node-by-building-a-real-world-restful-api-and-web-app-with-authentication-node-js-security-payments-more/complete-node-bootcamp/learning-backend/models/userModel.js b/JavaScript/udemy/master-node-by-building-a-real-world-restful-api-and-web-app-with-authentication-node-js-security-payments-more/complete-node-bootcamp/learning-backend/models/userModel.js[m
+[1mindex 167f32e..754c52f 100644[m
+[1m--- a/JavaScript/udemy/master-node-by-building-a-real-world-restful-api-and-web-app-with-authentication-node-js-security-payments-more/complete-node-bootcamp/learning-backend/models/userModel.js[m
+[1m+++ b/JavaScript/udemy/master-node-by-building-a-real-world-restful-api-and-web-app-with-authentication-node-js-security-payments-more/complete-node-bootcamp/learning-backend/models/userModel.js[m
+[36m@@ -32,7 +32,7 @@[m [mconst userSchema = new mongoose.Schema([m
+     },[m
+     role: {[m
+       type: String,[m
+[31m-      enum: ["user", "guide", "lead-guide", "admin"],[m
+[32m+[m[32m      enum: ["user", "admin", "guest"],[m
+       default: "user",[m
+       select: false,[m
+     },[m
+[36m@@ -82,6 +82,7 @@[m [muserSchema.pre(/^find/, function (next) {[m
+     path: "reviews",[m
+     select: "rating comment",[m
+   });[m
+[32m+[m
+   next();[m
+ });[m
+ [m
+[1mdiff --git a/JavaScript/udemy/master-node-by-building-a-real-world-restful-api-and-web-app-with-authentication-node-js-security-payments-more/complete-node-bootcamp/learning-backend/package-lock.json b/JavaScript/udemy/master-node-by-building-a-real-world-restful-api-and-web-app-with-authentication-node-js-security-payments-more/complete-node-bootcamp/learning-backend/package-lock.json[m
+[1mindex 47fe454..10dc0b8 100644[m
+[1m--- a/JavaScript/udemy/master-node-by-building-a-real-world-restful-api-and-web-app-with-authentication-node-js-security-payments-more/complete-node-bootcamp/learning-backend/package-lock.json[m
+[1m+++ b/JavaScript/udemy/master-node-by-building-a-real-world-restful-api-and-web-app-with-authentication-node-js-security-payments-more/complete-node-bootcamp/learning-backend/package-lock.json[m
+[36m@@ -9,6 +9,7 @@[m
+       "version": "1.0.0",[m
+       "license": "ISC",[m
+       "dependencies": {[m
+[32m+[m[32m        "@faker-js/faker": "^9.3.0",[m
+         "bcrypt": "^5.1.1",[m
+         "cookie-parser": "^1.4.7",[m
+         "cors": "^2.8.5",[m

@@ -35,9 +35,7 @@ const grantedAccess = catchAsync(async (req, res, next) => {
   }
 
   if (!token) {
-    return next(
-      new Error("You are not logged in! Please log in to get access.")
-    );
+    return next(new Error("Please log in to get access."));
   }
   // Verify token
   const decoded = verifyToken(token);
@@ -47,7 +45,7 @@ const grantedAccess = catchAsync(async (req, res, next) => {
 
   if (!currentUser) {
     return next(
-      new Error("The user belonging to this token does no longer exist.")
+      new Error("You are not logged in or you this user does not exist")
     );
   }
 
