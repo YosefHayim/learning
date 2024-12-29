@@ -71,10 +71,20 @@ const userSchema = new mongoose.Schema(
       coordinates: [Number],
       firstAddress: String,
     },
+    reviews: [{ type: mongoose.Schema.ObjectId, ref: "Reviews" }],
   },
   { timestamps: true },
-  { versionKey: false }
+  { versionKey: false },
+  { toJSON: { virtuals: true }, toObject: { virtuals: true } }
 );
+
+userSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: "reviews",
+    select:
+      "-__v -password passwordConfirm email emailVerificationToken emailVerificationExpires",
+  });
+});
 
 userSchema.pre("save", async function (next) {
   // Only hash the password if it has been modified (or is new)
