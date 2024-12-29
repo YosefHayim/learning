@@ -80,7 +80,7 @@ const userSchema = new mongoose.Schema(
 //   // 'this' refers to the query
 //   this.populate({
 //     path: "reviews",
-//     select: "rating comment",
+//     select: "rating comment -_id",
 //   });
 
 //   next();

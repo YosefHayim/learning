@@ -6,11 +6,13 @@ const commentSchema = new mongoose.Schema(
       type: String,
       required: [true, "Must provide a comment"],
     },
-    reviewId: {
-      type: mongoose.Schema.ObjectId,
-      ref: "Reviews",
-      required: [true, "Comment must belong to a review"],
-    },
+    reviewId: [
+      {
+        type: mongoose.Schema.ObjectId,
+        ref: "Reviews",
+        required: [true, "Comment must belong to a review"],
+      },
+    ],
   },
   { timestamps: true }
 );
@@ -19,7 +21,7 @@ const commentSchema = new mongoose.Schema(
 //   // 'this' refers to the query
 //   this.populate({
 //     path: "reviewId",
-//     select: "rating comment",
+//     select: "comment",
 //   });
 //   next();
 // });
