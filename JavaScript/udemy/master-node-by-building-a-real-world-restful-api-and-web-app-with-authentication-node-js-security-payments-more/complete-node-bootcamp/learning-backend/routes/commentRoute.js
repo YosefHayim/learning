@@ -5,15 +5,17 @@ const {
   getCommentsByReviewId,
   updateCommentById,
   deleteCommentById,
+  getCommentById,
 } = require("../controllers/commentController");
 const { grantedAccess } = require("../controllers/authController");
 
 const router = express.Router();
 
 router.get("/", grantedAccess, getAllComments);
-router.get("/:id", grantedAccess, getCommentsByReviewId);
+router.get("/:reviewId", grantedAccess, getCommentsByReviewId);
+router.get("/:id", grantedAccess, getCommentById);
 router.post("/:id", grantedAccess, addCommentByReviewId);
-router.patch("/:id", grantedAccess, updateCommentById);
+router.put("/:id", grantedAccess, updateCommentById);
 router.delete("/:id", grantedAccess, deleteCommentById);
 
 module.exports = router;

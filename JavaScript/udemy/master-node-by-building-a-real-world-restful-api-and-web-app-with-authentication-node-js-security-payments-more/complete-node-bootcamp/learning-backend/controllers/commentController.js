@@ -72,7 +72,7 @@ const deleteCommentById = catchAsync(async (req, res, next) => {
 
   res.status(200).json({
     status: "success",
-    response: `Comment ID: ${findComment} has been successfully deleted`,
+    response: `Comment ID: ${commentId} has been successfully deleted`,
   });
 });
 
@@ -81,22 +81,22 @@ const updateCommentById = catchAsync(async (req, res, next) => {
   const commentId = req.params.id;
 
   if (!commentId) {
-    return next(new Error(`Please provide reviewId in the URL.`));
+    return next(new Error(`Please provide commentId in the URL.`));
   }
 
   const updatedComment = await Comment.findByIdAndUpdate(
     commentId,
-    { rating, comment },
+    { comment },
     { new: true, runValidators: true }
   );
 
   if (!updatedComment) {
-    return next(new Error(`There is no review with ID: ${commentId}.`));
+    return next(new Error(`There is no comment with ID: ${commentId}.`));
   }
 
   res.status(200).json({
     status: "success",
-    response: `Review ID: ${commentId} has been updated`,
+    response: `Comment ID: ${commentId} has been updated`,
     data: updatedComment,
   });
 });
@@ -104,7 +104,7 @@ const updateCommentById = catchAsync(async (req, res, next) => {
 const getCommentsByReviewId = catchAsync(async (req, res, next) => {
   const Review = require("../models/reviewModel");
 
-  const reviewId = req.params.id;
+  const reviewId = req.params.reviewId;
 
   if (!reviewId) {
     return next(new Error(`Please provide reviewId in the url.`));
@@ -122,8 +122,30 @@ const getCommentsByReviewId = catchAsync(async (req, res, next) => {
   });
 });
 
+const getCommentById = catchAsync(async (req, res, next) => {
+  const commentId = req.params.id;
+
+  if (!commentId) {
+    return next(new Error(`Please provide commentId in the url.`));
+  }
+
+  const findComment = await Comment.findById(commentId);
+
+  if (!findComment) {
+    return next(
+      new Error(`There is no such comment with this ID: ${commentId}.`)
+    );
+  }
+
+  res.status(200).json({
+    status: "success",
+    response: findComment,
+  });
+});
+
 module.exports = {
   getAllComments,
+  getCommentById,
   addCommentByReviewId,
   getCommentsByReviewId,
   updateCommentById,
