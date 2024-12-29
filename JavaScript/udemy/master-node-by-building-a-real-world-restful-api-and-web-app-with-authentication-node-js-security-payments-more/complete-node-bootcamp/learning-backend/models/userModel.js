@@ -74,8 +74,7 @@ const userSchema = new mongoose.Schema(
     reviews: [{ type: mongoose.Schema.ObjectId, ref: "Reviews" }],
   },
   { timestamps: true },
-  { versionKey: false },
-  { toJSON: { virtuals: true }, toObject: { virtuals: true } }
+  { versionKey: false }
 );
 
 userSchema.pre(/^find/, function (next) {
