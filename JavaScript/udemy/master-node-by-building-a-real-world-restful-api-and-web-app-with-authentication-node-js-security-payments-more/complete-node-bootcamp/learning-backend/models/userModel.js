@@ -76,13 +76,6 @@ const userSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-userSchema.pre(/^find/, function (next) {
-  this.populate({
-    path: "Review",
-    select: "-__v",
-  });
-});
-
 userSchema.pre("save", async function (next) {
   // Only hash the password if it has been modified (or is new)
   if (!this.isModified("password")) return next();

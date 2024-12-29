@@ -1,21 +1,20 @@
 const mongoose = require("mongoose");
 
-reviewSchema = new mongoose.Schema(
+const reviewSchema = new mongoose.Schema(
   {
     rating: {
       type: Number,
       required: [true, "You must provide a rating between 1 and 5"],
-      min: 1,
-      max: 5,
-      default: 1,
+      min: [1, "Rating must be at least 1."],
+      max: [5, "Rating cannot exceed 5."],
     },
     comment: {
       type: String,
-      required: [true, "You must provide a comment"],
-      minLength: [1, "Must be at least 1 letter."],
-      maxLength: [50, " Cant exceed 50 letters."],
+      required: [true, "You must provide a comment."],
+      minLength: [1, "Comment must be at least 1 character."],
+      maxLength: [50, "Comment cannot exceed 50 characters."],
     },
-    UserId: {
+    userId: {
       type: mongoose.Schema.ObjectId,
       ref: "Users",
       required: [true, "Review must belong to a user."],
