@@ -52,7 +52,6 @@ const grantedAccess = catchAsync(async (req, res, next) => {
   }
 
   req.user = currentUser;
-  // console.log(req.user);
 
   next();
 });

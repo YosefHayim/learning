@@ -27,6 +27,14 @@ const addReviewByUserId = catchAsync(async (req, res, next) => {
   // Get the user ID
   const userId = req.params.id;
 
+  if (!userId) {
+    return next(new Error(`Please provide userId.`));
+  }
+
+  if (req.user._id.toString() === userId) {
+    return next(new Error(`You can't add review to yourself.`));
+  }
+
   // Get review data
   const { rating, comment } = req.body;
 

@@ -10,10 +10,10 @@ const { grantedAccess } = require("../controllers/authController");
 
 const router = express.Router();
 
-router.get("/", getAllReviews);
-router.post("/:id", addReviewByUserId);
-router.delete("/:id", deleteReviewByUserId);
-router.patch("/:id", updateReviewByUserId);
-router.get("/:id", getReviewsByUserId);
+router.get("/", grantedAccess, getAllReviews);
+router.post("/:id", grantedAccess, addReviewByUserId);
+router.delete("/:id", grantedAccess, deleteReviewByUserId);
+router.patch("/:id", grantedAccess, updateReviewByUserId);
+router.get("/:id", grantedAccess, getReviewsByUserId);
 
 module.exports = router;
