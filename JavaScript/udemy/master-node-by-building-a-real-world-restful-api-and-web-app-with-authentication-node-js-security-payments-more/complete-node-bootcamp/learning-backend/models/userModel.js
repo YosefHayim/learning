@@ -73,16 +73,13 @@ const userSchema = new mongoose.Schema(
     },
     reviews: [{ type: mongoose.Schema.ObjectId, ref: "Reviews" }],
   },
-  { timestamps: true },
-  { versionKey: false },
-  { toJSON: { virtuals: true }, toObject: { virtuals: true } }
+  { timestamps: true }
 );
 
 userSchema.pre(/^find/, function (next) {
   this.populate({
     path: "reviews",
-    select:
-      "-__v -password passwordConfirm email emailVerificationToken emailVerificationExpires",
+    select: "-__v",
   });
 });
 
