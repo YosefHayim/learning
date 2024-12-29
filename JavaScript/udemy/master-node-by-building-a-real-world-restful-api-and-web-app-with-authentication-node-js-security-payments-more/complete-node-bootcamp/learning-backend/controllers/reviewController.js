@@ -12,7 +12,7 @@ const getAllReviews = catchAsync(async (req, res, next) => {
   const reviews = await features.query;
 
   if (!reviews || reviews.length === 0) {
-    return next(new Error("No Users documents found in database"));
+    return next(new Error("No reviews documents found in database"));
   }
 
   res.status(200).json({
