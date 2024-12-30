@@ -111,16 +111,16 @@ userSchema.pre("save", function (next) {
   next();
 });
 
-userSchema.pre(/^find/, function (next) {
-  if (!this.getQuery().includeInactive) {
-    // Exclude inactive users unless explicitly included
-    this.find({ active: { $ne: false } });
-  } else {
-    // Remove the flag from the query so it doesn't affect database queries
-    this.setQuery({ ...this.getQuery(), includeInactive: undefined });
-  }
-  next();
-});
+// userSchema.pre(/^find/, function (next) {
+//   if (!this.getQuery().includeInactive) {
+//     // Exclude inactive users unless explicitly included
+//     this.find({ active: { $ne: false } });
+//   } else {
+//     // Remove the flag from the query so it doesn't affect database queries
+//     this.setQuery({ ...this.getQuery(), includeInactive: undefined });
+//   }
+//   next();
+// });
 
 userSchema.methods.updatePassword = async function (
   currentPassword,

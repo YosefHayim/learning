@@ -7,10 +7,10 @@ const logger = winston.createLogger({
 });
 
 const loggerInfo = (req, res, next) => {
-  if (req.body.password || req.body.email) {
-    req.body.password = "";
-    req.body.email = "";
-  }
+  // if (req.body.password || req.body.email) {
+  //   req.body.password = "";
+  //   req.body.email = "";
+  // }
   logger.info({
     requestedAt: new Date(),
     method: req.method,
