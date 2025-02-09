@@ -26,6 +26,7 @@ test(testName, async ({ page }) => {
   const shoesItem = page.locator(
     `//*[@id="post-2888"]/div/div/section[3]/div/div/div/div[3]/div/div/div/ul/li[1]/div[1]/a`
   );
+
   await shoesItem.click();
   logAction("Clicked on shoe item");
 
@@ -35,6 +36,7 @@ test(testName, async ({ page }) => {
 
   // Click 'Add to Cart' multiple times
   const addToCartBtn = page.getByRole("button", { name: "Add to cart" });
+
   await addToCartBtn.click();
   logAction("Clicked 'Add to Cart' button");
 
@@ -48,6 +50,7 @@ test(testName, async ({ page }) => {
 
   // Click on cart icon
   const cartIcon = page.locator('//*[@id="ast-site-header-cart"]/div[1]/a');
+
   await cartIcon.click();
 
   logAction("Clicked on cart icon");
@@ -57,6 +60,7 @@ test(testName, async ({ page }) => {
 
   // Verify subtotal
   const subtotal = page.locator('td[data-title="Subtotal"] bdi').nth(0);
+
   await expect(subtotal).toHaveText(/120\.00/);
   logAction("Verified subtotal is 120.00");
 

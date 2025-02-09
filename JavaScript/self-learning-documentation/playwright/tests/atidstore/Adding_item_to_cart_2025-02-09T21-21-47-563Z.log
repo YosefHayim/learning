@@ -1,0 +1,10 @@
+[11:21:48 PM] Test started: Adding item to cart
+[11:21:49 PM] Navigated to: https://atid.store/
+[11:21:50 PM] Clicked on shoe item
+[11:21:50 PM] Verified product page URL
+[11:21:50 PM] Clicked 'Add to Cart' button
+[11:21:50 PM] Verified cart has items
+[11:21:50 PM] Clicked on cart icon
+[11:21:50 PM] Verified cart page URL
+[11:21:51 PM] Verified subtotal is 120.00
+[11:21:51 PM] Test completed successfully
