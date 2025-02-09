@@ -42,12 +42,14 @@ test(testName, async ({ page }) => {
   const cartItemsNumber = page.locator(
     '//*[@id="ast-site-header-cart"]/div[1]/a/div/span'
   );
+
   await expect(cartItemsNumber).toHaveText(/[1-9]+/);
   logAction("Verified cart has items");
 
   // Click on cart icon
   const cartIcon = page.locator('//*[@id="ast-site-header-cart"]/div[1]/a');
   await cartIcon.click();
+
   logAction("Clicked on cart icon");
 
   await expect(page).toHaveURL("https://atid.store/cart-2/");
@@ -59,5 +61,4 @@ test(testName, async ({ page }) => {
   logAction("Verified subtotal is 120.00");
 
   logAction("Test completed successfully");
-  process.exit();
 });
