@@ -1,10 +1,14 @@
-const socket = io("http://localhost:9000");
-
 // const username = prompt("what is your username?");
 // const password = prompt("what is your password?");
 
+// Instead of using the prompt with username and pd
+const username = "Joseph";
+const password = "x";
+
+const socket = io("http://localhost:9000");
+
 socket.on("connect", () => {
-  console.log("connected");
+  console.log("Connected!");
   socket.emit("clientConnect");
 });
 
@@ -12,12 +16,17 @@ socket.on("connect", () => {
 socket.on("nsList", (nsData) => {
   const nameSpacesDiv = document.querySelector(".namespaces");
   nsData.forEach((ns) => {
-    console.log(ns.image);
-    console.log(ns.name);
-
+    // console.log(ns);
     // update the HTML with each ns
-    nameSpacesDiv.innerHTML += `<div class="namespace" ns="${ns.name}"><img src="${ns.image}"></div>
+    nameSpacesDiv.innerHTML += `<div class="namespace" ns="${ns.endpoint}"><img src="${ns.image}"></div>
 `;
+  });
+
+  Array.from(document.getElementsByClassName("namespace")).forEach((el) => {
+    // console.log(el);
+    el.addEventListener("click", (e) => {
+      joinNs(el, nsData);
+    });
   });
 });
 
