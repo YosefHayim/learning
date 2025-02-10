@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Small Chat App 10-02-2025</title>
+  </head>
+  <style>
+    .container {
+      margin-top: 30px;
+    }
+    input {
+      height: 35px;
+      width: 100%;
+    }
+    #messages {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+    #messages li {
+      padding: 5px 10px;
+    }
+    #message li:nth-child(odd) {
+      background: #aaa;
+    }
+  </style>
+  <body>
+    <div class="container text-center">
+      <form class="row" id="message-form">
+        <div class="col-6">
+          <input
+            id="user-message"
+            type="text"
+            placeholder="Enter your message"
+          />
+        </div>
+        <div class="col-2">
+          <input class="btn btn-primary" type="submit" value="Send!" />
+        </div>
+      </form>
+
+      <ul id="messages">
+        <!-- THIS WILL BE POPULATED BY JAVASCRIPT! -->
+      </ul>
+    </div>
+
+    <h1>Small Chat App 10-02-2025</h1>
+  </body>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    // socket.io.js is going to add the io object to the global scope
+    // console.log(io);
+
+    const socket = io("http://localhost:8000");
+    // console.log(socket);
+
+    socket.on("connect", () => {
+      console.log(socket.id);
+    });
+
+    socket.on("messageFromServer", (data) => {
+      console.log(data);
+    });
+
+    socket.emit("messageFromClient", { data: "Hello from the browser" });
+
+    socket.on("newMessageToClients", (newMessage) => {
+      document.querySelector(
+        "#messages"
+      ).innerHTML += `<li>${newMessage.text}</li>`;
+    });
+
+    document.querySelector("#message-form").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const newMessage = document.querySelector("#user-message").value;
+      console.log(newMessage);
+      socket.emit("newMessageToServer", { text: newMessage });
+    });
+  </script>
+</html>
