@@ -14,7 +14,9 @@ socket.on("connect", () => {
 
 // listen for the nsList event from the server which give us the namespaces
 socket.on("nsList", (nsData) => {
+  const lastNs = localStorage.getItem("lastNs");
   const nameSpacesDiv = document.querySelector(".namespaces");
+  nameSpacesDiv.innerHTML = "";
   nsData.forEach((ns) => {
     // console.log(ns);
     // update the HTML with each ns
@@ -28,6 +30,9 @@ socket.on("nsList", (nsData) => {
       joinNs(el, nsData);
     });
   });
+
+  // if lastNs is set, grab that element instead of 0.
+  joinNs(lastNs || document.getElementsByClassName("namespace")[0], nsData);
 });
 
 socket.on("welcome", (data) => {
