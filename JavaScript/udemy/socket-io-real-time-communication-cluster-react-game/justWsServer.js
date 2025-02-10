@@ -16,6 +16,9 @@ wss.on("headers", (headers, req) => {
 wss.on("connection", (ws, req) => {
   // console.log(req);
   ws.send("Welcome to the websocket server!!!");
+  ws.on("message", (data) => {
+    console.log(data.toString());
+  });
 });
 
 server.listen(8000);

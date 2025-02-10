@@ -17,6 +17,9 @@
 
       ws.onmessage = (message) => {
         console.log(message.data);
+        ws.send(
+          "I am so excited i am connected to the server. its like my country just won the world coup"
+        );
       };
     </script>
   </body>
