@@ -1,0 +1,15 @@
+{
+  "name": "socket-io-real-time-communication-cluster-react-game",
+  "version": "1.0.0",
+  "description": "Course link: https://www.udemy.com/course/socketio-with-websockets-the-details/?couponCode=KEEPLEARNING",
+  "main": "housekeeping.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ws": "^8.18.0"
+  }
+}
