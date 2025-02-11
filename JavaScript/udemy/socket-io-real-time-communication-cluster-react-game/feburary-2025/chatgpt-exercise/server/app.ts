@@ -31,7 +31,9 @@ io.on("connection", (socket) => {
 
   // Listen for "chatMessage" events from clients
   socket.on("chatMessage", (message: string) => {
-    console.log("Received message:", message);
+    console.log("Received message from client:", message);
+
+    io.emit("everyone", `Broadcast from server: ${message}`);
   });
 
   // Handle disconnection
