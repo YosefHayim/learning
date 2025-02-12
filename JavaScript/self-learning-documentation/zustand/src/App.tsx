@@ -9,7 +9,7 @@ function App() {
   return (
     <div>
       <h1>Zustand Learning</h1>
-      <div className="card">
+      <div className="card">  
         <h2>From the count store is {count}</h2>
         <button onClick={increase}>Increase</button>
         <button onClick={decrease}>Decrease</button>
