@@ -7,6 +7,7 @@ const password = "x";
 
 // always join the main namespace, because that's where the client gets the other namespaces from
 const socket = io("http://localhost:9000");
+
 // example to hardcoded namespace to join.
 // const socket2 = io("http://localhost:9000/wiki");
 // const socket3 = io("http://localhost:9000/mozilla");
