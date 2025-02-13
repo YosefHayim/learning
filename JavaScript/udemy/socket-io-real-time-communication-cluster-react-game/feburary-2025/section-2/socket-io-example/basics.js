@@ -1,3 +1,6 @@
+// http is a nodejs module
+
+// express is 3rd party module from npm to launch server
 const express = require("express");
 const socketio = require("socket.io");
 
@@ -14,10 +17,10 @@ const io = socketio(expressServer);
 io.on("connection", (socket) => {
   console.log(socket.id, "has connected");
 
-  // in ws we use 'send' method and in socket.io we use the 'emit' method.
-  socket.emit("messageFromServer", { data: "Welcome to the server" });
-
   socket.on("messageFromClient", (data) => {
     console.log(data);
   });
+
+  // in ws we use 'send' method and in socket.io we use the 'emit' method.
+  socket.emit("messageFromServer", { data: "Welcome to the server" });
 });
