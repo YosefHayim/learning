@@ -45,14 +45,17 @@
 
   <ul id="messages">
     <!-- THIS WILL BE POPULATED BY JAVASCRIPT! -->
-  </ul>.
+  </ul>
+  .
 </div>
 
-<script src="/socket.io/socket.io.js"></script>
+<script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
 
 <script>
-  const socket = io("http://localhost:8001");
-  const adminSocket = io("http://localhost:8001/admin");
+  // server one
+  const socket = io("http://localhost:8000");
+  // server two which is the admin one
+  const adminSocket = io("http://localhost:8000/admin");
 
   socket.on("connect", () => {
     //do connect type stuff
@@ -83,6 +86,10 @@
 
   adminSocket.on("welcomeToChatRoom", () => {
     console.log("Admin chat room fired!");
+  });
+
+  adminSocket.on("messageToClientsFromAdmin", (data) => {
+    console.log(data);
   });
 
   document
