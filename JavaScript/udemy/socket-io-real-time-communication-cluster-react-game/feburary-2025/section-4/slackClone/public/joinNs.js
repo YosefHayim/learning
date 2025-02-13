@@ -1,6 +1,5 @@
 const joinNs = (el, nsData) => {
-  const nsEndpoint = el.getAttribute("ns");
-  // console.log(nsEndpoint);
+  const nsEndpoint = el?.getAttribute("ns");
 
   const clickedNs = nsData.find((row) => row.endpoint === nsEndpoint);
   const rooms = clickedNs.rooms;
@@ -12,5 +11,5 @@ const joinNs = (el, nsData) => {
     roomList.innerHTML += `<li><span class="glyphicon glyphicon-lock"></span>${room.roomTitle}</li>
 `;
   });
-  localStorage.setItem("lastNs", nsEndpoint);
+  if (nsEndpoint) localStorage.setItem("lastNs", nsEndpoint);
 };
