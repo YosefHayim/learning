@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
-const sql = require("mssql");
+const dotenv = require("dotenv").config();
 const connectDb = require("./config/connectDb");
 
 const app = express();
