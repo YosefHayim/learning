@@ -6,16 +6,45 @@
 // select * from posts where CreationDate > '2024-01-01'
 
 // -- 3. Find comments longer than 200 characters.
+// select text from Comments where LEN(text) > 200
+
 // -- 4. Get the titles of posts with a score above 50.
+// select Title,score from posts where score > 50
+
 // -- 5. Count how many users joined per year.
+// SELECT YEAR(CreationDate) AS join_year, COUNT(*) AS user_count
+// FROM users
+// WHERE CreationDate IS NOT NULL
+// GROUP BY YEAR(CreationDate)
+// ORDER BY join_year;
+
 // -- 6. Find the earliest created post.
+// SELECT MIN(CreationDate) AS earliestPost
+// FROM Posts
+// WHERE CreationDate IS NOT NULL;
+
 // -- 7. Display badges awarded more than once.
+// select UserId, COUNT(*) as awardedMoreThanOnce
+// from Badges
+// GROUP BY UserId
+// Having count(*) > 1
+
 // -- 8. Show users with display names starting with 'A'.
+// SELECT DisplayName from Users WHERE (lower(DisplayName) LIKE 'a%');
+
 // -- 9. Find the top 5 longest comments.
+// SELECT top 5 id,text, LEN(text) AS comment_length
+// FROM comments
+// ORDER BY comment_length DESC
+
 // -- 10. Get total votes by type.
+// SELECT VoteTypeId, COUNT(*) AS total_votes
+// FROM Votes
+// GROUP BY VoteTypeId;
 
 // -- # Intermediate Exercises (31–70): Aggregation, Joins, Subqueries
 // -- 31. Find the average reputation of users with at least 5 badges.
+
 // -- 32. List posts with more comments than votes.
 // -- 33. Show the total votes for each post type.
 // -- 34. Find users who earned badges in 2023.
