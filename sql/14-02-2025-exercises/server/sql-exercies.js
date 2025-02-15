@@ -97,14 +97,18 @@
 // HAVING COUNT(c.Id) > 10 AND p.Score > 20;
 
 // -- 20. Show all users who received at least one badge and made at least one post.
+// SELECT u.DisplayName
+// FROM Users u
+// JOIN Posts p ON p.OwnerUserId = u.Id
+// JOIN Badges b ON b.UserId = u.Id
+// GROUP BY u.DisplayName;
 
-// -- 24. Find users who received the same badge more than once.
-// -- 25. Display the top 3 users with the highest total votes on their posts.
-// -- 26. List all users with their total number of comments made.
-// -- 27. Find the user who made the most comments in 2023.
-// -- 28. Display the post with the most comments and its user.
-// -- 29. List the total number of votes by vote type for each post.
-// -- 30. Show all users who made posts in every year since their registration.
+// -- 21. Display the top 3 users with the highest total votes on their posts.
+// SELECT TOP(3) u.DisplayName, SUM(p.Score) AS TotalVotes
+// FROM Users AS u
+// JOIN Posts AS p ON p.OwnerUserId = u.Id
+// GROUP BY u.Id, u.DisplayName
+// ORDER BY TotalVotes DESC;
 
 // -- # Intermediate Exercises (31–70): Aggregation, Joins, Subqueries
 // SELECT AVG(u.Reputation) AS average_reputation
