@@ -1,17 +1,34 @@
 const express = require("express");
-let ejs = require("ejs");
 const app = express();
+const path = require("path");
+const dotenv = require("dotenv");
 
-let people = ["geddy", "neil", "alex"];
-let html = ejs.render('<%= people.join(", "); %>', { people: people });
+dotenv.config();
+
+// Middleware
+app.use(express.static(path.join(__dirname, "public")));
+app.use(express.urlencoded({ extended: false }));
+
+// Set EJS as templating engines
+app.set("view engine", "ejs");
 
 app.get("/", (req, res) => {
-  res.status(200).json({
-    status: "success",
-    response: "learning ejs server side rendering",
-  });
+  res.render("index");
 });
 
-app.listen(3000, () => {
-  console.log(`Server is running on port: ${3000}`);
+app.get("/about", (req, res) => {
+  res.render("about");
 });
+
+app.get("/contact", (req, res) => {
+  res.render("contact");
+});
+
+// 404 Handler
+app.use((req, res) => {
+  res.status(404).render("error", { message: "Page Not Found" });
+});
+
+// Server
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
