@@ -1,4 +1,3 @@
-// -- # Easy Exercises (1–30): Basic Queries
 // -- 1. Retrieve all user names and their reputations.
 // select DisplayName,Reputation from users
 
@@ -42,8 +41,50 @@
 // FROM Votes
 // GROUP BY VoteTypeId;
 
+// -- 11. Find all posts along with their corresponding user names.
+// select Users.Id, count(posts.id) as post_count
+// from Users
+// join Posts on users.Id = posts.OwnerUserId
+// group by users.Id
+
+// -- 12. List all comments with the display name of the user who made them.
+// SELECT COMMENTS.TEXT AS COMMENT_TEXT, USERS.DisplayName AS USERNAME
+// FROM Comments
+// JOIN USERS ON COMMENTS.UserId = USERS.Id
+
+// -- 13. Display the number of posts each user has made.
+// SELECT Users.Id, COUNT(Posts.OwnerUserId) AS PostCount
+// FROM Posts
+// JOIN Users ON Posts.OwnerUserId = Users.Id
+// GROUP BY Users.Id;
+
+// -- 14. Show all posts that received more than 3 different types of votes.
+// SELECT PostId
+// FROM Votes
+// GROUP BY PostId
+// HAVING COUNT(DISTINCT VoteTypeId) > 3;
+
+// -- 15. List all users who have received both upvotes and downvotes.
+// SELECT USERS.DisplayName,USERS.DownVotes,USERS.UpVotes FROM Users
+// WHERE Users.DownVotes > 0 AND USERS.UpVotes > 0
+
+// -- 16. Find the highest-scoring post for each user.
+// -- 17. Display all posts with their comment counts.
+// -- 18. Show the total number of votes each post received, including post title.
+// -- 19. List users who have never made a post.
+// -- 20. Display all badges with the user names who earned them.
+// -- 21. Find posts that have more than 10 comments and more than 20 votes.
+// -- 22. List the most frequently awarded badge.
+// -- 23. Show all users who received at least one badge and made at least one post.
+// -- 24. Find users who received the same badge more than once.
+// -- 25. Display the top 3 users with the highest total votes on their posts.
+// -- 26. List all users with their total number of comments made.
+// -- 27. Find the user who made the most comments in 2023.
+// -- 28. Display the post with the most comments and its user.
+// -- 29. List the total number of votes by vote type for each post.
+// -- 30. Show all users who made posts in every year since their registration.
+
 // -- # Intermediate Exercises (31–70): Aggregation, Joins, Subqueries
-// -- 31. Find the average reputation of users with at least 5 badges.
 // SELECT AVG(u.Reputation) AS average_reputation
 // FROM Users u
 // JOIN (
