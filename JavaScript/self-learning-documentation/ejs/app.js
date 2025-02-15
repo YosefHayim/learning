@@ -12,7 +12,8 @@ const PORT = process.env.PORT || 3000;
 connectDb();
 
 app.use(express.static(path.join(__dirname, "public")));
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 // Set EJS as templating engines
 app.set("view engine", "ejs");
@@ -46,18 +47,40 @@ app.get("/create/post", (req, res) => {
   res.render("createPost");
 });
 
-app.post("/submit/post", (req, res) => {
-  const { title, content } = req.body;
-  const sql = `INSERT INTO posts (Title, Body, CreationDate) VALUES (?, ?, NOW())`;
+app.post("/submit/post", async (req, res) => {
+  const { title, body } = req.body;
 
-  db.query(sql, [title, content], (err, result) => {
-    if (err) throw err;
-    res.send(`Post created with timestamp: ${result.insertId}`);
-  });
-  res.status(200).json({
-    status: "success",
-    message: "Post created successfully",
-  });
+  console.log(title, body);
+
+  const transaction = new sql.Transaction();
+
+  try {
+    await transaction.begin(); // Start the transaction
+
+    const request = new sql.Request(transaction);
+
+    await request
+      .input("Title", sql.VarChar, title)
+      .input("Body", sql.Text, body)
+      .input("CreationDate", sql.DateTime, new Date())
+      .input("ViewCount", sql.Int, 0)
+      .input("LastActivityDate", sql.DateTime, new Date())
+      .input("PostTypeId", sql.Int, 1)
+      .input("Score", sql.Int, 0).query(`
+        INSERT INTO Posts (Title, Body, CreationDate, ViewCount, LastActivityDate, PostTypeId, Score) 
+        VALUES (@Title, @Body, @CreationDate, @ViewCount, @LastActivityDate, @PostTypeId, @Score)
+      `);
+
+    await transaction.commit(); // Commit transaction if successful
+
+    res
+      .status(200)
+      .json({ status: "success", message: "Post created successfully" });
+  } catch (err) {
+    await transaction.rollback(); // Rollback on error
+    console.error("SQL Transaction Error:", err);
+    res.status(500).json({ error: "Failed to create post" });
+  }
 });
 
 // 404 Handler

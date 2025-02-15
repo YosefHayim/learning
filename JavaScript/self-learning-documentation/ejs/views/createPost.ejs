@@ -16,7 +16,7 @@
       </div>
       <div class="div-form">
         <label for="content">Content</label>
-        <input type="text" placeholder="Content" name="content" />
+        <input type="text" placeholder="Content" name="body" />
       </div>
       <button type="submit">Create post</button>
     </form>
@@ -29,19 +29,20 @@
         e.preventDefault();
         const formData = new FormData(e.target);
         const title = formData.get("title");
-        const content = formData.get("content");
-        createPost(title, content);
+        const body = formData.get("body");
+        createPost(title, body);
       });
 
-    const createPost = async (title, content) => {
+    const createPost = async (title, body) => {
       const url = `http://localhost:3000/submit/post`;
       try {
-        const r = await fetch(url, {
-          title,
-          content,
+        const response = await fetch(url, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ title, body }),
         });
-        if (r) {
-          console.log(`Post created successfully`);
+        if (response.ok) {
+          console.log(response);
         }
       } catch (error) {
         console.error(`Could not create post: `, error);
