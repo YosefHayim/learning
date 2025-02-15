@@ -1,11 +1,14 @@
 const express = require("express");
-const app = express();
 const path = require("path");
 const dotenv = require("dotenv");
-
+const connectDb = require("./config/connectDb");
 dotenv.config();
 
-// Middleware
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+connectDb();
+
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: false }));
 
@@ -33,6 +36,4 @@ app.use((req, res) => {
   res.status(404).render("error", { message: "Page Not Found" });
 });
 
-// Server
-const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
