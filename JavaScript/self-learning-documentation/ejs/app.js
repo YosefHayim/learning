@@ -1,4 +1,5 @@
 const express = require("express");
+const sql = require("mssql");
 const path = require("path");
 const dotenv = require("dotenv");
 const connectDb = require("./config/connectDb");
@@ -28,7 +29,16 @@ app.get("/contact", (req, res) => {
 });
 
 app.get("/posts", (req, res) => {
-  res.render("posts");
+  const querySql = new sql.Request();
+
+  querySql.query("select * from Posts", (err, result) => {
+    if (err) {
+      console.log(`Query error: `, err);
+      res.status(500).send("Database error");
+    } else {
+      res.render("posts");
+    }
+  });
 });
 
 // 404 Handler
