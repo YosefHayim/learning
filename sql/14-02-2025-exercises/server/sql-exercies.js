@@ -69,6 +69,15 @@
 // WHERE Users.DownVotes > 0 AND USERS.UpVotes > 0
 
 // -- 16. Find the highest-scoring post for each user.
+// SELECT p.OwnerUserId, p.Id, p.Score
+// FROM Posts p
+// JOIN (
+//     SELECT OwnerUserId, MAX(Score) AS MaxScore
+//     FROM Posts
+//     GROUP BY OwnerUserId
+// ) maxPosts
+// ON p.OwnerUserId = maxPosts.OwnerUserId AND p.Score = maxPosts.MaxScore;
+
 // -- 17. Display all posts with their comment counts.
 // -- 18. Show the total number of votes each post received, including post title.
 // -- 19. List users who have never made a post.
