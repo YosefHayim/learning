@@ -54,35 +54,16 @@
 // ) b ON u.Id = b.UserId;
 
 // -- 32. List posts with more comments than votes.
-// -- 33. Show the total votes for each post type.
-// -- 34. Find users who earned badges in 2023.
-// -- 35. Retrieve posts that link to other posts from the same year.
-// -- 36. Display users with the highest average comment length.
-// -- 37. Find posts that received votes from more than 10 unique users.
-// -- 38. List badges earned by more than 50 users.
-// -- 39. Show users who made posts but never received comments.
-// -- 40. Find posts with the highest score per month.
-
-// -- # Advanced Exercises (71–100): CTEs, Window Functions, Complex Joins
-// -- 71. Use a CTE to list users with their post count.
-// -- 72. Rank posts by score within each post type.
-// -- 73. Display users with their cumulative vote totals over time.
-// -- 74. Find users whose posts always received upvotes.
-// -- 75. Show posts that received both upvotes and downvotes.
-// -- 76. Calculate the rolling average of votes per day.
-// -- 77. Display the longest comment per user using window functions.
-// -- 78. Find the user with the most badges earned in a single month.
-// -- 79. List users who received the same badge multiple times.
-// -- 80. Display the difference between highest and lowest scoring posts per user.
-
-// -- # Challenge Exercises (91–100): Analytical Queries
-// -- 91. Find users with the highest average comment-to-post ratio.
-// -- 92. Display posts that received votes from their authors.
-// -- 93. Show the longest chain of post links using recursive CTEs.
-// -- 94. Rank users based on the frequency of their voting activity.
-// -- 95. Identify the most active user per month.
-// -- 96. Display users who received an equal number of upvotes and downvotes.
-// -- 97. Find the highest-scoring post from each year.
-// -- 98. Show cumulative badge counts by year.
-// -- 99. Display posts with consistent daily votes.
-// -- 100. Find users who achieved the highest score growth rate over time.
+// SELECT p.Id, p.Title
+// FROM Posts p
+// JOIN (
+//     SELECT PostId, COUNT(*) AS comment_count
+//     FROM Comments
+//     GROUP BY PostId
+// ) c ON p.Id = c.PostId
+// JOIN (
+//     SELECT PostId, COUNT(*) AS vote_count
+//     FROM Votes
+//     GROUP BY PostId
+// ) v ON p.Id = v.PostId
+// WHERE c.comment_count > v.vote_count;
