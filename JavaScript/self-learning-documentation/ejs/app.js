@@ -31,12 +31,12 @@ app.get("/contact", (req, res) => {
 app.get("/posts", (req, res) => {
   const querySql = new sql.Request();
 
-  querySql.query("select * from Posts", (err, result) => {
+  querySql.query("select top 10 * from Posts", (err, result) => {
     if (err) {
       console.log(`Query error: `, err);
       res.status(500).send("Database error");
     } else {
-      res.render("posts");
+      res.render("posts", { posts: result.recordset });
     }
   });
 });

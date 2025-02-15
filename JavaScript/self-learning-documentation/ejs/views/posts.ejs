@@ -7,11 +7,24 @@
   </head>
   <body>
     <%- include('partials/navbar') %>
-    <h1>Blog posts</h1>
+    <main>
+      <h1>Blog posts</h1>
+      <ul>
+        <% posts.forEach(post => { %>
+        <div>
+          <li>
+            <p><%= post.CreationDate %></p>
+            <h2><%= post.Title %></h2>
+            <p><%= post.Body.replace(/<[^>]*>/g, '') %></p>
+          </li>
+        </div>
+        <% }) %>
+      </ul>
+    </main>
     <%- include('partials/footer') %>
   </body>
   <script>
-    var posts;
-    console.log(posts);
+    // const posts = <%- JSON.stringify(posts) %>;
+    // console.log(posts);
   </script>
 </html>

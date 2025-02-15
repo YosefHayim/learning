@@ -9,8 +9,22 @@
   <body>
     <%- include('partials/navbar') %>
     <form>
-      <label>First name</label>
-      <input type="text" placeholder="First name" name="firstName" />
+      <div class="div-form">
+        <label for="firstName">First name</label>
+        <input type="text" placeholder="First name" name="firstName" />
+      </div>
+      <div class="div-form">
+        <label for="lastName">Last name</label>
+        <input type="text" placeholder="Last name" name="lastName" />
+      </div>
+      <div class="div-form">
+        <label for="Email">Email</label>
+        <input type="text" placeholder="Email" name="email" />
+      </div>
+      <div class="div-form">
+        <label for="age">Age</label>
+        <input type="text" placeholder="Age" name="age" />
+      </div>
       <button type="submit">Send message</button>
     </form>
   </body>
@@ -21,6 +35,9 @@
         e.preventDefault();
         const formData = new FormData(e.target);
         const fName = formData.get("firstName");
+        const lastName = formData.get("lastName");
+        const email = formData.get("email");
+        const age = formData.get("age");
         console.log(fName);
       });
   </script>
