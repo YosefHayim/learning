@@ -79,12 +79,25 @@
 // ON p.OwnerUserId = maxPosts.OwnerUserId AND p.Score = maxPosts.MaxScore;
 
 // -- 17. Display all posts with their comment counts.
-// -- 18. Show the total number of votes each post received, including post title.
-// -- 19. List users who have never made a post.
-// -- 20. Display all badges with the user names who earned them.
-// -- 21. Find posts that have more than 10 comments and more than 20 votes.
-// -- 22. List the most frequently awarded badge.
-// -- 23. Show all users who received at least one badge and made at least one post.
+// select id,CommentCount
+// from posts
+// order by posts.Id
+
+// -- 18. List users who have never made a post.
+// SELECT Users.Id
+// FROM Users
+// LEFT JOIN Posts ON Users.Id = Posts.OwnerUserId
+// WHERE Posts.Id IS NULL;
+
+// -- 19. Find posts that have more than 10 comments and more than 20 votes.
+// SELECT p.Id
+// FROM Posts p
+// JOIN Comments c ON p.Id = c.PostId
+// GROUP BY p.Id, p.Score
+// HAVING COUNT(c.Id) > 10 AND p.Score > 20;
+
+// -- 20. Show all users who received at least one badge and made at least one post.
+
 // -- 24. Find users who received the same badge more than once.
 // -- 25. Display the top 3 users with the highest total votes on their posts.
 // -- 26. List all users with their total number of comments made.
