@@ -17,9 +17,11 @@ body {
   align-items: center;
 }
 
-.navbar {
+.div-form {
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  width: 100%;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  text-align: start;
+  gap: 0.2em;
 }

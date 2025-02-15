@@ -27,6 +27,7 @@
       </div>
       <button type="submit">Send message</button>
     </form>
+    <%- include('partials/footer') %>
   </body>
   <script>
     const formEl = document
@@ -38,7 +39,6 @@
         const lastName = formData.get("lastName");
         const email = formData.get("email");
         const age = formData.get("age");
-        console.log(fName);
       });
   </script>
 </html>

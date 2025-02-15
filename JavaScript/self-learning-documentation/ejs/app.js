@@ -3,6 +3,7 @@ const sql = require("mssql");
 const path = require("path");
 const dotenv = require("dotenv");
 const connectDb = require("./config/connectDb");
+const { stat } = require("fs");
 dotenv.config();
 
 const app = express();
@@ -38,6 +39,24 @@ app.get("/posts", (req, res) => {
     } else {
       res.render("posts", { posts: result.recordset });
     }
+  });
+});
+
+app.get("/create/post", (req, res) => {
+  res.render("createPost");
+});
+
+app.post("/submit/post", (req, res) => {
+  const { title, content } = req.body;
+  const sql = `INSERT INTO posts (Title, Body, CreationDate) VALUES (?, ?, NOW())`;
+
+  db.query(sql, [title, content], (err, result) => {
+    if (err) throw err;
+    res.send(`Post created with timestamp: ${result.insertId}`);
+  });
+  res.status(200).json({
+    status: "success",
+    message: "Post created successfully",
   });
 });
 

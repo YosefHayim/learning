@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/create-post.css" />
+
+    <title>Create post</title>
+  </head>
+  <body>
+    <%- include('partials/navbar') %>
+    <form>
+      <div class="div-form">
+        <label for="title">Title</label>
+        <input type="text" placeholder="Title" name="title" />
+      </div>
+      <div class="div-form">
+        <label for="content">Content</label>
+        <input type="text" placeholder="Content" name="content" />
+      </div>
+      <button type="submit">Create post</button>
+    </form>
+    <%- include('partials/footer') %>
+  </body>
+  <script>
+    const formEl = document
+      .querySelector("form")
+      .addEventListener("submit", (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const title = formData.get("title");
+        const content = formData.get("content");
+        createPost(title, content);
+      });
+
+    const createPost = async (title, content) => {
+      const url = `http://localhost:3000/submit/post`;
+      try {
+        const r = await fetch(url, {
+          title,
+          content,
+        });
+        if (r) {
+          console.log(`Post created successfully`);
+        }
+      } catch (error) {
+        console.error(`Could not create post: `, error);
+      }
+    };
+  </script>
+</html>
