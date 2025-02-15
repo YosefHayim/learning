@@ -17,14 +17,17 @@ body {
   align-items: center;
 }
 
-.navbar {
-  padding: 0.5em;
+.post-container {
+  padding-left: 3em;
+  margin-top: 5em;
+  margin-bottom: 1em;
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  width: 100%;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: start;
 }
 
-a:hover {
-  background-color: #f0f0f0;
+h1 {
+  text-align: center;
+  width: 100%;
 }
