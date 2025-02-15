@@ -1,10 +1,12 @@
+const { config } = require("dotenv");
 const sql = require("mssql");
+const dotenv = require("dotenv").config();
 
 const sqlConfig = {
-  user: "sa",
-  password: "MichelleK2",
-  server: "localhost",
-  database: "StackOverflowMini",
+  user: process.env.DB_USER,
+  password: process.env.DB_PWD,
+  server: process.env.SERVER_NAME,
+  database: process.env.DB_NAME,
   options: {
     encrypt: false, // Disable encryption temporarily
     trustServerCertificate: true,
