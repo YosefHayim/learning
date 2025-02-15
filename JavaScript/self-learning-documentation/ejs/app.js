@@ -24,6 +24,10 @@ app.get("/contact", (req, res) => {
   res.render("contact");
 });
 
+app.get("/posts", (req, res) => {
+  res.render("posts");
+});
+
 // 404 Handler
 app.use((req, res) => {
   res.status(404).render("error", { message: "Page Not Found" });

@@ -1,17 +1,27 @@
-<%- include('partials/navbar') %>
-<form>
-  <label>First name</label>
-  <input type="text" placeholder="First name" name="firstName" />
-  <button type="submit">Send message</button>
-</form>
-
-<script>
-  const formEl = document
-    .querySelector("form")
-    .addEventListener("submit", (e) => {
-      e.preventDefault();
-      const formData = new FormData(e.target);
-      const fName = formData.get("firstName");
-      console.log(fName);
-    });
-</script>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/contact.css" />
+    <title>Contact Us</title>
+  </head>
+  <body>
+    <%- include('partials/navbar') %>
+    <form>
+      <label>First name</label>
+      <input type="text" placeholder="First name" name="firstName" />
+      <button type="submit">Send message</button>
+    </form>
+  </body>
+  <script>
+    const formEl = document
+      .querySelector("form")
+      .addEventListener("submit", (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const fName = formData.get("firstName");
+        console.log(fName);
+      });
+  </script>
+</html>
