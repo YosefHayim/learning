@@ -44,6 +44,14 @@
 
 // -- # Intermediate Exercises (31–70): Aggregation, Joins, Subqueries
 // -- 31. Find the average reputation of users with at least 5 badges.
+// SELECT AVG(u.Reputation) AS average_reputation
+// FROM Users u
+// JOIN (
+//     SELECT UserId
+//     FROM Badges
+//     GROUP BY UserId
+//     HAVING COUNT(*) >= 5
+// ) b ON u.Id = b.UserId;
 
 // -- 32. List posts with more comments than votes.
 // -- 33. Show the total votes for each post type.
