@@ -6,6 +6,20 @@
     <title>Single post</title>
   </head>
   <body>
-    <%- include('partials/navbar') %> <%- include('partials/footer') %>
+    <%- include('partials/navbar') %>
+    <main>
+      <div>
+        <p>Posted at: <%= makeDateReadable(post.CreationDate) %></p>
+        <p>Post of: <%= post.LastEditorDisplayName %></p>
+        <h1><%= post.Title %></h1>
+        <p><%= post.Body.replace(/<[^>]*>/g, '') %></p>
+      </div>
+    </main>
+    <%- include('partials/footer') %>
   </body>
+  <script>
+
+    const post = <%- JSON.stringify(post) %>
+    console.log(post);
+  </script>
 </html>

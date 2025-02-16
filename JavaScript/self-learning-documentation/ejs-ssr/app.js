@@ -1,10 +1,9 @@
 const express = require("express");
 const sql = require("mssql");
 const path = require("path");
-const dotenv = require("dotenv");
+const dotenv = require("dotenv").config();
 const connectDb = require("./config/connectDb");
-const { stat } = require("fs");
-dotenv.config();
+const makeDateReadable = require("./utils/readableDateFn");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -41,6 +40,31 @@ app.get("/posts", (req, res) => {
       res.render("posts", { posts: result.recordset });
     }
   });
+});
+
+app.get("/post/:id", (req, res) => {
+  const { id } = req.params;
+  console.log(id);
+
+  const querySql = new sql.Request();
+
+  querySql.input("Id", sql.Int, id).query(
+    `
+    SELECT * FROM Posts WHERE Id = @Id
+  `,
+    (err, result) => {
+      if (err) {
+        console.log(`Query error: `, err);
+        res.status(500).send("Database error");
+      } else {
+        if (result.recordset.length === 0) {
+          res.status(404).render("error", { message: "Post not found" });
+        } else {
+          res.render("post", { post: result.recordset[0], makeDateReadable });
+        }
+      }
+    }
+  );
 });
 
 app.get("/create/post", (req, res) => {
