@@ -50,8 +50,6 @@ app.get("/create/post", (req, res) => {
 app.post("/submit/post", async (req, res) => {
   const { title, body } = req.body;
 
-  console.log(title, body);
-
   const transaction = new sql.Transaction();
 
   try {

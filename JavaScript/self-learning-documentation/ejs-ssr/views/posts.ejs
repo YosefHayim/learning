@@ -10,13 +10,14 @@
     <%- include('partials/navbar') %>
     <main>
       <h1>Blog posts</h1>
-      <ul>
+      <ul class="posts-list">
         <% posts.forEach(post => { %>
-        <div class="post-container">
+        <div class="post-container" id="<%= post.Id %>">
           <li>
             <p><%= post.CreationDate %></p>
             <h2><%= post.Title %></h2>
             <p><%= post.Body.replace(/<[^>]*>/g, '') %></p>
+            <button>View post</button>
           </li>
         </div>
         <% }) %>
@@ -25,7 +26,16 @@
     <%- include('partials/footer') %>
   </body>
   <script>
-    // const posts = <%- JSON.stringify(posts) %>;
+    // const posts = <%- JSON.stringify(posts) %>
     // console.log(posts);
+
+    const ulEl = document.querySelector(".posts-list");
+
+    ulEl.addEventListener("click", (e) => {
+      if (e.target.tagName === "BUTTON") {
+        const postId = e.target.closest(".post-container").id;
+        window.location.href = `/posts/${postId}`;
+      }
+    });
   </script>
 </html>
