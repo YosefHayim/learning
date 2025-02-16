@@ -14,7 +14,11 @@ const joinRoom = async (roomTitle, namespaceId) => {
   // we get back the ackResp.thisRoomsHistory from the server
   document.querySelector("#messages").innerHTML = "";
 
-  console.log(ackResp.thisRoomHistory);
+  ackResp.thisRoomsHistory.forEach((message) => {
+    document.querySelector("#messages").innerHTML += buildMessageHtml(message);
+  });
+
+  console.log(ackResp);
 };
 
 // namespaceSockets[namespaceId].emit("joinRoom", roomTitle, (ackResp) => {

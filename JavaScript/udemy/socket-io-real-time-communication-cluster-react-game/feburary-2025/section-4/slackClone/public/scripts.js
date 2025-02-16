@@ -40,6 +40,7 @@ document.querySelector("#message-form").addEventListener("submit", (e) => {
     username,
     selectedNsId,
   });
+
   document.querySelector("#user-message").value = "";
 });
 
@@ -58,7 +59,7 @@ const addListeners = (nsId) => {
   if (!listeners.messageToRoom[nsId]) {
     // add the nsId listener to this namespace!
     namespaceSockets[nsId].on("messageToRoom", (messageObj) => {
-      console.log(messageObj);
+      console.log("messageObj received: ", messageObj);
       document.querySelector("#messages").innerHTML +=
         buildMessageHtml(messageObj);
     });

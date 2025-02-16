@@ -1,10 +1,9 @@
 const express = require("express");
 const socketio = require("socket.io");
-
-const app = express();
 const namespaces = require("./data/namespaces");
 const Room = require("./classes/Room");
 
+const app = express();
 app.use(express.static(__dirname + "/public"));
 
 const expressServer = app.listen(9000);
@@ -45,6 +44,7 @@ namespaces.forEach((namespace) => {
       const thisRoomObj = thisNs.rooms.find(
         (room) => room.roomTitle === roomObj.roomTitle
       );
+
       const thisRoomsHistory = thisRoomObj.history;
       // console.log(roomTitle);
 
@@ -98,6 +98,7 @@ namespaces.forEach((namespace) => {
       const thisRoom = thisNs.rooms.find(
         (room) => room.roomTitle === currentRoom
       );
+      console.log(thisRoom);
       thisRoom.addMessage(messageObj);
     });
   });
