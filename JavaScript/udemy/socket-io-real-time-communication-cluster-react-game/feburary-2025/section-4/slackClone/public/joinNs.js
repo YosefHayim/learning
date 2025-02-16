@@ -5,13 +5,21 @@ const joinNs = (el, nsData) => {
   const nsEndpoint = el?.getAttribute("ns");
 
   const clickedNs = nsData.find((row) => row.endpoint === nsEndpoint);
+  // global so we can submit the new message to the right place
+  selectedNsId = clickedNs.id;
   const rooms = clickedNs.rooms;
   let roomList = document.querySelector(".room-list");
   // Clear it out
   roomList.innerHTML = "";
+
+  // init first room var
+  let firstRoom;
+
   // Loop through each room, and add it to the DOM
-  rooms.forEach((room) => {
-    // console.log(room);
+  rooms.forEach((room, i) => {
+    if (i === 0) {
+      firstRoom = room.roomTitle;
+    }
 
     roomList.innerHTML += `<li class="room" namespaceId=${
       room.namespaceId
@@ -19,6 +27,9 @@ const joinNs = (el, nsData) => {
       room.roomTitle
     }</li>
 `;
+
+    // after we done with the loop init join the first room
+    joinRoom(firstRoom, clickedNs.id);
 
     // add click listener to each room so the client can tell the server it wants to join
     const roomNodes = document.querySelectorAll(".room");

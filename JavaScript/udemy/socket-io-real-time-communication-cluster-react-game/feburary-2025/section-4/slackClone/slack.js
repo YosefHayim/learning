@@ -39,8 +39,13 @@ namespaces.forEach((namespace) => {
     // console.log(`${socket.id} has connected to ${namespace.endpoint}`);
 
     // this needs to be async because we need to fetch the amount of users
-    socket.on("joinRoom", async (roomTitle, ackCallback) => {
+    socket.on("joinRoom", async (roomObj, ackCallback) => {
       // need to fetch the history
+      const thisNs = namespaces[roomObj.namespaceId];
+      const thisRoomObj = thisNs.rooms.find(
+        (room) => room.roomTitle === roomObj.roomTitle
+      );
+      const thisRoomsHistory = thisRoomObj.history;
       // console.log(roomTitle);
 
       // leave all rooms, because the client can only be in one room
@@ -59,19 +64,41 @@ namespaces.forEach((namespace) => {
       // join the room!
       // NOTE -  room title is coming from the client
       // Auth to make sure the socket has right to be in that room
-      socket.join(roomTitle);
+      socket.join(roomObj.roomTitle);
 
       // fetch the number of sockets in this room
       const sockets = await io
         .of(namespace.endpoint)
-        .in(roomTitle)
+        .in(roomObj.roomTitle)
         .fetchSockets();
 
       const socketsCount = sockets.length;
 
       ackCallback({
         numUsers: socketsCount,
+        thisRoomsHistory,
       });
+    });
+
+    socket.on("newMessageToRoom", (messageObj) => {
+      console.log(messageObj);
+      // broadcast this to all the connect clients... this room only!
+      // how we can find out what room is this socket is in ?
+      const rooms = socket.rooms;
+
+      const currentRoom = [...rooms][1]; // this is a set not array!
+
+      // send out this messageObj to everyone including the sender
+      io.of(namespace.endpoint)
+        .in(currentRoom)
+        .emit("messageToRoom", messageObj);
+
+      // add thi message to this room history
+      const thisNs = namespaces[messageObj.selectedNsId];
+      const thisRoom = thisNs.rooms.find(
+        (room) => room.roomTitle === currentRoom
+      );
+      thisRoom.addMessage(messageObj);
     });
   });
 });
