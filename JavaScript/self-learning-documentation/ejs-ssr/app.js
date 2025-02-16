@@ -139,6 +139,42 @@ app.delete("/delete/post/:id", async (req, res) => {
   }
 });
 
+app.put("/update/post/:id", async (req, res) => {
+  const { id } = req.params;
+  const { body } = req.body;
+  console.log(body);
+
+  const transaction = new sql.Transaction();
+
+  try {
+    await transaction.begin(); // Start the transaction
+
+    const request = new sql.Request(transaction);
+
+    await request.input("Id", sql.Int, id).input("Body", sql.Text, body).query(`
+      UPDATE Posts SET Body = @Body WHERE Id = @Id
+    `);
+
+    await transaction.commit(); // Commit transaction if successful
+
+    res
+      .status(200)
+      .json({ status: "success", message: "Post updated successfully" });
+  } catch (err) {
+    await transaction.rollback(); // Rollback on error
+    console.error("SQL Transaction Error:", err);
+    res.status(500).json({ error: "Failed to update post" });
+  }
+});
+
+app.post("/submit/contact-us", (req, res) => {
+  const { fName, lastName, email, age } = req.body;
+
+  console.log({ fName, lastName, email, age });
+
+  res.status(200).json({ status: "success", message: "Contact us submitted" });
+});
+
 app.use((req, res) => {
   res.status(404).render("error");
 });

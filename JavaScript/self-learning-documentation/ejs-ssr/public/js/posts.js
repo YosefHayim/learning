@@ -18,9 +18,43 @@ ulEl.addEventListener("click", (e) => {
   }
 
   if (btn === "Edit post") {
-    console.log("Edit post");
+    const content = postContainer.querySelector(".post-content");
+
+    if (!content.isContentEditable) {
+      content.contentEditable = true;
+      e.target.innerText = "update post";
+      content.focus();
+    } else {
+      content.contentEditable = false;
+    }
+  }
+
+  if (btn === "update post") {
+    const content = postContainer.querySelector(".post-content");
+    savePostById(postId, content.innerText);
+    window.location.reload();
   }
 });
+
+const savePostById = async (id, newContent) => {
+  try {
+    const response = await fetch(`/update/post/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ body: newContent }),
+    });
+
+    if (response.ok) {
+      console.log("Post updated successfully!");
+    } else {
+      console.error("Failed to update post");
+    }
+  } catch (error) {
+    console.error(`Error updating post: `, error);
+  }
+};
 
 const deletePostById = async (id) => {
   try {

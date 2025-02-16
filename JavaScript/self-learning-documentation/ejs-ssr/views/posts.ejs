@@ -14,9 +14,9 @@
         <% posts.forEach(post => { %>
         <div class="post-container" id="<%= post.Id %>">
           <li>
-            <p><%= makeDateReadable(post.CreationDate) %></p>
-            <h2><%= post.Title %></h2>
-            <p><%= removeUnnecessaryTags(post.Body) %></p>
+            <p class="post-date"><%= makeDateReadable(post.CreationDate) %></p>
+            <h2 class="post-title"><%= post.Title %></h2>
+            <p class="post-content"><%= removeUnnecessaryTags(post.Body) %></p>
             <div class="buttons-container">
               <button>View post</button>
               <button>Delete post</button>
