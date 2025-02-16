@@ -37,8 +37,41 @@ io.on("connection", (socket) => {
 namespaces.forEach((namespace) => {
   io.of(namespace.endpoint).on("connection", (socket) => {
     // console.log(`${socket.id} has connected to ${namespace.endpoint}`);
-    socket.on("joinRoom", (data) => {
-      console.log(data);
+
+    // this needs to be async because we need to fetch the amount of users
+    socket.on("joinRoom", async (roomTitle, ackCallback) => {
+      // need to fetch the history
+      // console.log(roomTitle);
+
+      // leave all rooms, because the client can only be in one room
+      const rooms = socket.rooms;
+      // console.log(rooms);
+
+      let i = 0;
+      rooms.forEach((room) => {
+        // we dont want to leave the sockets personal room which is guaranteed to be the first room
+        if (!i == 0) {
+          socket.leave(room);
+        }
+        i++;
+      });
+
+      // join the room!
+      // NOTE -  room title is coming from the client
+      // Auth to make sure the socket has right to be in that room
+      socket.join(roomTitle);
+
+      // fetch the number of sockets in this room
+      const sockets = await io
+        .of(namespace.endpoint)
+        .in(roomTitle)
+        .fetchSockets();
+
+      const socketsCount = sockets.length;
+
+      ackCallback({
+        numUsers: socketsCount,
+      });
     });
   });
 });
