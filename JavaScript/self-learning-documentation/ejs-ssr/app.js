@@ -4,6 +4,7 @@ const path = require("path");
 const dotenv = require("dotenv").config();
 const connectDb = require("./config/connectDb");
 const makeDateReadable = require("./utils/readableDateFn");
+const removeUnnecessaryTags = require("./utils/removeUnnecessaryTags");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -37,14 +38,17 @@ app.get("/posts", (req, res) => {
       console.log(`Query error: `, err);
       res.status(500).send("Database error");
     } else {
-      res.render("posts", { posts: result.recordset });
+      res.render("posts", {
+        posts: result.recordset,
+        makeDateReadable,
+        removeUnnecessaryTags,
+      });
     }
   });
 });
 
 app.get("/post/:id", (req, res) => {
   const { id } = req.params;
-  console.log(id);
 
   const querySql = new sql.Request();
 
@@ -60,7 +64,11 @@ app.get("/post/:id", (req, res) => {
         if (result.recordset.length === 0) {
           res.status(404).render("error", { message: "Post not found" });
         } else {
-          res.render("post", { post: result.recordset[0], makeDateReadable });
+          res.render("post", {
+            post: result.recordset[0],
+            makeDateReadable,
+            removeUnnecessaryTags,
+          });
         }
       }
     }
@@ -105,9 +113,8 @@ app.post("/submit/post", async (req, res) => {
   }
 });
 
-// 404 Handler
 app.use((req, res) => {
-  res.status(404).render("error", { message: "Page Not Found" });
+  res.status(404).render("error");
 });
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
