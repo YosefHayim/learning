@@ -25,7 +25,25 @@ app.get("/change-ns", (req, res) => {
   res.json(namespaces[0]);
 });
 
+// example to show how to do auth with socket.io and middleware
+// io.use((socket, next) => {
+//   const jwt = socket.handshake.auth.jwt;
+//   console.log(jwt);
+//   if (jwt) {
+//     next();
+//   } else {
+//     next(new Error("invalid jwt"));
+//     socket.disconnect();
+//   }
+// });
+
 io.on("connection", (socket) => {
+  // console.log(socket.handshake);
+
+  // example illustration on how to do auth with socket.io
+  // const username = socket.handshake.query.username;
+  // const jwt = socket.handshake.query.jwt;
+
   io.emit("welcome", "Welcome to the server.");
   socket.on("clientConnect", () => {
     console.log(`${socket.id}: has connected.`);

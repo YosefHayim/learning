@@ -5,8 +5,21 @@
 const username = "Joseph";
 const password = "x";
 
+const clientOptions = {
+  // query is used to pass data to the server that can be public not sensitive info!
+  query: {
+    username,
+    password,
+  },
+  // here is the correct place to pass that sensitive info of username and password
+  auth: {
+    username,
+    password,
+  },
+};
+
 // always join the main namespace, because that's where the client gets the other namespaces from
-const socket = io("http://localhost:9000");
+const socket = io("http://localhost:9000", clientOptions);
 
 // example to hardcoded namespace to join.
 // const socket2 = io("http://localhost:9000/wiki");
