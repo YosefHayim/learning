@@ -17,7 +17,11 @@
             <p><%= makeDateReadable(post.CreationDate) %></p>
             <h2><%= post.Title %></h2>
             <p><%= removeUnnecessaryTags(post.Body) %></p>
-            <button>View post</button>
+            <div class="buttons-container">
+              <button>View post</button>
+              <button>Delete post</button>
+              <button>Edit post</button>
+            </div>
           </li>
         </div>
         <% }) %>
@@ -25,17 +29,5 @@
     </main>
     <%- include('partials/footer') %>
   </body>
-  <script>
-    // const posts = <%- JSON.stringify(posts) %>
-    // console.log(posts);
-
-    const ulEl = document.querySelector(".posts-list");
-
-    ulEl.addEventListener("click", (e) => {
-      if (e.target.tagName === "BUTTON") {
-        const postId = e.target.closest(".post-container").id;
-        window.location.href = `/post/${postId}`;
-      }
-    });
-  </script>
+  <script src="/js/posts.js"></script>
 </html>
