@@ -113,6 +113,32 @@ app.post("/submit/post", async (req, res) => {
   }
 });
 
+app.delete("/delete/post/:id", async (req, res) => {
+  const { id } = req.params;
+
+  const transaction = new sql.Transaction();
+
+  try {
+    await transaction.begin(); // Start the transaction
+
+    const request = new sql.Request(transaction);
+
+    await request.input("Id", sql.Int, id).query(`
+      DELETE FROM Posts WHERE Id = @Id
+    `);
+
+    await transaction.commit(); // Commit transaction if successful
+
+    res
+      .status(200)
+      .json({ status: "success", message: "Post deleted successfully" });
+  } catch (err) {
+    await transaction.rollback(); // Rollback on error
+    console.error("SQL Transaction Error:", err);
+    res.status(500).json({ error: "Failed to delete post" });
+  }
+});
+
 app.use((req, res) => {
   res.status(404).render("error");
 });
