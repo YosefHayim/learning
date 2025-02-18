@@ -7,8 +7,10 @@ app.use(static(__dirname + "/public"));
 const expressServer = app.listen(9000);
 const io = socketIo(expressServer);
 
-io.on("connection,", (socket) => {
-  socket.on("event", () => {});
-  socket.on("event2", () => {});
-  socket.on("event3", () => {});
-});
+// App organization
+// servers.js is not the entry point for the app, but it creates our servers
+// and exports them
+module.exports = {
+  app,
+  io,
+};
