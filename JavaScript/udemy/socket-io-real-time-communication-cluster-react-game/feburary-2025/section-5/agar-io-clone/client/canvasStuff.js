@@ -22,6 +22,16 @@ context.stroke();
 // ============DRAW=========
 // =========================
 const draw = () => {
+  // clear out the canvas so we can draw on a clean canvas next frame/draw()
+  context.clearRect(0, 0, canvas.width, canvas.height);
+  context.setTranslate(1, 0, 0, 1, 0, 0);
+
+  // clamp the screen/view port to the players location(x,y)
+  const camX = -player.locX + canvas.width / 2;
+  const camY = -player.locY + canvas.height / 2;
+  // translate moves the canvas/context to where the player is at.
+  context.translate(camX, camY);
+
   context.beginPath();
   context.fillStyle = "rgb(255,0,0)";
   context.arc(player.locX, player.locY, 10, 0, Math.PI * 2); // draw an arc/circle
