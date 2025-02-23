@@ -4,6 +4,7 @@
 let wHeight = window.innerHeight;
 let wWidth = window.innerWidth;
 const player = {}; // This will be all things "this" player
+let orbs = []; // this is a global for all none-player orbs
 
 // canvas element needs to be in a variable
 const canvas = document.querySelector("#the-canvas");

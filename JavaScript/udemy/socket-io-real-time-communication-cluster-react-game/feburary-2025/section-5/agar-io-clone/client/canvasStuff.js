@@ -1,5 +1,5 @@
 const init = () => {
-  // console.log("Init fn");
+  console.log(orbs);
   draw();
 };
 
