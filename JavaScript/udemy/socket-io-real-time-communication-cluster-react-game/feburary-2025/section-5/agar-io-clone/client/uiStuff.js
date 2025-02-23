@@ -16,9 +16,10 @@ canvas.height = wHeight;
 canvas.width = wWidth;
 
 // Put the modals in variables so we can interact with them.
+const loginModal = new bootstrap.Modal(document.querySelector("#loginModal"));
+const spawnModal = new bootstrap.Modal(document.querySelector("#spawnModal"));
+
 window.addEventListener("load", () => {
-  const loginModal = new bootstrap.Modal(document.querySelector("#loginModal"));
-  const spawnModel = new bootstrap.Modal(document.querySelector("#spawnModal"));
   loginModal.show();
 });
 
@@ -28,4 +29,15 @@ document.querySelector(".name-form").addEventListener("submit", (e) => {
   player.name = document.querySelector("#name-input").value;
   loginModal.hide();
   spawnModal.show();
+});
+
+document.querySelector(".start-game").addEventListener("click", (e) => {
+  // Hide the start modal
+  spawnModal.hide();
+  // show the hiddenOnStart elements
+  const elArray = Array.from(document.querySelectorAll(".hiddenOnStart"));
+  elArray.forEach((el) => {
+    el.removeAttribute("hidden");
+  });
+  init();
 });
