@@ -22,9 +22,11 @@ context.stroke();
 // ============DRAW=========
 // =========================
 const draw = () => {
+  // set the context translate back to default
+  context.setTransform(1, 0, 0, 1, 0, 0);
+
   // clear out the canvas so we can draw on a clean canvas next frame/draw()
   context.clearRect(0, 0, canvas.width, canvas.height);
-  context.setTranslate(1, 0, 0, 1, 0, 0);
 
   // clamp the screen/view port to the players location(x,y)
   const camX = -player.locX + canvas.width / 2;
@@ -43,6 +45,14 @@ const draw = () => {
   context.lineWidth = 3; // how wide to draw a line in pixels
   context.strokeStyle = "rgb(0,255,0)"; // draw a green line
   context.stroke();
+
+  orbs.forEach((orb) => {
+    context.beginPath(); // this will start a new path
+    context.fillStyle = orb.color;
+    context.arc(orb.locX, orb.locY, orb.radius, 0, Math.PI * 2);
+    context.fill();
+  });
+
   // requestAnimationFrame is like a controlled loop.
   // It runs recursively
   requestAnimationFrame(draw);
