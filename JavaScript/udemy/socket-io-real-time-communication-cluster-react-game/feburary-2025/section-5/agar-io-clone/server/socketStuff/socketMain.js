@@ -12,9 +12,12 @@ const settings = {
   defaultNumberOfOrbs: 500, // Number of orbs on the map
   defaultSpeed: 6, // Default player speed
   defaultZoom: 1.5, // As the player gets bigger zoom needs to go out
+  worldWidth: 500,
+  worldHeight: 500,
+  defaultGenericOrbSize: 5, // Smaller than player orbs
 };
 
-// on server start, to make our initial 500
+// on server start, to make our initial defaultNumberOfOrbs
 initGame();
 // console.log(orbs);
 
@@ -32,6 +35,6 @@ io.on("connect", (socket) => {
 function initGame() {
   // loop defaultNumberOfOrbs times, and push a new Orb() onto our array
   for (let i = 0; i < settings.defaultNumberOfOrbs; i++) {
-    orbs.push(new Orb());
+    orbs.push(new Orb(settings));
   }
 }
