@@ -8,22 +8,30 @@ const Orb = require("./classes/Orb");
 // every time one is absorb, the server will make a new one
 
 const orbs = [];
-const amountOfOrbsToGenerate = 500;
+const settings = {
+  defaultNumberOfOrbs: 500, // Number of orbs on the map
+  defaultSpeed: 6, // Default player speed
+  defaultZoom: 1.5, // As the player gets bigger zoom needs to go out
+};
 
 // on server start, to make our initial 500
 initGame();
 // console.log(orbs);
 
 io.on("connect", (socket) => {
+  // A player hs been connected
   // event that runs on join that does init game stuff
   socket.emit("init", {
+    // Make a playerConfig object - the data specific to this player that only the player needs to know
+    // Make a playerData object - the data specific to this player that everyone needs to know
+    // a Master player object to house both
     orbs,
   });
 });
 
 function initGame() {
-  // loop 500 times, and push a new Orb() onto our array
-  for (let i = 0; i < amountOfOrbsToGenerate; i++) {
+  // loop defaultNumberOfOrbs times, and push a new Orb() onto our array
+  for (let i = 0; i < settings.defaultNumberOfOrbs; i++) {
     orbs.push(new Orb());
   }
 }
