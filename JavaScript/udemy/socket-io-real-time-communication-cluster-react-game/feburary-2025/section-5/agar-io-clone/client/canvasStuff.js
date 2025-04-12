@@ -3,13 +3,13 @@ const init = () => {
   draw();
 };
 
-player.locX = Math.floor(500 * Math.random() + 10);
-player.locY = Math.floor(500 * Math.random() + 10);
+player.locX = Math.floor(500 * Math.random() + 10); // Horizontal axis
+player.locY = Math.floor(500 * Math.random() + 10); // Vertical axis
 
 context.beginPath();
 context.fillStyle = "rgb(255,0,0)";
 context.arc(player.locX, player.locY, 10, 0, Math.PI * 2); // draw an arc/circle
-// arg1 and arg2 are center x and center of the arc
+// arg1 and arg2 are center x and center y of the arc
 // arg3 = radius of the the circle
 // arg4 = where to start drawing in the radians - 0 = 3:00
 // arg 5 = where to stop drawing in the radians - Pi = 90deg
@@ -44,7 +44,7 @@ const draw = () => {
   context.fill();
   context.lineWidth = 3; // how wide to draw a line in pixels
   context.strokeStyle = "rgb(0,255,0)"; // draw a green line
-  context.stroke();
+  context.stroke(); // draw the line border
 
   orbs.forEach((orb) => {
     context.beginPath(); // this will start a new path
@@ -58,10 +58,12 @@ const draw = () => {
   requestAnimationFrame(draw);
 };
 
-canvas.addEventListener("mousemove", (event) => {
+canvas.addEventListener("mousemove", (e) => {
+  let speed;
+
   const mousePosition = {
-    x: event.clientX,
-    y: event.clientY,
+    x: e.clientX,
+    y: e.clientY,
   };
   const angleDeg =
     (Math.atan2(
@@ -73,19 +75,19 @@ canvas.addEventListener("mousemove", (event) => {
   if (angleDeg >= 0 && angleDeg < 90) {
     xVector = 1 - angleDeg / 90;
     yVector = -(angleDeg / 90);
-    console.log("Mouse is in the lower right quadrant");
+    console.log("Mouse in lower right quadrant");
   } else if (angleDeg >= 90 && angleDeg <= 180) {
     xVector = -(angleDeg - 90) / 90;
     yVector = -(1 - (angleDeg - 90) / 90);
-    console.log("Mouse is in the lower left quadrant");
+    console.log("Mouse in left lower quadrant");
   } else if (angleDeg >= -180 && angleDeg < -90) {
     xVector = (angleDeg + 90) / 90;
     yVector = 1 + (angleDeg + 90) / 90;
-    console.log("Mouse is in the top left quadrant");
+    console.log("Mouse in the top left quadrant");
   } else if (angleDeg < 0 && angleDeg >= -90) {
     xVector = (angleDeg + 90) / 90;
     yVector = 1 - (angleDeg + 90) / 90;
-    console.log("Mouse is in the top right quadrant");
+    console.log("Mouse in the top right quadrant");
   }
 
   speed = 10;
