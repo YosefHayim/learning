@@ -9,7 +9,7 @@ let orbs = []; // this is a global for all none-player orbs
 // canvas element needs to be in a variable.
 const canvas = document.querySelector("#the-canvas");
 
-// context is how we draw! we will be drawing in 2 d
+// context is how we draw! we will be drawing in 2d
 const context = canvas.getContext("2d");
 
 // Set the canvas height and width to = window height and width
@@ -26,8 +26,8 @@ window.addEventListener("load", () => {
 
 document.querySelector(".name-form").addEventListener("submit", (e) => {
   e.preventDefault();
-  // console.log("Submitted!");
   player.name = document.querySelector("#name-input").value;
+  document.querySelector(".player-name").innerHTML = player.name;
   loginModal.hide();
   spawnModal.show();
 });
@@ -37,8 +37,6 @@ document.querySelector(".start-game").addEventListener("click", (e) => {
   spawnModal.hide();
   // show the hiddenOnStart elements
   const elArray = Array.from(document.querySelectorAll(".hiddenOnStart"));
-  elArray.forEach((el) => {
-    el.removeAttribute("hidden");
-  });
+  elArray.forEach((el) => el.removeAttribute("hidden"));
   init();
 });
