@@ -59,8 +59,6 @@ const draw = () => {
 };
 
 canvas.addEventListener("mousemove", (e) => {
-  let speed;
-
   const mousePosition = {
     x: e.clientX,
     y: e.clientY,

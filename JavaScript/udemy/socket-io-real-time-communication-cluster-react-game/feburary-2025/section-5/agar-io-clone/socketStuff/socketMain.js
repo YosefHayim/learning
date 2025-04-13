@@ -28,7 +28,7 @@ io.on("connect", (socket) => {
   // event that runs on join that does init game stuff
   // Make a playerConfig object - the data specific to this player that only the player needs to know
   const playerConfig = new PlayerConfig(settings);
-  const playerData = new PlayerData();
+  const playerData = new PlayerData(settings);
   // Make a playerData object - the data specific to this player that everyone needs to know
   // a Master player object to house both
   socket.emit("init", {
