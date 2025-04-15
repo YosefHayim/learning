@@ -13,11 +13,11 @@ const cluster = require("cluster"); // make it so we can use multiple threads
 const http = require("http"); // if we need express we will implemenet a different way.
 const { Server } = require("socket.io");
 const numCPUs = require("os").cpus().length;
-const { setupMaster, setupWorker } = require("@socket.io/sticky"); // sticky makes it so the client can find the way back correct worker
+const { setupMaster, setupWorker } = require("@socket.io/sticky"); // sticky makes it so the client can find its way back to the correct worker
 const { createAdapter, setupPrimary } = require("@socket.io/cluster-adapter"); // make it the primpary node can emit to everyone
 
-if (cluster.isPrimary) {
-  console.log(`Primary ${process.pid} is running`);
+if (cluster.isMaster) {
+  console.log(`Master ${process.pid} is running`);
 
   const httpServer = http.createServer();
 
@@ -31,15 +31,15 @@ if (cluster.isPrimary) {
 
   // needed for packets containing buffers (you can ignore it if you only send plaintext objects)
   // Node.js < 16.0.0
-  cluster.setupMaster({
-    serialization: "advanced",
-  });
-  // Node.js > 16.0.0
-  // cluster.setupPrimary({
+  // cluster.setupMaster({
   //   serialization: "advanced",
   // });
+  // Node.js > 16.0.0
+  cluster.setupPrimary({
+    serialization: "advanced",
+  });
 
-  httpServer.listen(3000); // internet facing
+  httpServer.listen(3000);
 
   for (let i = 0; i < numCPUs; i++) {
     cluster.fork();
@@ -53,12 +53,7 @@ if (cluster.isPrimary) {
   console.log(`Worker ${process.pid} started`);
 
   const httpServer = http.createServer();
-  const io = new Server(httpServer, {
-    cors: {
-      origin: "http://localhost:5173",
-      credentials: true,
-    },
-  });
+  const io = new Server(httpServer);
 
   // use the cluster adapter
   io.adapter(createAdapter()); // changes from the default adapater
