@@ -4,19 +4,42 @@
 
 // example sumZero([-3,-2,-1,0,1,2,3]) // result is [-3,3]
 
-const sumZero = (arr) => {
-  // 1. for each index within the array sum with the next index.
-  for (let i = 0; i < arr.length; i++) {
-    let n = arr[i];
-    let nextN = arr[arr.length - 1];
-    console.log(`Evaluate: ${n} + ${nextN} = ${n + nextN}`);
-    if (n + nextN === 0) {
-      console.log("Result is: ", [n, nextN]);
-      return [n, nextN];
-    }
-  }
-  // return undefined;
-  // 2. first sum that gets to 0 return the result else return undefined.
-};
+// 35 / 100 score.
+// const sumZero = (arr) => {
+//   // 1. for each index within the array sum with the next index.
+//   let reverseIndex = arr.length;
 
-sumZero([-3, -2, -1, 0, 1, 2, 3]);
+//   for (let i = 0; i < arr.length; i++) {
+//     let n = arr[i];
+//     let nextN = arr[(reverseIndex -= 1)];
+//     if (n + nextN === 0) {
+//       console.log("Match found");
+//       return [n, nextN];
+//     } else {
+//       console.log("undefined");
+//       return undefined;
+//     }
+//   }
+//   // return undefined;
+//   // 2. first sum that gets to 0 return the result else return undefined.
+// };
+
+// sumZero([-3, -2, -1, 0, 1, 2, 3]);
+
+// Correct
+// const sumZero = (arr) => {
+//   let left = 0;
+//   let right = arr.length - 1;
+
+//   while (left < right) {
+//     const sum = arr[left] + arr[right];
+//     if (sum === 0) {
+//       return [arr[left], arr[right]];
+//     } else if (sum > 0) {
+//       right--;
+//     } else {
+//       left++;
+//     }
+//   }
+//   return undefined;
+// };

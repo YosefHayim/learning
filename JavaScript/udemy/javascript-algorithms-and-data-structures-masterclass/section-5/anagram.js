@@ -2,7 +2,7 @@
 // an anagram is a word, phrase or name formed by re-arranging the letters of another
 // such as cinema , formed from iceman.
 
-// 90% correctness overall this exercise
+// 90 / 100 score
 // I did a wrong loop that could have caused bug.
 
 // const validAnagram = (word1, word2) => {
@@ -44,7 +44,6 @@
 // };
 
 // Correct solution
-
 // const validAnagram = (word1, word2) => {
 //   if (word1.length !== word2.length) {
 //     return false;
