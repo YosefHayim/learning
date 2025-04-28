@@ -10,23 +10,52 @@
 
 // Space: O(1)
 
-// Sample Input:
+// score is 50/100
+// const averagePair = (...args) => {
+//   // if there is no avg or array provided throw error
+//   // if some of the args are not numbers
 
-const averagePair = (...args) => {
-  // if there is no avg or array provided throw error
-  // if some of the args are not numbers
+//   const arr = args[0];
+//   const avgResult = args[1];
 
-  const arr = args[0];
-  const avgResult = args[1];
+//   for (let i = 0; i < arr.length; i++) {
+//     const n = arr[i];
+//     const nextN = arr[i + 1];
+//     avgIterationFound = (n + nextN) / 2;
 
-  // loop on the array and get the total sum
+//     if (avgIterationFound === avgResult) {
+//       console.log("true");
+//       return true;
+//     }
+//   }
+//   console.log("false");
+//   return false;
+// };
 
-  // check if each pair within the array is equal to the avgResult
+// correct
+// const averagePair = (...args) => {
+//   const arr = args[0];
+//   const avgResult = args[1];
 
-  // if match return true else return false
-};
+//   let start = 0;
+//   let end = arr.length - 1;
 
-averagePair([1, 2, 3], 2.5); // true
+//   while (start < end) {
+//     const avg = (arr[start] + arr[end]) / 2;
+//     if (avg === avgResult) {
+//       console.log("true");
+//       return true;
+//     } else if (avg < avgResult) {
+//       start++;
+//     } else {
+//       end--;
+//     }
+//   }
+//   console.log("false");
+//   return false;
+// };
+
+// averagePair([1, 2, 3], 2.5); // true
 // averagePair([1, 3, 3, 5, 6, 7, 10, 12, 19], 8); // true
 // averagePair([-1, 0, 3, 4, 5, 6], 4.1); // false
 // averagePair([], 4); // false
