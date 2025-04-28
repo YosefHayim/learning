@@ -9,14 +9,10 @@ const sumZero = (arr) => {
   for (let i = 0; i < arr.length; i++) {
     let n = arr[i];
     let nextN = arr[i + 1];
-    console.log(`Numbers being added: `, n, nextN);
-    if (n + nextN === 0) {
-      let result = { n, nextN };
-      console.log(result);
-      return result;
-    }
-    return undefined;
+
+    console.log(`Evaluate: ${n} + ${nextN} = ${n + nextN}`);
   }
+  // return undefined;
   // 2. first sum that gets to 0 return the result else return undefined.
 };
 
