@@ -2,41 +2,73 @@
 // an anagram is a word, phrase or name formed by re-arranging the letters of another
 // such as cinema , formed from iceman.
 
-const validAnagram = (word1, word2) => {
-  if (word1.length !== word2.length) {
-    return false;
-  }
+// 90% correctness overall this exercise
+// I did a wrong loop that could have caused bug.
 
-  const freqLettersWordOne = {};
-  const freqLettersWordTwo = {};
+// const validAnagram = (word1, word2) => {
+//   if (word1.length !== word2.length) {
+//     return false;
+//   }
 
-  for (let str in word1) {
-    let letter = word1.charAt(str);
-    if (freqLettersWordOne[letter]) {
-      freqLettersWordOne[letter]++;
-    } else {
-      freqLettersWordOne[letter] = 1;
-    }
-  }
+//   const freqLettersWordOne = {};
+//   const freqLettersWordTwo = {};
 
-  for (let str in word2) {
-    let letter = word2.charAt(str);
-    if (freqLettersWordTwo[letter]) {
-      freqLettersWordTwo[letter]++;
-    } else {
-      freqLettersWordTwo[letter] = 1;
-    }
-  }
+//   for (let str of word1) {
+//     if (freqLettersWordOne[str]) {
+//       freqLettersWordOne[str]++;
+//     } else {
+//       freqLettersWordOne[str] = 1;
+//     }
+//   }
 
-  for (val in freqLettersWordOne) {
-    if (freqLettersWordOne[val] !== freqLettersWordTwo[val]) {
-      console.log(
-        `Comparing: ${freqLettersWordOne[val]} against : ${freqLettersWordTwo[val]}`
-      );
-      return false;
-    }
-  }
-  return true;
-};
+//   for (let str of word2) {
+//     if (freqLettersWordTwo[str]) {
+//       freqLettersWordTwo[str]++;
+//     } else {
+//       freqLettersWordTwo[str] = 1;
+//     }
+//   }
 
-validAnagram("aaz", "zza");
+//   console.log(freqLettersWordOne);
+//   console.log(freqLettersWordTwo);
+
+//   for (let val in freqLettersWordOne) {
+//     if (freqLettersWordOne[val] !== freqLettersWordTwo[val]) {
+//       console.log(`Comparing: ${freqLettersWordOne[val]} against : ${freqLettersWordTwo[val]}`);
+//       console.log("Final result is False");
+//       return false;
+//     }
+//   }
+//   console.log("Final result is True");
+//   return true;
+// };
+
+// Correct solution
+
+// const validAnagram = (word1, word2) => {
+//   if (word1.length !== word2.length) {
+//     return false;
+//   }
+
+//   const freqLettersWordOne = {};
+//   const freqLettersWordTwo = {};
+
+//   for (let letter of word1) {
+//     freqLettersWordOne[letter] = (freqLettersWordOne[letter] || 0) + 1;
+//   }
+
+//   for (let letter of word2) {
+//     freqLettersWordTwo[letter] = (freqLettersWordTwo[letter] || 0) + 1;
+//   }
+
+//   for (let val in freqLettersWordOne) {
+//     if (freqLettersWordOne[val] !== freqLettersWordTwo[val]) {
+//       console.log(`Comparing: ${freqLettersWordOne[val]} against : ${freqLettersWordTwo[val]}`);
+//       console.log("Final result is False");
+//       return false;
+//     }
+//   }
+
+//   console.log("Final result is True");
+//   return true;
+// };
