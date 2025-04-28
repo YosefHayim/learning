@@ -47,24 +47,24 @@
 // constructNote("abc", "dcba"); // true
 // constructNote("aabbcc", "bcabcaddff"); // true
 
-const constructNote = (message, letters) => {
-  const letterFreq = {};
+// const constructNote = (message, letters) => {
+//   const letterFreq = {};
 
-  for (let char of letters) {
-    letterFreq[char] = (letterFreq[char] || 0) + 1;
-  }
+//   for (let char of letters) {
+//     letterFreq[char] = (letterFreq[char] || 0) + 1;
+//   }
 
-  for (let char of message) {
-    if (!letterFreq[char]) {
-      return false;
-    } else {
-      letterFreq[char]--;
-    }
-  }
+//   for (let char of message) {
+//     if (!letterFreq[char]) {
+//       return false;
+//     } else {
+//       letterFreq[char]--;
+//     }
+//   }
 
-  return true;
-};
+//   return true;
+// };
 
-console.log(constructNote("aa", "abc")); // false
-console.log(constructNote("abc", "dcba")); // true
-console.log(constructNote("aabbcc", "bcabcaddff")); // true
+// console.log(constructNote("aa", "abc")); // false
+// console.log(constructNote("abc", "dcba")); // true
+// console.log(constructNote("aabbcc", "bcabcaddff")); // true
