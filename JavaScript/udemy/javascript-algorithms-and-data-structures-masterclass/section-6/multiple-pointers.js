@@ -5,13 +5,6 @@
 // You can solve this using the frequency counter pattern
 // OR the multiple pointers pattern.
 
-// Examples:
-
-// areThereDuplicates(1, 2, 3) // false
-// areThereDuplicates(1, 2, 2) // true
-// areThereDuplicates('a', 'b', 'c', 'a') // true
-// Restrictions:
-
 // Time - O(n)
 // Space - O(n)
 
@@ -53,16 +46,16 @@
 // areThereDuplicates(["a", "b", "c", "a"]); // true
 
 // Correct
-const areThereDuplicates = (...args) => {
-  const freqObject = {};
+// const areThereDuplicates = (...args) => {
+//   const freqObject = {};
 
-  for (const val of args) {
-    freqObject[val] = (freqObject[val] || 0) + 1;
-    if (freqObject[val] > 1) return true;
-  }
-  return false;
-};
+//   for (const val of args) {
+//     freqObject[val] = (freqObject[val] || 0) + 1;
+//     if (freqObject[val] > 1) return true;
+//   }
+//   return false;
+// };
 
-areThereDuplicates(1, 2, 3); // false
-areThereDuplicates(1, 2, 2); // true
-areThereDuplicates("a", "b", "c", "a"); // true
+// areThereDuplicates(1, 2, 3); // false
+// areThereDuplicates(1, 2, 2); // true
+// areThereDuplicates("a", "b", "c", "a"); // true
