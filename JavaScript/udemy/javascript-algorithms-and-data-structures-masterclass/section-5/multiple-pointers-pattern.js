@@ -8,9 +8,12 @@ const sumZero = (arr) => {
   // 1. for each index within the array sum with the next index.
   for (let i = 0; i < arr.length; i++) {
     let n = arr[i];
-    let nextN = arr[i + 1];
-
+    let nextN = arr[arr.length - 1];
     console.log(`Evaluate: ${n} + ${nextN} = ${n + nextN}`);
+    if (n + nextN === 0) {
+      console.log("Result is: ", [n, nextN]);
+      return [n, nextN];
+    }
   }
   // return undefined;
   // 2. first sum that gets to 0 return the result else return undefined.
