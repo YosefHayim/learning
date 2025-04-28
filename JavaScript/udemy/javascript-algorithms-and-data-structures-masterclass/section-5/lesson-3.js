@@ -51,7 +51,6 @@
 
 //   const frequencyCounter1 = {};
 //   const frequencyCounter2 = {};
-
 //   for (let val of arr1) {
 //     frequencyCounter1[val] = (frequencyCounter1[val] || 0) + 1;
 //   }
