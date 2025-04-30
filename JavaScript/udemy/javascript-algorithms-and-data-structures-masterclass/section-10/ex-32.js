@@ -22,5 +22,23 @@
 //   }
 // };
 
+// correct
+// const stringSearch = (word, pattern) => {
+//   let count = 0;
+
+//   for (let i = 0; i <= word.length - pattern.length; i++) {
+//     let match = true;
+//     for (let j = 0; j < pattern.length; j++) {
+//       if (word[i + j] !== pattern[j]) {
+//         match = false;
+//         break;
+//       }
+//     }
+//     if (match) count++;
+//   }
+
+//   return count;
+// };
+
 stringSearch("wowomgzomg", "omg"); // expected result: 2
 // stringSearch("aaaaaa", "aa"); // expected result: 5
