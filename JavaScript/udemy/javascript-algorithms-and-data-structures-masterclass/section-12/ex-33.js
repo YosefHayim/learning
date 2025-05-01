@@ -1,3 +1,5 @@
+"use strict";
+
 // incorrect
 // const bubbleSortPseudo = (arr) => {
 //   // error handling

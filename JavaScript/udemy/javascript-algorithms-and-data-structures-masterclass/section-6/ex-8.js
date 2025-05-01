@@ -1,3 +1,5 @@
+"use strict";
+
 // Multiple Pointers - isSubsequence
 // Write a function called isSubsequence which takes in two strings
 // and checks whether the characters in the first string form a subsequence

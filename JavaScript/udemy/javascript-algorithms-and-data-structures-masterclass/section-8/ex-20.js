@@ -1,3 +1,5 @@
+"use strict";
+
 // fib
 // Write a recursive function called fib which accepts a number and returns the nth number in the
 // Fibonacci sequence. Recall that the Fibonacci sequence is the sequence

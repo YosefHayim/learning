@@ -1,3 +1,5 @@
+"use strict";
+
 // Frequency Counter / Multiple Pointers - areThereDuplicates
 // Implement a function called,
 // areThereDuplicates which accepts a variable number of arguments,

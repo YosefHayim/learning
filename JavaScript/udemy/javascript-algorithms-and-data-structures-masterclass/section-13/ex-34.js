@@ -1,3 +1,5 @@
+"use strict";
+
 // Bubble Sort
 // ATTEMPT THIS IS YOU ARE UP FOR IT!
 // Implement a function called bubbleSort. Given an array,

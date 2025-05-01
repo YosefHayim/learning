@@ -1,3 +1,5 @@
+"use strict";
+
 // linear search pseudocode exercise
 // this function accepts an array and a value
 // loop though the array and check if the current array element is equal to the value

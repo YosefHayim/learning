@@ -1,3 +1,5 @@
+"use strict";
+
 // Given two strings , write a function to determine if the second string is anagram of the first.
 // an anagram is a word, phrase or name formed by re-arranging the letters of another
 // such as cinema , formed from iceman.

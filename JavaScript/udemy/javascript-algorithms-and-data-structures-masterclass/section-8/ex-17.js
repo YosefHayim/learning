@@ -1,3 +1,5 @@
+"use strict";
+
 // factorial
 // Write a function factorial which accepts a number and returns the factorial of that number.
 // A factorial is the product of an integer and all the integers below it; e.g.,

@@ -1,3 +1,5 @@
+"use strict";
+
 // write a function called sumZero which accepts a sorted array of integers.
 // The Function should find the first pair where the sum is 0. return an array that includes
 // both values that sum to 0 or undefined if a pair does not exist.

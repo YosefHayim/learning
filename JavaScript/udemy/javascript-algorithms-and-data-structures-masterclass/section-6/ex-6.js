@@ -1,3 +1,5 @@
+"use strict";
+
 // Frequency Counter - findAllDuplicates
 // Given an array of positive integers,
 // some elements appear twice and others appear once.

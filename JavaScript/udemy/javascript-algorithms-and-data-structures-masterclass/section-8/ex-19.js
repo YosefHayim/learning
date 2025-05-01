@@ -1,3 +1,5 @@
+"use strict";
+
 // recursiveRange
 // Write a function called recursiveRange which accepts a number
 // and adds up all the numbers

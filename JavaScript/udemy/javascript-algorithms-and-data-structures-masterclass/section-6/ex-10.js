@@ -1,3 +1,5 @@
+"use strict";
+
 // Sliding Window - maxSubarraySum
 // Given an array of integers and a number,
 // write a function called maxSubarraySum, which finds the maximum sum of a subarray

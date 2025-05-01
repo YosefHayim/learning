@@ -1,3 +1,5 @@
+"use strict";
+
 // Frequency Counter - sameFrequency
 // Write a function called sameFrequency.
 // Given two positive integers,

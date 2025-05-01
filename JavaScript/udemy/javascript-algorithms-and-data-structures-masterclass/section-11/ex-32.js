@@ -1,3 +1,5 @@
+"use strict";
+
 // Create a function that takes two strings:
 // A longer string (e.g. "hellohello")
 // A shorter pattern to find (e.g. "lo")

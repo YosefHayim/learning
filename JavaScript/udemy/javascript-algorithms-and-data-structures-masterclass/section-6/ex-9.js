@@ -1,3 +1,5 @@
+"use strict";
+
 // Frequency Counter / Multiple Pointer - findPair
 // Given an unsorted array and a number n,
 // find if there exists a pair of elements in the array whose

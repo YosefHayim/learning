@@ -1,3 +1,5 @@
+"use strict";
+
 // Frequency Counter - constructNote
 // Write a function called constructNote, which accepts two strings,
 // a message and some letters. The function should return true if the message
