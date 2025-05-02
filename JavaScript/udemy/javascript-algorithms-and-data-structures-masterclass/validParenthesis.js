@@ -8,12 +8,22 @@
 // Output: true
 function isValid(s) {
   const newArr = s.split("");
-  const obj = {};
 
+  let noDuplicatesArr = new Set();
   for (let i = 0; i < newArr.length; i++) {
-    const el = newArr[i];
+    const elVal = newArr[i].charCodeAt(0);
+    for (let j = newArr.length - 1; j > 0; j--) {
+      const elNextVal = newArr[j].charCodeAt(0);
+      if (elVal < elNextVal) {
+        noDuplicatesArr.add(elVal);
+      } else {
+        noDuplicatesArr.add(elNextVal);
+      }
+    }
   }
+  console.log(noDuplicatesArr);
 }
 
 isValid("()[]{}");
 isValid("(]");
+isValid("([])");
