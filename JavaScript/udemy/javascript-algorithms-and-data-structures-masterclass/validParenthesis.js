@@ -7,7 +7,13 @@
 // Input: s = "()[]{}"
 // Output: true
 function isValid(s) {
-  // TODO: implement
-  return false;
+  const newArr = s.split("");
+  const obj = {};
+
+  for (let i = 0; i < newArr.length; i++) {
+    const el = newArr[i];
+  }
 }
-// console.log(isValid("()[]{}")); // Expected: true
+
+isValid("()[]{}");
+isValid("(]");
