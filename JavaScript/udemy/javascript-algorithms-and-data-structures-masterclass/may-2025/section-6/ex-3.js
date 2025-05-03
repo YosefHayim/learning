@@ -3,9 +3,9 @@
 // find out if the two numbers have the same frequency of digits.
 
 // Your solution MUST have the following complexities:
+// O(n)
 const sameFrequency = (nums1, nums2) => {
   if (nums1.toString().length !== nums2.toString().length) {
-    console.log("false");
     return false;
   }
 
@@ -29,16 +29,13 @@ const sameFrequency = (nums1, nums2) => {
 
   for (const [key, value] of Object.entries(obj)) {
     if (value < 2) {
-      console.log(`false`);
       return false;
     }
   }
-  console.log(`true`);
   return true;
 };
-// Time: O(N)
 
-// sameFrequency(182, 281); // true
-// sameFrequency(34, 14); // false
-// sameFrequency(3589578, 5879385); // true
-// sameFrequency(22, 222); // false
+sameFrequency(182, 281); // true
+sameFrequency(34, 14); // false
+sameFrequency(3589578, 5879385); // true
+sameFrequency(22, 222); // false
