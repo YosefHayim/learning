@@ -5,18 +5,12 @@
 // an array and an optional comparator function.
 
 function bubbleSort(arr) {
+  if (arr.length === 0) return [];
+
   for (let i = arr.length; i > 0; i--) {
     for (let j = 0; j < i - 1; j++) {
-      if (arr[j] > arr[j + 1]) {
-        // Swap
-
-        // const biggerN = arr[j];
-        // arr[j] = arr[j + 1];
-        // arr[j + 1] = biggerN;
-
-        // new syntax swap is much more understandable
-        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
-      }
+      if (arr[j] > arr[j + 1]) [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+      else if (arr[j] === arr[j + 1]) break;
     }
   }
   return console.log(arr);
@@ -32,8 +26,7 @@ function bubbleSort(arr) {
 // Bubble sort is an O(n^2) algorithm.
 
 // Examples
-
-bubbleSort([4, 20, 12, 10, 7, 9]); // [4, 7, 9, 10, 12, 20]
+// bubbleSort([4, 20, 12, 10, 7, 9]); // [4, 7, 9, 10, 12, 20]
 // bubbleSort([0, -10, 7, 4]); // [-10, 0, 4, 7]
 // bubbleSort([1, 2, 3]); // [1, 2, 3]
 // bubbleSort([]);
