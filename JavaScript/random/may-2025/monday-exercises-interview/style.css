@@ -1,0 +1,10 @@
+.box-of-rag {
+  background-color: red;
+  width: min-content;
+}
+
+.box-target-data {
+  border: 1px solid black;
+  height: 100px;
+  width: 100px;
+}
