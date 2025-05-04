@@ -9,6 +9,7 @@ function bubbleSort(arr) {
     for (let j = 0; j < i - 1; j++) {
       if (arr[j] > arr[j + 1]) {
         // Swap
+
         // const biggerN = arr[j];
         // arr[j] = arr[j + 1];
         // arr[j + 1] = biggerN;
