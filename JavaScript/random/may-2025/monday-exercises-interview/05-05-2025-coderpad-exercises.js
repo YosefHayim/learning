@@ -261,8 +261,11 @@ function areAnagrams(a, b) {
  * Output: [3,7,11]
  */
 function groupAndSum(arr, size) {
-  // Your code here
+  for (let i = 0; i < arr.length; i++) {
+    console.log(arr);
+  }
 }
+groupAndSum([1, 2, 3, 4, 5, 6], 2);
 
 /**
  * ===================================================
@@ -276,6 +279,7 @@ function groupAndSum(arr, size) {
  */
 function mergeIntervals(intervals) {
   // Your code here
+  // didnt understand this one please explain
 }
 
 /**
