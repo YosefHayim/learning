@@ -289,8 +289,11 @@ function mergeIntervals(intervals) {
  * Output: true
  */
 function kidAddition(a, b, expected) {
-  // Your code here
+  if (a + b === expected) return true;
+  return false;
 }
+
+// kidAddition(2, 2, 4);
 
 /**
  * ===================================================
@@ -303,9 +306,19 @@ function kidAddition(a, b, expected) {
  * Output: true
  */
 function isDuodigit(num) {
-  // Your code here
-}
+  const obj = {};
 
+  const arr = num.toString().split("");
+
+  for (let i = 0; i < arr.length; i++) {
+    obj.hasOwnProperty(arr[i]) ? (obj[arr[i]] = 1) : obj[arr[i]]++;
+  }
+
+  if (Object.keys(obj).length > 2) return false;
+
+  return true;
+}
+// isDuodigit(121212);
 /**
  * ===================================================
  * 23️⃣ [JS] Apply or Spread
@@ -331,9 +344,17 @@ function callSum(fn, args) {
  * Output: 6
  */
 function sumFactors(arr, target) {
-  // Your code here
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < arr.length; j++) {
+      sum += arr[j];
+      if (sum === target) {
+        return sum;
+      }
+    }
+  }
 }
-
+// sumFactors([1, 2, 3, 4], 6);
 /**
  * ===================================================
  * 25️⃣ Array Index
@@ -344,10 +365,20 @@ function sumFactors(arr, target) {
  * Input: findIndex([1,2,3], 2)
  * Output: 1
  */
-function findIndex(arr, item) {
-  // Your code here
-}
+function findIndex(arr, target) {
+  if (arr.length === 0) return 0;
 
+  let left = 0;
+  let right = arr.length - 1;
+
+  while (left <= right) {
+    const mid = Math.floor((left + right) / 2);
+    if (arr[mid] === target) return mid;
+    target < arr[mid] ? (right = mid - 1) : (left = mid + 1);
+  }
+  return -1;
+}
+// findIndex([1, 2, 3, 4, 5, 6, 7, 8, 9], 9);
 /**
  * ===================================================
  * 26️⃣ [JS] Array.map Pitfall
@@ -359,7 +390,9 @@ function findIndex(arr, item) {
  * Output: [2,4,6]
  */
 function fixMap(arr) {
-  // Your code here
+  // map wont work if i dont assign it to a variable and not returning it
+  const dupArr = arr.map((n) => n * n);
+  return dupArr;
 }
 
 /**
@@ -373,8 +406,10 @@ function fixMap(arr) {
  * Output: [1,4,9]
  */
 function correction(arr) {
-  // Your code here
+  const dupArr = arr.map((n) => n * n);
+  return dupArr;
 }
+// correction([1, 2, 3]);
 
 /**
  * ===================================================
@@ -388,7 +423,13 @@ function correction(arr) {
  */
 function average(arr) {
   // Your code here
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    sum += arr[i];
+  }
+  return sum / arr.length;
 }
+// average([1, 2, 3]);
 
 /**
  * ===================================================
