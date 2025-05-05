@@ -149,8 +149,11 @@ function distributeMoney(total, envelopes) {
  * Output: "ho"
  */
 function factorizeEnds(str) {
-  // Your code here
+  const first = str[0];
+  const last = str[str.length - 1];
+  return `${first}${last}`;
 }
+// factorizeEnds("hello");
 
 /**
  * ===================================================
@@ -163,9 +166,17 @@ function factorizeEnds(str) {
  * Output: ['one', 'two words', 'three']
  */
 function splitWithQuotes(str) {
-  // Your code here
+  // why not work
+  const spaceStr = str.split(" ");
+  for (let i = 0; i < spaceStr.length; i++) {
+    const word = spaceStr[i];
+    if (word.includes("")) {
+      word.replace(/["'][\w\s]+["']|\w+["']\w+/);
+    }
+  }
+  console.log(spaceStr);
 }
-
+splitWithQuotes('one "two words" three');
 /**
  * ===================================================
  * 13️⃣ [JS] Combination Options in a Tournament
@@ -191,8 +202,14 @@ function combinations(players) {
  * Output: [5,4,3,2,1,0]
  */
 function moveToZero(num) {
-  // Your code here
+  const arr = [];
+  for (let i = num; i >= 0; i--) {
+    arr.push(i);
+  }
+  console.log(arr);
 }
+
+// moveToZero(5);
 
 /**
  * ===================================================
@@ -205,8 +222,10 @@ function moveToZero(num) {
  * Output: {a:1, b:2}
  */
 function mergeFields(...sources) {
-  // Your code here
+  // dont know
 }
+
+mergeFields({ a: 1 }, { b: 2 });
 
 /**
  * ===================================================
@@ -219,9 +238,10 @@ function mergeFields(...sources) {
  * Output: [90, 180]
  */
 function applyDiscount(prices, percent) {
-  // Your code here
+  const newPrices = prices.map((price) => price - price / percent);
+  return newPrices;
 }
-
+// applyDiscount([100, 200], 10);
 /**
  * ===================================================
  * 17️⃣ The Trick of Mixing the Letters Inside a Word
@@ -233,8 +253,9 @@ function applyDiscount(prices, percent) {
  * Output: "dveeloper"
  */
 function mixWord(word) {
-  // Your code here
+  // didnt understand
 }
+mixWord("developer");
 
 /**
  * ===================================================
@@ -247,8 +268,25 @@ function mixWord(word) {
  * Output: true
  */
 function areAnagrams(a, b) {
-  // Your code here
+  const obj1 = {};
+  const obj2 = {};
+
+  for (let i = 0; i < a.length; i++) {
+    const el = a[i];
+    obj1.hasOwnProperty(obj1[el]) ? obj1[el]++ : (obj1[el] = 1);
+  }
+
+  for (let i = 0; i < b.length; i++) {
+    const el = b[i];
+    obj2.hasOwnProperty(obj2[el]) ? obj2[el]++ : (obj2[el] = 1);
+  }
+
+  for (const [key] of Object.entries(obj1)) if (obj1[key] !== obj2[key]) return false;
+
+  return true;
 }
+
+// areAnagrams("listen", "silent");
 
 /**
  * ===================================================
@@ -261,11 +299,8 @@ function areAnagrams(a, b) {
  * Output: [3,7,11]
  */
 function groupAndSum(arr, size) {
-  for (let i = 0; i < arr.length; i++) {
-    console.log(arr);
-  }
+  // dont know guid me
 }
-groupAndSum([1, 2, 3, 4, 5, 6], 2);
 
 /**
  * ===================================================
