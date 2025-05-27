@@ -13,3 +13,8 @@ from torch.nn import functional as F
 import sentencepiece as spm
 
 # these improves performance for Ampere architecture
+torch.backends.cuda.matmul.allow_tf32 = True
+torch.backends.cudnn.allow_tf32 = True
+
+# Empty GPU Cache Memory
+torch.cuda.empty_cache()
