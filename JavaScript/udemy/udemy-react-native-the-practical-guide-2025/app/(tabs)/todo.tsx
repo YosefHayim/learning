@@ -6,12 +6,17 @@ import handleSubmitBtn from "@/handlers/handle-submit-btn";
 import useCurrentDate from "@/hooks/useCurrentDate";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { useState } from "react";
-import { Button, Text, View } from "react-native";
+import { Button, Pressable, Text, View } from "react-native";
 
 const Todo = () => {
   const formattedDate = useCurrentDate();
-  const [goals, setGoals] = useState<string[]>([]);
+  const [goals, setGoals] = useState<string[]>(["finish react native app"]);
   const [goalText, setGoalText] = useState("");
+
+  const handleEditTask = (goalToEdit: string) => {
+    const updatedGoal = goals.find((goal) => goal === goalToEdit);
+    console.log("text is:", updatedGoal);
+  };
 
   return (
     <View style={{ flex: 1, justifyContent: "flex-start", alignItems: "center", padding: 10 }}>
@@ -34,6 +39,9 @@ const Todo = () => {
         >
           <Text style={{ color: "white", width: "80%" }}>{goal}</Text>
           <FontAwesome size={28} name="trash" color={"white"} onPress={() => handleDeleteTask(goal, setGoals)} />
+          <Pressable onPress={() => handleEditTask(goal)}>
+            <FontAwesome size={28} name="edit" color={"white"} />
+          </Pressable>
         </View>
       ))}
     </View>
