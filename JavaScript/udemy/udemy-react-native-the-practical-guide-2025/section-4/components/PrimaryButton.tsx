@@ -3,8 +3,8 @@ import { View, Text, StyleSheet } from "react-native";
 
 const PrimaryButton: React.FC<{ children: ReactNode }> = ({ children }) => {
   return (
-    <View>
-      <Text>{children}</Text>
+    <View style={{ width: "100%", padding: 10 }}>
+      <Text style={{ color: "white", backgroundColor: "orange", textAlign: "center", borderRadius: 4, padding: 8 }}>{children}</Text>
     </View>
   );
 };
