@@ -1,11 +1,17 @@
-import { Text, View } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 
-const Settings = () => {
+export default function Settings() {
   return (
-    <View>
-      <Text>this is a Settings page</Text>
+    <View style={styles.container}>
+      <Text>This is the settings page</Text>
     </View>
   );
-};
+}
 
-export default Settings;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+});
