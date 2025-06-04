@@ -1,14 +1,9 @@
-import { View, Text, StyleSheet, Button } from "react-native";
-import { Link } from "expo-router";
+import { View, Text, StyleSheet } from "react-native";
 
 export default function Home() {
   return (
     <View style={styles.container}>
-      <Text>
-        <Link asChild href="/login">
-          <Button title="navigate to login" />
-        </Link>
-      </Text>
+      <Text>Homepage</Text>
     </View>
   );
 }
