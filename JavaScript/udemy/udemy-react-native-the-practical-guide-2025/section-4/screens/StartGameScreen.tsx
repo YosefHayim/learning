@@ -1,16 +1,16 @@
 import { TextInput, View, StyleSheet, Alert } from "react-native";
 
-import PrimaryButton from "../components/PrimaryButton";
 import { useState } from "react";
 import { Colors } from "../constants/colors";
+import PrimaryButton from "../components/ui/PrimaryButton";
 
-const StartGameScreen: React.FC<{ setUserNumber: React.Dispatch<React.SetStateAction<string>> }> = ({ setUserNumber }) => {
-  const [enteredNumber, setEnteredNumber] = useState<string>("");
+const StartGameScreen: React.FC<{ setUserNumber: React.Dispatch<React.SetStateAction<number | null>> }> = ({ setUserNumber }) => {
+  const [enteredNumber, setEnteredNumber] = useState<number | null>(null);
 
   const confirmInputHandler = () => {
-    const chosneNumber = parseInt(enteredNumber);
-    if (isNaN(chosneNumber) || chosneNumber <= 0) {
-      Alert.alert("Invalid number", "number must be between 1 and 99.", [{ text: "okay", style: "destructive", onPress: () => setEnteredNumber("") }]);
+    if ((enteredNumber && isNaN(enteredNumber)) || (enteredNumber && enteredNumber <= 0)) {
+      Alert.alert("Invalid number", "number must be between 1 and 99.", [{ text: "okay", style: "destructive", onPress: () => setEnteredNumber(null) }]);
+      return;
     }
     setUserNumber(enteredNumber);
   };
@@ -23,12 +23,12 @@ const StartGameScreen: React.FC<{ setUserNumber: React.Dispatch<React.SetStateAc
         keyboardType="number-pad"
         autoCapitalize="none"
         autoCorrect={false}
-        value={enteredNumber}
-        onChangeText={(numberProvided) => setEnteredNumber(numberProvided)}
+        value={enteredNumber?.toString()}
+        onChangeText={(numberProvided) => setEnteredNumber(Number(numberProvided))}
       />
       <View style={styles.buttonsContainer}>
         <View style={styles.buttonContainer}>
-          <PrimaryButton onPress={() => setEnteredNumber("")}>Reset</PrimaryButton>
+          <PrimaryButton onPress={() => setEnteredNumber(null)}>Reset</PrimaryButton>
         </View>
         <View style={styles.buttonContainer}>
           <PrimaryButton onPress={confirmInputHandler}>Confirm</PrimaryButton>

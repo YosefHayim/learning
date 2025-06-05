@@ -1,5 +1,5 @@
 import { StyleSheet, Text } from "react-native";
-import { Colors } from "../constants/colors";
+import { Colors } from "../../constants/colors";
 
 const Title: React.FC<{ titleText: string }> = ({ titleText }) => {
   return <Text style={styles.title}>{titleText}</Text>;

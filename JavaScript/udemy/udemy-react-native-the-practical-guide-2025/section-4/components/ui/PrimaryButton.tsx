@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { View, Text, StyleSheet, Pressable, PressableProps } from "react-native";
-import { Colors } from "../constants/colors";
+import { Colors } from "../../constants/colors";
 
 const PrimaryButton: React.FC<{ children: ReactNode; onPress: () => void }> = ({ children, onPress }) => {
   return (
