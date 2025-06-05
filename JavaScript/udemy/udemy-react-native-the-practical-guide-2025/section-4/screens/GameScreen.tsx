@@ -20,7 +20,11 @@ const generateRandomBetween = (min: number, max: number, exclude: number) => {
 let minBoundary = 1;
 let maxBoundary = 100;
 
-const GameScreen: React.FC<{ userNumber: number | null; setGameOver: React.Dispatch<React.SetStateAction<boolean>> }> = ({ userNumber, setGameOver }) => {
+const GameScreen: React.FC<{
+  userNumber: number | null;
+  setGameOver: React.Dispatch<React.SetStateAction<boolean | null>>;
+  setRoundsNumber: React.Dispatch<React.SetStateAction<number>>;
+}> = ({ userNumber, setGameOver, setRoundsNumber }) => {
   const initialGuess = generateRandomBetween(1, 100, Number(userNumber));
   const [currentGuess, setCurrentGuess] = useState(initialGuess);
 
@@ -39,6 +43,7 @@ const GameScreen: React.FC<{ userNumber: number | null; setGameOver: React.Dispa
 
     const newRndNumber = generateRandomBetween(minBoundary, maxBoundary, currentGuess);
     setCurrentGuess(newRndNumber);
+    setRoundsNumber((prev) => prev + 1);
   };
 
   useEffect(() => {

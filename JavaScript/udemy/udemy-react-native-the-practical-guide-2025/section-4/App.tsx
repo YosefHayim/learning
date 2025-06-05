@@ -14,15 +14,26 @@ export default function App() {
     "open-sans-bold": require("./assets/fonts/OpenSans-Bold.ttf"),
   });
   const [userNumber, setUserNumber] = useState<number | null>(null);
-  const [gameOver, setGameOver] = useState(false);
+  const [gameOver, setGameOver] = useState<boolean | null>(false);
+  const [roundsNumber, setRoundsNumber] = useState(0);
 
   if (!fontsLoaded) return <AppLoading />;
   let screen = <StartGameScreen setUserNumber={setUserNumber} />;
 
   if (userNumber && !gameOver) {
-    screen = <GameScreen userNumber={userNumber} setGameOver={setGameOver} />;
+    screen = <GameScreen userNumber={userNumber} setGameOver={setGameOver} setRoundsNumber={setRoundsNumber} />;
   } else if (gameOver) {
-    screen = <GameOverScreen />;
+    screen = (
+      <GameOverScreen
+        roundsNumber={roundsNumber}
+        userNumber={userNumber}
+        onStartNewGame={() => {
+          setGameOver(null);
+          setUserNumber(null);
+          setRoundsNumber(0);
+        }}
+      />
+    );
   }
 
   return (
