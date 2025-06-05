@@ -13,8 +13,11 @@ export default function App() {
 
   let screen = <StartGameScreen setUserNumber={setUserNumber} />;
 
-  if (gameOver) screen = <GameOverScreen />;
-  if (userNumber) screen = <GameScreen userNumber={userNumber} setGameOver={setGameOver} />;
+  if (userNumber && !gameOver) {
+    screen = <GameScreen userNumber={userNumber} setGameOver={setGameOver} />;
+  } else if (gameOver) {
+    screen = <GameOverScreen />;
+  }
 
   return (
     <LinearGradient colors={[Colors.primary700, Colors.accent500]} style={styles.rootScreen}>

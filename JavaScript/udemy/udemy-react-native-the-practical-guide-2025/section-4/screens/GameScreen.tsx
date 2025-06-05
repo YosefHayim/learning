@@ -6,19 +6,19 @@ import PrimaryButton from "../components/ui/PrimaryButton";
 import Title from "../components/ui/Title";
 
 const generateRandomBetween = (min: number, max: number, exclude: number) => {
-  const rndNum = Math.floor(Math.random() * (max - min)) + min;
+  let rndNum = Math.floor(Math.random() * (max - min)) + min;
 
-  if (rndNum === exclude) {
-    return generateRandomBetween(min, max, exclude);
-  } else {
-    return rndNum;
+  while (rndNum === exclude && max - min > 1) {
+    rndNum = Math.floor(Math.random() * (max - min)) + min;
   }
+
+  return rndNum;
 };
 
 let minBoundary = 1;
 let maxBoundary = 100;
 
-const GameScreen: React.FC<{ userNumber: string; setGameOver: React.Dispatch<React.SetStateAction<boolean>> }> = ({ userNumber, setGameOver }) => {
+const GameScreen: React.FC<{ userNumber: number | null; setGameOver: React.Dispatch<React.SetStateAction<boolean>> }> = ({ userNumber, setGameOver }) => {
   const initialGuess = generateRandomBetween(1, 100, Number(userNumber));
   const [currentGuess, setCurrentGuess] = useState(initialGuess);
 
@@ -40,8 +40,12 @@ const GameScreen: React.FC<{ userNumber: string; setGameOver: React.Dispatch<Rea
   };
 
   useEffect(() => {
-    if (currentGuess === Number(userNumber)) setGameOver(true);
-  }, []);
+    if (currentGuess === Number(userNumber)) {
+      setGameOver(true);
+      minBoundary = 1;
+      maxBoundary = 100;
+    }
+  }, [currentGuess]);
 
   return (
     <View style={styles.screen}>
