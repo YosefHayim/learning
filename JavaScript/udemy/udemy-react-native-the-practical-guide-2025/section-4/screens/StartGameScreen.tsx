@@ -1,8 +1,9 @@
-import { TextInput, View, StyleSheet, Alert } from "react-native";
+import { TextInput, View, StyleSheet, Alert, Text } from "react-native";
 
 import { useState } from "react";
 import { Colors } from "../constants/colors";
 import PrimaryButton from "../components/ui/PrimaryButton";
+import Title from "../components/ui/Title";
 
 const StartGameScreen: React.FC<{ setUserNumber: React.Dispatch<React.SetStateAction<number | null>> }> = ({ setUserNumber }) => {
   const [enteredNumber, setEnteredNumber] = useState<number | null>(null);
@@ -16,22 +17,28 @@ const StartGameScreen: React.FC<{ setUserNumber: React.Dispatch<React.SetStateAc
   };
 
   return (
-    <View style={styles.inputContainer}>
-      <TextInput
-        style={styles.numberInput}
-        maxLength={2}
-        keyboardType="number-pad"
-        autoCapitalize="none"
-        autoCorrect={false}
-        value={enteredNumber?.toString()}
-        onChangeText={(numberProvided) => setEnteredNumber(Number(numberProvided))}
-      />
-      <View style={styles.buttonsContainer}>
-        <View style={styles.buttonContainer}>
-          <PrimaryButton onPress={() => setEnteredNumber(null)}>Reset</PrimaryButton>
-        </View>
-        <View style={styles.buttonContainer}>
-          <PrimaryButton onPress={confirmInputHandler}>Confirm</PrimaryButton>
+    <View>
+      <View>
+        <Title titleText="Guess my number" />
+        <Text style={styles.guidnessText}>Enter a number between 1 and 99</Text>
+      </View>
+      <View style={styles.inputContainer}>
+        <TextInput
+          style={styles.numberInput}
+          maxLength={2}
+          keyboardType="number-pad"
+          autoCapitalize="none"
+          autoCorrect={false}
+          value={enteredNumber?.toString()}
+          onChangeText={(numberProvided) => setEnteredNumber(Number(numberProvided))}
+        />
+        <View style={styles.buttonsContainer}>
+          <View style={styles.buttonContainer}>
+            <PrimaryButton onPress={() => setEnteredNumber(null)}>Reset</PrimaryButton>
+          </View>
+          <View style={styles.buttonContainer}>
+            <PrimaryButton onPress={confirmInputHandler}>Confirm</PrimaryButton>
+          </View>
         </View>
       </View>
     </View>
@@ -41,6 +48,7 @@ const StartGameScreen: React.FC<{ setUserNumber: React.Dispatch<React.SetStateAc
 export default StartGameScreen;
 
 const styles = StyleSheet.create({
+  guidnessText: { fontSize: 18, color: "white", width: "100%", textAlign: "center", fontWeight: 800 },
   inputContainer: {
     justifyContent: "center",
     alignItems: "center",

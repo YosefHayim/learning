@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { View, Text, StyleSheet, Alert } from "react-native";
+import Entypo from "@expo/vector-icons/Entypo";
 
 import NumberContainer from "../components/game/NumberContainer";
 import PrimaryButton from "../components/ui/PrimaryButton";
 import Title from "../components/ui/Title";
+import { Colors } from "../constants/colors";
 
 const generateRandomBetween = (min: number, max: number, exclude: number) => {
   let rndNum = Math.floor(Math.random() * (max - min)) + min;
@@ -52,10 +54,14 @@ const GameScreen: React.FC<{ userNumber: number | null; setGameOver: React.Dispa
       <Title titleText="Opponents Guess" />
       <NumberContainer>{currentGuess}</NumberContainer>
       <View>
-        <Text>Higher or lower?</Text>
+        <Text style={{ fontSize: 18, textAlign: "center", fontWeight: 800, color: "white", marginBottom: 20 }}>Higher or lower?</Text>
         <View>
-          <PrimaryButton onPress={nextGuessHandler.bind(this, "lower")}>-</PrimaryButton>
-          <PrimaryButton onPress={nextGuessHandler.bind(this, "greater")}>+</PrimaryButton>
+          <PrimaryButton onPress={nextGuessHandler.bind(this, "lower")}>
+            <Entypo name="squared-minus" size={24} color={Colors.accent500} />
+          </PrimaryButton>
+          <PrimaryButton onPress={nextGuessHandler.bind(this, "greater")}>
+            <Entypo name="squared-plus" size={24} color={Colors.accent500} />
+          </PrimaryButton>
         </View>
       </View>
       {/* <View>LOG ROUNDS</View> */}
