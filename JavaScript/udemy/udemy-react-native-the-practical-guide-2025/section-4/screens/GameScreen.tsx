@@ -54,9 +54,7 @@ const GameScreen: React.FC<{ userNumber: number | null; setGameOver: React.Dispa
       <Title titleText="Opponents Guess" />
       <NumberContainer>{currentGuess}</NumberContainer>
       <View>
-        <Text style={{ fontSize: 18, textAlign: "center", fontWeight: 800, color: "white", marginBottom: 20, fontFamily: "open-sans-bold" }}>
-          Higher or lower?
-        </Text>
+        <Text style={styles.higherOrLowerText}>Higher or lower?</Text>
         <View>
           <PrimaryButton onPress={nextGuessHandler.bind(this, "lower")}>
             <Entypo name="squared-minus" size={24} color={Colors.accent500} />
@@ -78,4 +76,5 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 24,
   },
+  higherOrLowerText: { fontSize: 18, textAlign: "center", fontWeight: 800, color: "white", marginBottom: 20, fontFamily: "open-sans-bold" },
 });

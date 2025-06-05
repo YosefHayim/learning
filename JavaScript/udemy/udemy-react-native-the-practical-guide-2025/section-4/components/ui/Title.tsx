@@ -13,10 +13,11 @@ const styles = StyleSheet.create({
     fontSize: 24,
     marginHorizontal: 24,
     marginVertical: 24,
-    color: Colors.accent500,
+    color: "white",
     textAlign: "center",
     borderWidth: 2,
-    borderColor: Colors.accent500,
+    borderColor: "white",
     padding: 12,
+    width: "100%",
   },
 });
