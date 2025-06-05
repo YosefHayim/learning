@@ -3,7 +3,7 @@ import { TextInput, View, StyleSheet, Alert } from "react-native";
 import PrimaryButton from "../components/PrimaryButton";
 import { useState } from "react";
 
-function StartGameScreen() {
+const StartGameScreen: React.FC<{ setUserNumber: React.Dispatch<React.SetStateAction<string>> }> = ({ setUserNumber }) => {
   const [enteredNumber, setEnteredNumber] = useState<string>("");
 
   const confirmInputHandler = () => {
@@ -11,7 +11,7 @@ function StartGameScreen() {
     if (isNaN(chosneNumber) || chosneNumber <= 0) {
       Alert.alert("Invalid number", "number must be between 1 and 99.", [{ text: "okay", style: "destructive", onPress: () => setEnteredNumber("") }]);
     }
-    console.log("valid number provided", enteredNumber);
+    setUserNumber(enteredNumber);
   };
 
   return (
@@ -35,7 +35,7 @@ function StartGameScreen() {
       </View>
     </View>
   );
-}
+};
 
 export default StartGameScreen;
 
