@@ -7,6 +7,7 @@ import GameScreen from "./screens/GameScreen";
 import { Colors } from "./constants/colors";
 import GameOverScreen from "./screens/GameOverScreen";
 import { useFonts } from "expo-font";
+import { StatusBar } from "expo-status-bar";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -24,15 +25,18 @@ export default function App() {
     screen = <GameScreen userNumber={userNumber} setGameOver={setGameOver} setRoundsNumber={setRoundsNumber} />;
   } else if (gameOver) {
     screen = (
-      <GameOverScreen
-        roundsNumber={roundsNumber}
-        userNumber={userNumber}
-        onStartNewGame={() => {
-          setGameOver(null);
-          setUserNumber(null);
-          setRoundsNumber(0);
-        }}
-      />
+      <>
+        <StatusBar style="light" />
+        <GameOverScreen
+          roundsNumber={roundsNumber}
+          userNumber={userNumber}
+          onStartNewGame={() => {
+            setGameOver(null);
+            setUserNumber(null);
+            setRoundsNumber(0);
+          }}
+        />
+      </>
     );
   }
 
