@@ -1,4 +1,4 @@
-import { TextInput, View, StyleSheet, Alert, Text, Dimensions, useWindowDimensions } from "react-native";
+import { TextInput, View, StyleSheet, Alert, Text, Dimensions, useWindowDimensions, KeyboardAvoidingView, ScrollView } from "react-native";
 
 import { useState } from "react";
 import { Colors } from "../constants/colors";
@@ -20,31 +20,35 @@ const StartGameScreen: React.FC<{ setUserNumber: React.Dispatch<React.SetStateAc
   const marginTopDistance = height < 380 ? 30 : 150;
 
   return (
-    <View style={[styles.rootContainer, { marginTop: marginTopDistance }]}>
-      <View>
-        <Title titleText="Guess my number" />
-        <Text style={styles.guidnessText}>Enter a number between 1 and 99</Text>
-      </View>
-      <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.numberInput}
-          maxLength={2}
-          keyboardType="number-pad"
-          autoCapitalize="none"
-          autoCorrect={false}
-          value={enteredNumber?.toString()}
-          onChangeText={(numberProvided) => setEnteredNumber(Number(numberProvided))}
-        />
-        <View style={styles.buttonsContainer}>
-          <View style={styles.buttonContainer}>
-            <PrimaryButton onPress={() => setEnteredNumber(null)}>Reset</PrimaryButton>
+    <ScrollView style={{ flex: 1 }}>
+      <KeyboardAvoidingView style={{ flex: 1 }} behavior="position">
+        <View style={[styles.rootContainer, { marginTop: marginTopDistance }]}>
+          <View>
+            <Title titleText="Guess my number" />
+            <Text style={styles.guidnessText}>Enter a number between 1 and 99</Text>
           </View>
-          <View style={styles.buttonContainer}>
-            <PrimaryButton onPress={confirmInputHandler}>Confirm</PrimaryButton>
+          <View style={styles.inputContainer}>
+            <TextInput
+              style={styles.numberInput}
+              maxLength={2}
+              keyboardType="number-pad"
+              autoCapitalize="none"
+              autoCorrect={false}
+              value={enteredNumber?.toString()}
+              onChangeText={(numberProvided) => setEnteredNumber(Number(numberProvided))}
+            />
+            <View style={styles.buttonsContainer}>
+              <View style={styles.buttonContainer}>
+                <PrimaryButton onPress={() => setEnteredNumber(null)}>Reset</PrimaryButton>
+              </View>
+              <View style={styles.buttonContainer}>
+                <PrimaryButton onPress={confirmInputHandler}>Confirm</PrimaryButton>
+              </View>
+            </View>
           </View>
         </View>
-      </View>
-    </View>
+      </KeyboardAvoidingView>
+    </ScrollView>
   );
 };
 
