@@ -1,10 +1,11 @@
 import { Pressable, StyleSheet, Text, View, Platform } from "react-native";
+import { GestureResponderEvent } from "react-native/Libraries/Types/CoreEventTypes";
 
-const CategoryGridTile: React.FC<{ title: string; color: string }> = ({ title, color }) => {
+const CategoryGridTile: React.FC<{ title: string; color: string; onPress: () => void }> = ({ title, color, onPress }) => {
   return (
     <View style={styles.gridItem}>
       {/* Makes effect on clicking button without android mobile */}
-      <Pressable style={({ pressed }) => [styles.button, pressed ? styles.buttonPressed : null]} android_ripple={{ color: "#ccc" }}>
+      <Pressable onPress={onPress} style={({ pressed }) => [styles.button, pressed ? styles.buttonPressed : null]} android_ripple={{ color: "#ccc" }}>
         <View style={[styles.innerContainer, { backgroundColor: color }]}>
           <Text style={styles.title}>{title}</Text>
         </View>
