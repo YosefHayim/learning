@@ -1,12 +1,14 @@
 import { Text, View } from "react-native";
 import { StyleSheet } from "react-native/Libraries/StyleSheet/StyleSheet";
 
-const MealsDetails: React.FC<{ duration: number; complexcity: string; affordablitiy: string }> = ({ duration, complexcity, affordablitiy }) => {
+const MealsDetails: React.FC<{ duration: number; complexity: string; affordability: string }> = ({ duration, complexity, affordability }) => {
+  if (!duration && complexity && affordability) return;
+
   return (
     <View style={styles.details}>
-      <Text style={styles.detailItem}>{duration && duration}m</Text>
-      <Text style={styles.detailItem}>{complexcity?.toUpperCase()}</Text>
-      <Text style={styles.detailItem}>{affordablitiy?.toUpperCase()}</Text>
+      <Text style={styles.detailItem}>{duration}m</Text>
+      <Text style={styles.detailItem}>{complexity?.toUpperCase()}</Text>
+      <Text style={styles.detailItem}>{affordability?.toUpperCase()}</Text>
     </View>
   );
 };

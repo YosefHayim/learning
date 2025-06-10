@@ -1,14 +1,18 @@
 import { View, Text, Pressable, Image, StyleSheet, Platform } from "react-native";
 import MealsDetails from "./MealsDetails";
+import { useNavigation } from "@react-navigation/native";
 
-const MealItem: React.FC<{ title: string; imageUrl: string; duration: number; complexcity: string; affordablitiy: string; onPress: () => void }> = ({
-  title,
-  imageUrl,
-  duration,
-  affordablitiy,
-  complexcity,
-  onPress,
-}) => {
+const MealItem: React.FC<{
+  id: string;
+  title: string;
+  imageUrl: string;
+  duration: number;
+  complexity: string;
+  affordability: string;
+  onPress: () => void;
+}> = ({ title, imageUrl, duration, affordability, complexity, onPress }) => {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.mealItem}>
       <View style={styles.innerContainer}>
@@ -17,7 +21,7 @@ const MealItem: React.FC<{ title: string; imageUrl: string; duration: number; co
             <Image source={{ uri: imageUrl }} style={styles.image} />
             <Text style={styles.title}>{title}</Text>
           </View>
-          <MealsDetails affordablitiy={affordablitiy} duration={duration} complexcity={complexcity} />
+          <MealsDetails affordability={affordability} duration={duration} complexity={complexity} />
         </Pressable>
       </View>
     </View>

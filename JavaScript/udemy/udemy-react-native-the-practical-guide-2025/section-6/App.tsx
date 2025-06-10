@@ -33,7 +33,7 @@ export default function App() {
             //   };
             // }}
           />
-          <Stack.Screen name="SingleMealCategory" component={SingleMealScreen} />
+          <Stack.Screen name="MealDetail" component={SingleMealScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </>

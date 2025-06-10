@@ -22,12 +22,13 @@ const MealsOverviewScreen: React.FC<{ route: any; navigation: any }> = ({ route,
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <MealItem
+            id={item.id}
             title={item.title}
             imageUrl={item.imageUrl}
-            affordablitiy={item.affordability}
-            complexcity={item.complexity}
+            affordability={item.affordability}
+            complexity={item.complexity}
             duration={item.duration}
-            onPress={() => navigation.navigate("SingleMealCategory", { mealId: item.id })}
+            onPress={() => navigation.navigate("MealDetail", { mealId: item.id })}
           />
         )}
       />
