@@ -1,5 +1,4 @@
-import { Text, View } from "react-native";
-import { StyleSheet } from "react-native/Libraries/StyleSheet/StyleSheet";
+import { Text, View, StyleSheet } from "react-native";
 
 const MealsDetails: React.FC<{ duration: number; complexity: string; affordability: string }> = ({ duration, complexity, affordability }) => {
   if (!duration && complexity && affordability) return;

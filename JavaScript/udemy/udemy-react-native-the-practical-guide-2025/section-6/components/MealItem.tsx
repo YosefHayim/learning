@@ -11,7 +11,6 @@ const MealItem: React.FC<{
   affordability: string;
   onPress: () => void;
 }> = ({ title, imageUrl, duration, affordability, complexity, onPress }) => {
-  const navigation = useNavigation();
 
   return (
     <View style={styles.mealItem}>
