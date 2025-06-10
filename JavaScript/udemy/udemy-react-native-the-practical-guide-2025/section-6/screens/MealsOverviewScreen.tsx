@@ -1,20 +1,34 @@
 import { StyleSheet, View, FlatList } from "react-native";
-import { MEALS } from "../data/dummy-data";
-import { useRoute } from "@react-navigation/native";
+import { CATEGORIES, MEALS } from "../data/dummy-data";
 import MealItem from "../components/MealItem";
+import { useLayoutEffect } from "react";
 
-const MealsOverviewScreen: React.FC = () => {
-  const route = useRoute();
+const MealsOverviewScreen: React.FC<{ route: any; navigation: any }> = ({ route, navigation }) => {
   const categoryId = route?.params?.categoryId;
-
   const displayMeals = MEALS.filter((meal) => meal.categoryIds.includes(categoryId));
+
+  useLayoutEffect(() => {
+    const categoryTitle = CATEGORIES.find((category) => category.id === categoryId)?.title;
+
+    navigation.setOptions({
+      title: categoryTitle,
+    });
+  }, [categoryId, navigation]);
+
   return (
     <View style={styles.container}>
       <FlatList
         data={displayMeals}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
-          <MealItem title={item.title} imageUrl={item.imageUrl} affordablitiy={item.affordability} complexcity={item.complexity} duration={item.duration} />
+          <MealItem
+            title={item.title}
+            imageUrl={item.imageUrl}
+            affordablitiy={item.affordability}
+            complexcity={item.complexity}
+            duration={item.duration}
+            onPress={() => navigation.navigate("SingleMealCategory", { mealId: item.id })}
+          />
         )}
       />
     </View>

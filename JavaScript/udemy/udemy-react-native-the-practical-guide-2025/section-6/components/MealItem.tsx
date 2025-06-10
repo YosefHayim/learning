@@ -1,16 +1,17 @@
 import { View, Text, Pressable, Image, StyleSheet, Platform } from "react-native";
 
-const MealItem: React.FC<{ title: string; imageUrl: string; duration: number; complexcity: string; affordablitiy: string }> = ({
+const MealItem: React.FC<{ title: string; imageUrl: string; duration: number; complexcity: string; affordablitiy: string; onPress: () => void }> = ({
   title,
   imageUrl,
   duration,
   affordablitiy,
   complexcity,
+  onPress,
 }) => {
   return (
     <View style={styles.mealItem}>
       <View style={styles.innerContainer}>
-        <Pressable style={({ pressed }) => (pressed ? styles.buttonPressed : null)} android_ripple={{ color: "#ccc" }}>
+        <Pressable onPress={onPress} style={({ pressed }) => (pressed ? styles.buttonPressed : null)} android_ripple={{ color: "#ccc" }}>
           <View>
             <Image source={{ uri: imageUrl }} style={styles.image} />
             <Text style={styles.title}>{title}</Text>
