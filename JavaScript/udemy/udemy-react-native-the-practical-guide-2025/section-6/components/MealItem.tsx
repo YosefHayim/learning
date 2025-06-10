@@ -1,4 +1,5 @@
 import { View, Text, Pressable, Image, StyleSheet, Platform } from "react-native";
+import MealsDetails from "./MealsDetails";
 
 const MealItem: React.FC<{ title: string; imageUrl: string; duration: number; complexcity: string; affordablitiy: string; onPress: () => void }> = ({
   title,
@@ -16,11 +17,7 @@ const MealItem: React.FC<{ title: string; imageUrl: string; duration: number; co
             <Image source={{ uri: imageUrl }} style={styles.image} />
             <Text style={styles.title}>{title}</Text>
           </View>
-          <View style={styles.details}>
-            <Text style={styles.detailItem}>{duration}m</Text>
-            <Text style={styles.detailItem}>{complexcity.toUpperCase()}</Text>
-            <Text style={styles.detailItem}>{affordablitiy.toUpperCase()}</Text>
-          </View>
+          <MealsDetails affordablitiy={affordablitiy} duration={duration} complexcity={complexcity} />
         </Pressable>
       </View>
     </View>
@@ -57,15 +54,5 @@ const styles = StyleSheet.create({
     fontSize: 18,
     textAlign: "center",
     margin: 8,
-  },
-  details: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    padding: 8,
-  },
-  detailItem: {
-    marginHorizontal: 4,
-    fontSize: 12,
   },
 });
