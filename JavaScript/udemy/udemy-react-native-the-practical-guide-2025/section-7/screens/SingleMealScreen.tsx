@@ -3,15 +3,14 @@ import { MEALS } from "../data/dummy-data";
 import MealsDetails from "../components/MealsDetails";
 import SubTitle from "../components/SubTitle";
 import List from "../components/List";
-import { useContext, useLayoutEffect } from "react";
+import { useLayoutEffect } from "react";
 import IconButton from "../components/IconButton";
-import { FavoritesContext } from "../store/context/favorite-context";
 import { useDispatch, useSelector } from "react-redux";
 import { addFavorite, removeFavorite } from "../store/redux/favorites";
 
 const SingleMealScreen: React.FC<{ route: any; navigation: any }> = ({ route, navigation }) => {
   // const favoriteCtx = useContext(FavoritesContext);
-  const favoriteMeals = useSelector((state) => state.favoriteMeals.ids);
+  const favoriteMeals = useSelector((state) => state.favoriteMeals);
   const dispatch = useDispatch();
 
   const mealId = route.params.mealId;

@@ -5,8 +5,8 @@ import { useSelector } from "react-redux";
 
 const FavoriteScreen = ({ navigation }) => {
   // const favoriteMealsCtx = useContext(FavoritesContext);
-  const allFavMeals = useSelector((state) => state.action.favoriteMeals);
-  const favoriteMeals = MEALS.filter((meal) => allFavMeals.ids.includes(meal.id));
+  const allFavMeals = useSelector((state) => state.favoriteMeals.ids);
+  const favoriteMeals = MEALS.filter((meal) => allFavMeals.includes(meal.id));
 
   if (favoriteMeals.length === 0) {
     return (
