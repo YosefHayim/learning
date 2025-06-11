@@ -27,7 +27,7 @@ const SingleMealScreen: React.FC<{ route: any; navigation: any }> = ({ route, na
         return <IconButton onPress={changeFavoriteStatus} color="white" size={24} icon={mealIsFavorite ? "star" : "star-outline"} />;
       },
     });
-  }, [navigation]);
+  }, [navigation, changeFavoriteStatus]);
 
   if (!selectedMeal) return;
 
