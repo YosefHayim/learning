@@ -1,4 +1,5 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
+import Title from "./Title";
 
 interface ExpenseRowProps {
   date: string;
@@ -13,7 +14,7 @@ const ExpenseRow: React.FC<ExpenseRowProps> = ({ date, title, amountSpent, onPre
       <Pressable onPress={onPress}>
         <View style={styles.rootContainer}>
           <View>
-            <Text style={styles.title}>{title}</Text>
+            <Title titleText="example" />
             <Text>{date}</Text>
           </View>
           <View>

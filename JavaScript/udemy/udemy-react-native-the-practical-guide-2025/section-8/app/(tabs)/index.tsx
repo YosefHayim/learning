@@ -4,7 +4,10 @@ const Recent = () => {
   return (
     <>
       <View style={styles.rootContainer}>
-        <Text>recents</Text>
+        <View style={styles.totalSpentContainer}>
+          <Text style={{ fontWeight: "light" }}>Last 7 Days</Text>
+          <Text style={{ fontWeight: "bold" }}>$10</Text>
+        </View>
       </View>
     </>
   );
@@ -16,5 +19,12 @@ const styles = StyleSheet.create({
   rootContainer: {
     flex: 1,
     backgroundColor: "white",
+  },
+  totalSpentContainer: {
+    backgroundColor: "pink",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    padding: 10,
+    marginBottom: 10,
   },
 });
