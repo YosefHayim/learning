@@ -1,6 +1,7 @@
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, StyleSheet } from "react-native";
 import { MEALS } from "../data/dummy-data";
 import MealsDetails from "../components/MealsDetails";
+import SubTitle from "../components/SubTitle";
 
 const SingleMealScreen: React.FC<{ route: any; navigation: any }> = ({ route, navigation }) => {
   const mealId = route.params.mealId;
@@ -11,15 +12,22 @@ const SingleMealScreen: React.FC<{ route: any; navigation: any }> = ({ route, na
 
   return (
     <View>
-      <Image source={{ uri: selectedMeal?.imageUrl }} />
-      <Text>{selectedMeal?.title}</Text>
-      <MealsDetails affordability={selectedMeal?.affordability} duration={selectedMeal?.duration} complexity={selectedMeal?.complexity} />
+      <Image source={{ uri: selectedMeal?.imageUrl }} style={styles.image} />
+      <Text style={styles.title}>{selectedMeal?.title}</Text>
+      <MealsDetails
+        affordability={selectedMeal?.affordability}
+        duration={selectedMeal?.duration}
+        complexity={selectedMeal?.complexity}
+        style=""
+        textStyle={styles.detailStyle}
+      />
       <View></View>
-      <Text>Ingrediants</Text>
+
+      <SubTitle>Ingredients</SubTitle>
       {selectedMeal?.ingredients.map((ingredient) => (
         <Text key={ingredient}>{ingredient}</Text>
       ))}
-      <Text>Steps</Text>
+      <SubTitle>Steps</SubTitle>
       {selectedMeal?.steps.map((step) => (
         <Text key={step}>{step}</Text>
       ))}
@@ -28,3 +36,19 @@ const SingleMealScreen: React.FC<{ route: any; navigation: any }> = ({ route, na
 };
 
 export default SingleMealScreen;
+
+const styles = StyleSheet.create({
+  image: {
+    flex: 350,
+    height: "100%",
+  },
+  title: {
+    fontWeight: "bold",
+    fontSize: 24,
+    margin: 8,
+    color: "white",
+  },
+  detailStyle: {
+    color: "white",
+  },
+});

@@ -1,8 +1,7 @@
 import { View, Text, Pressable, Image, StyleSheet, Platform } from "react-native";
 import MealsDetails from "./MealsDetails";
-import { useNavigation } from "@react-navigation/native";
 
-const MealItem: React.FC<{
+interface MealItemProps {
   id: string;
   title: string;
   imageUrl: string;
@@ -10,8 +9,9 @@ const MealItem: React.FC<{
   complexity: string;
   affordability: string;
   onPress: () => void;
-}> = ({ title, imageUrl, duration, affordability, complexity, onPress }) => {
+}
 
+const MealItem: React.FC<MealItemProps> = ({ title, imageUrl, duration, affordability, complexity, onPress }) => {
   return (
     <View style={styles.mealItem}>
       <View style={styles.innerContainer}>
