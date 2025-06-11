@@ -1,7 +1,8 @@
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, Text, Image, StyleSheet, ScrollView } from "react-native";
 import { MEALS } from "../data/dummy-data";
 import MealsDetails from "../components/MealsDetails";
 import SubTitle from "../components/SubTitle";
+import List from "../components/List";
 
 const SingleMealScreen: React.FC<{ route: any; navigation: any }> = ({ route, navigation }) => {
   const mealId = route.params.mealId;
@@ -11,33 +12,33 @@ const SingleMealScreen: React.FC<{ route: any; navigation: any }> = ({ route, na
   if (!selectedMeal) return;
 
   return (
-    <View>
+    <ScrollView style={styles.rootContainer}>
       <Image source={{ uri: selectedMeal?.imageUrl }} style={styles.image} />
       <Text style={styles.title}>{selectedMeal?.title}</Text>
       <MealsDetails
         affordability={selectedMeal?.affordability}
         duration={selectedMeal?.duration}
         complexity={selectedMeal?.complexity}
-        style=""
         textStyle={styles.detailStyle}
       />
-      <View></View>
-
-      <SubTitle>Ingredients</SubTitle>
-      {selectedMeal?.ingredients.map((ingredient) => (
-        <Text key={ingredient}>{ingredient}</Text>
-      ))}
-      <SubTitle>Steps</SubTitle>
-      {selectedMeal?.steps.map((step) => (
-        <Text key={step}>{step}</Text>
-      ))}
-    </View>
+      <View style={styles.listOuterContainer}>
+        <View style={styles.listContainer}>
+          <SubTitle>Ingredients</SubTitle>
+          <List data={selectedMeal?.ingredients} />
+          <SubTitle>Steps</SubTitle>
+          <List data={selectedMeal?.steps} />
+        </View>
+      </View>
+    </ScrollView>
   );
 };
 
 export default SingleMealScreen;
 
 const styles = StyleSheet.create({
+  rootContainer: {
+    marginBottom: 30,
+  },
   image: {
     flex: 350,
     height: "100%",
@@ -50,5 +51,11 @@ const styles = StyleSheet.create({
   },
   detailStyle: {
     color: "white",
+  },
+  listContainer: {
+    width: "80%",
+  },
+  listOuterContainer: {
+    alignItems: "center",
   },
 });
