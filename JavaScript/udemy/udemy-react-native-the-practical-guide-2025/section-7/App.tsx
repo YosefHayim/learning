@@ -7,7 +7,7 @@ import SingleMealScreen from "./screens/SingleMealScreen";
 import React from "react";
 import { FavoritesContextProvider } from "./store/context/favorite-context";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import FavoriteMeals from "./screens/FavoriteMeals";
+import FavoriteScreen from "./screens/FavoriteScreen";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -16,7 +16,7 @@ const DrawerNavigator = () => {
   return (
     <Drawer.Navigator screenOptions={{ headerStyle: { backgroundColor: "#351401" }, headerTintColor: "white", contentStyle: { backgroundColor: "#3f2f25" } }}>
       <Drawer.Screen name="Categories" component={CategoriesScreen} />
-      <Drawer.Screen name="Favorite" component={FavoriteMeals} />
+      <Drawer.Screen name="Favorite" component={FavoriteScreen} />
     </Drawer.Navigator>
   );
 };
