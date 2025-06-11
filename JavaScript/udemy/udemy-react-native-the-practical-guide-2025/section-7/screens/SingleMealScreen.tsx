@@ -3,22 +3,28 @@ import { MEALS } from "../data/dummy-data";
 import MealsDetails from "../components/MealsDetails";
 import SubTitle from "../components/SubTitle";
 import List from "../components/List";
-import { useLayoutEffect } from "react";
+import { useContext, useLayoutEffect } from "react";
 import IconButton from "../components/IconButton";
+import { FavoritesContext } from "../store/context/favorite-context";
 
 const SingleMealScreen: React.FC<{ route: any; navigation: any }> = ({ route, navigation }) => {
+  const favoriteCtx = useContext(FavoritesContext);
   const mealId = route.params.mealId;
-
   const selectedMeal = MEALS.find((meal) => meal.id === mealId);
+  const mealIsFavorite = favoriteCtx.ids.includes(mealId);
 
-  const handlerHeaderButton = () => {
-    console.log("pressed");
+  const changeFavoriteStatus = () => {
+    if (mealIsFavorite) {
+      favoriteCtx.removeFavorite(mealId);
+    } else {
+      favoriteCtx.addFavorite(mealId);
+    }
   };
 
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => {
-        return <IconButton onPress={handlerHeaderButton} color="white" size={24} name={"star"} />;
+        return <IconButton onPress={changeFavoriteStatus} color="white" size={24} icon={mealIsFavorite ? "star" : "star-outline"} />;
       },
     });
   }, [navigation]);

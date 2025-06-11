@@ -10,13 +10,13 @@ interface FavoriteProviderProps {
   children: ReactNode;
 }
 
-const FavoritesContext = createContext<FavoriteContextProps>({
+export const FavoritesContext = createContext<FavoriteContextProps>({
   ids: [],
   addFavorite: () => {},
   removeFavorite: () => {},
 });
 
-const FavoritesContextProvider = ({ children }: FavoriteProviderProps) => {
+export const FavoritesContextProvider = ({ children }: FavoriteProviderProps) => {
   const [favoriteIds, setFavoriteIds] = useState<string[]>([]);
 
   const addFavorite = (id: string) => {
@@ -27,7 +27,11 @@ const FavoritesContextProvider = ({ children }: FavoriteProviderProps) => {
     setFavoriteIds((prevIds) => prevIds.filter((favId) => favId !== id));
   };
 
-  return <FavoritesContext.Provider value={{ ids: favoriteIds, addFavorite, removeFavorite }}>{children}</FavoritesContext.Provider>;
-};
+  const value = {
+    ids: favoriteIds,
+    addFavorite,
+    removeFavorite,
+  };
 
-export default { FavoritesContext, FavoritesContextProvider };
+  return <FavoritesContext.Provider value={value}>{children}</FavoritesContext.Provider>;
+};

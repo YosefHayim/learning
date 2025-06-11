@@ -4,13 +4,13 @@ import { Ionicons } from "@expo/vector-icons";
 interface IconButtonProps {
   onPress: () => void;
   color: string;
-  name?: any;
+  icon?: any;
   size: number;
 }
-const IconButton: React.FC<IconButtonProps> = ({ onPress, name, size, color }) => {
+const IconButton: React.FC<IconButtonProps> = ({ onPress, icon, size, color }) => {
   return (
     <Pressable onPress={onPress} style={({ pressed }) => pressed && styles.pressed}>
-      <Ionicons name={name} size={size} color={color} />
+      <Ionicons name={icon} size={size} color={color} />
     </Pressable>
   );
 };
