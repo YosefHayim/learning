@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { FlatList, StyleSheet } from "react-native";
+import { FlatList, StyleSheet, Text, View } from "react-native";
 import { FavoritesContext } from "../store/context/favorite-context";
 import MealItem from "../components/MealItem";
 import { MEALS } from "../data/dummy-data";
@@ -7,6 +7,14 @@ import { MEALS } from "../data/dummy-data";
 const FavoriteScreen = ({ navigation }) => {
   const favoriteMealsCtx = useContext(FavoritesContext);
   const favoriteMeals = MEALS.filter((meal) => favoriteMealsCtx.ids.includes(meal.id));
+
+  if (favoriteMeals.length === 0) {
+    return (
+      <View style={styles.noMealsContainer}>
+        <Text>You dont have any favorite meals added.</Text>
+      </View>
+    );
+  }
 
   return (
     <FlatList
@@ -33,5 +41,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
+  },
+  noMealsContainer: {
+    flex: 1,
+    marginTop: 10,
+    textAlign: "center",
+    justifyContent: "flex-start",
+    alignItems: "center",
   },
 });
