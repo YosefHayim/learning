@@ -1,16 +1,16 @@
 import { StyleSheet, Text, View } from "react-native";
 
-const Recent = () => {
+const AllExpenses = () => {
   return (
     <>
       <View style={styles.rootContainer}>
-        <Text>recents</Text>
+        <Text>all expenses</Text>
       </View>
     </>
   );
 };
 
-export default Recent;
+export default AllExpenses;
 
 const styles = StyleSheet.create({
   rootContainer: {
