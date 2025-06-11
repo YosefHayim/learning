@@ -1,6 +1,4 @@
-import { Text, View, StyleSheet } from "react-native";
-import { StyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
-import { TextStyle } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
+import { Text, View, StyleSheet, StyleProp, TextStyle } from "react-native";
 
 type MealsDetailsProps = {
   duration: number;
