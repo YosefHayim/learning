@@ -2,12 +2,11 @@ import { Colors } from "@/constants/Colors";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
 interface CustomButtonProps {
-  style: string;
   onPress: () => void;
   buttonText: string;
 }
 
-const CustomButton: React.FC<CustomButtonProps> = ({ style, onPress, buttonText }) => {
+const CustomButton: React.FC<CustomButtonProps> = ({ onPress, buttonText }) => {
   return (
     <View style={styles.rootContainer}>
       <Pressable

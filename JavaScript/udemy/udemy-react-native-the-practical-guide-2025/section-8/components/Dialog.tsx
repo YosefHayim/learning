@@ -1,15 +1,18 @@
 import React, { useState } from "react";
-import { Alert, Modal, StyleSheet, Text, Pressable, View, TextInput, Button } from "react-native";
+import { Alert, Modal, StyleSheet, Text, Pressable, View, TextInput, TouchableWithoutFeedback, Keyboard } from "react-native";
 import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context";
 import PlusIcon from "./PlusIcon";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import { Colors } from "@/constants/Colors";
 import CustomButton from "./CustomButton";
+import DateTimePicker, { DateType, useDefaultStyles } from "react-native-ui-datepicker";
 
 const Dialog = () => {
+  const defaultStyles = useDefaultStyles("dark");
   const [modalVisible, setModalVisible] = useState(false);
+  const [chosenDate, setChosenDate] = useState<DateType>(new Date());
   const [moneySpent, setMoneySpent] = useState<string>("");
-  console.log(setMoneySpent);
+
   return (
     <SafeAreaProvider>
       <SafeAreaView style={styles.centeredView}>
@@ -22,20 +25,47 @@ const Dialog = () => {
             setModalVisible(!modalVisible);
           }}
         >
-          <View style={styles.centeredView}>
-            <View style={styles.modalView}>
-              <View>
-                <TextInput onChangeText={setMoneySpent} value={moneySpent} keyboardType="number-pad" style={styles.input} />
-                <View style={{ flexDirection: "row", gap: 20, justifyContent: "center" }}>
-                  <CustomButton buttonText="Cancel" />
-                  <CustomButton buttonText="Save" />
+          <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+            <View style={styles.centeredView}>
+              <View style={styles.modalView}>
+                <View>
+                  <DateTimePicker
+                    initialView="day"
+                    timeZone="Asia/Tehran"
+                    mode="single"
+                    date={chosenDate}
+                    onChange={({ date }) => setChosenDate(date)}
+                    styles={{
+                      ...defaultStyles,
+                      selected: { backgroundColor: Colors.lightOrange, borderColor: Colors.lightOrange },
+                      day: { color: "white", backgroundColor: Colors.orange, borderRadius: 4 },
+                    }}
+                  />
+
+                  <TextInput
+                    onChangeText={setMoneySpent}
+                    value={moneySpent}
+                    keyboardType="decimal-pad"
+                    style={styles.input}
+                    placeholder="Add Amount..."
+                    placeholderTextColor={"white"}
+                  />
+                  <View style={styles.viewDateContainer}>
+                    <Text style={{ color: "white", fontWeight: "bold" }}>Chosen Date:</Text>
+                    <Text style={{ color: "white", fontWeight: "bold" }}>{chosenDate?.toLocaleDateString()}</Text>
+                  </View>
+                  <View style={{ flexDirection: "row", gap: 20, justifyContent: "center" }}>
+                    <CustomButton buttonText="Cancel" onPress={() => setModalVisible(false)} />
+                    <CustomButton buttonText="Save" onPress={() => setModalVisible(false)} />
+                  </View>
                 </View>
+
+                <Pressable style={[styles.closeButton]} onPress={() => setModalVisible(!modalVisible)}>
+                  <AntDesign name="closesquare" size={34} color={"black"} style={{ padding: 10 }} />
+                </Pressable>
               </View>
-              <Pressable style={[styles.closeButton]} onPress={() => setModalVisible(!modalVisible)}>
-                <AntDesign name="closesquare" size={30} color={Colors.orange} style={{ padding: 10 }} />
-              </Pressable>
             </View>
-          </View>
+          </TouchableWithoutFeedback>
         </Modal>
         <Pressable style={[styles.button]} onPress={() => setModalVisible(true)}>
           <PlusIcon />
@@ -79,9 +109,22 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 40,
-    margin: 12,
-    borderBottomWidth: 1,
+    borderRadius: 4,
+    marginBottom: 20,
+    borderWidth: 1,
     padding: 10,
+    fontWeight: "bold",
+    textAlign: "center",
+    backgroundColor: "black",
+    color: "white",
+  },
+  viewDateContainer: {
+    justifyContent: "space-around",
+    backgroundColor: "black",
+    flexDirection: "row",
+    borderRadius: 4,
+    padding: 10,
+    marginBottom: 20,
   },
 });
 
