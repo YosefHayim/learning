@@ -1,0 +1,32 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "90c0a923bd888033ce3b223a2f49b5fb"
+name = "learning-develop-ecommerce"
+handle = "learning-develop-ecommerce"
+application_url = "https://symposium-default-treasures-headlines.trycloudflare.com"
+embedded = true
+
+[build]
+include_config_on_deploy = true
+automatically_update_urls_on_dev = true
+
+[webhooks]
+api_version = "2025-04"
+
+  [[webhooks.subscriptions]]
+  topics = [ "app/uninstalled" ]
+  uri = "/webhooks/app/uninstalled"
+
+  [[webhooks.subscriptions]]
+  topics = [ "app/scopes_update" ]
+  uri = "/webhooks/app/scopes_update"
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "write_products"
+
+[auth]
+redirect_urls = ["https://symposium-default-treasures-headlines.trycloudflare.com/auth/callback", "https://symposium-default-treasures-headlines.trycloudflare.com/auth/shopify/callback", "https://symposium-default-treasures-headlines.trycloudflare.com/api/auth/callback"]
+
+[pos]
+embedded = false
