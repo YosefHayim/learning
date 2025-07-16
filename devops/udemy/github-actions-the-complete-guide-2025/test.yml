@@ -18,6 +18,7 @@ jobs:
       run: npm test
 
   deploy:
+    needs: test # makes the deploy job depend on the test job
     runs-on: ubuntu-latest
     steps:
       - name: Get code
@@ -25,7 +26,6 @@ jobs:
 
       - name: Install Node.js
         uses: actions/setup-node@v3
-
         with:
           node-version: 18
 
