@@ -5,4 +5,6 @@ FROM node:latest
 LABEL app=my-node-app
 
 #copy all current folder
-COPY . 
+COPY . /app
+
+# CMD ["node","/app/bin/www"]
