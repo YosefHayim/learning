@@ -1,5 +1,3 @@
-package MamanElevenAssigment;
-
 import java.util.Scanner;
 public class Triangle
 {
