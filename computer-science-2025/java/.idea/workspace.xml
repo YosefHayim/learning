@@ -5,22 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="71c37cbb-239c-48d4-a325-1d8a166058f4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/29/src/Congruent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/29/src/Exercises.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/october-2025/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/october-2025/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/october-2025/28/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/october-2025/28/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/29/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/october-2025/28/src/Three.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/october-2025/29/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/october-2025/29/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/october-2025/29/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/october-2025/29/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/october-2025/29/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/october-2025/29/src/MamanElevenAssigment/Congruent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/october-2025/29/src/MamanElevenAssigment/Triangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/29/src/Triangle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/october-2025/29/untitled.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/october-2025/29/untitled/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/29/src/Congruent.java" beforeDir="false" afterPath="$PROJECT_DIR$/29/src/Congruent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/29/src/Triangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/29/src/Triangle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/october-2025/production/29/Triangle.class" beforeDir="false" afterPath="$PROJECT_DIR$/october-2025/production/29/Triangle.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,12 +31,12 @@
     &quot;assignee&quot;: &quot;YosefHayim&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/YosefHayim/learning.git&quot;,
-    &quot;accountId&quot;: &quot;de2a6f92-e03f-439e-9595-ca60cc75bd70&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/YosefHayim/learning.git",
+    "accountId": "93c01ba2-4495-4854-8e70-a6f4114977b7"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
@@ -66,14 +54,15 @@
     "Application.Congruent.executor": "Run",
     "Application.Exercises.executor": "Run",
     "Application.Main.executor": "Run",
+    "Application.Triangle.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Applications/Github/learning/computer-science-2025/java/29/src",
-    "onboarding.tips.debug.path": "/Applications/Github/learning/computer-science-2025/java/29/src/Main.java",
+    "last_opened_file_path": "C:/Users/yosef/Desktop/Github/learning/computer-science-2025/java",
+    "onboarding.tips.debug.path": "C:/Users/yosef/Desktop/Github/learning/computer-science-2025/java/october-2025/29/src/src/Main.java",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.0",
@@ -91,11 +80,11 @@
       <recent name="$PROJECT_DIR$/october-2025/27" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\yosef\Desktop\Github\learning\computer-science-2025\java\october-2025" />
       <recent name="$PROJECT_DIR$/october-2025" />
       <recent name="$PROJECT_DIR$/october-2025/29" />
       <recent name="$PROJECT_DIR$/october-2025/29/untitled/src" />
       <recent name="$PROJECT_DIR$/october-2025/29/src" />
-      <recent name="$PROJECT_DIR$/october-2025/29/src/src" />
     </key>
   </component>
   <component name="RunManager">

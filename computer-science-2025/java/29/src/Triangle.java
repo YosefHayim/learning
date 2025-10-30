@@ -1,4 +1,5 @@
 import java.util.Scanner;
+
 public class Triangle
 {
     // This main preforms the follow:
@@ -13,7 +14,6 @@ public class Triangle
     {
         final int trianglePerimeter;
         final double triangleArea;
-        int calculationOfArea;
 
         Scanner scan = new Scanner (System.in);
         System.out.println ("This program calculates the area "
@@ -28,13 +28,15 @@ public class Triangle
 
         // Cases where the input of user is not valid, and we need to return proper message.
 
-        // CASE 1: If the inputs are equal to 0 or negative.
+        // CASE 1: If the inputs are equal to negative value, 0 counts as a negative value as well.
         if (a <= 0 || b <= 0 || c <= 0) {
-            System.out.println("One of the length you provided is negative or equal to 0 and cannot be calculate the triangle perimeter and area, please try again.");
+            System.out.println("The lengths of the triangle sides are: "+a+","+b+","+c);
+            System.out.println("The given three sides don't represent a triangle");
 
         // CASE 2: If the sum of two inputs is not bigger then the third input.
         } else if (!(a + b > c && a + c > b && b + c > a)) {
-            System.out.println("The lengths of the triangle you provided are not a triangle, please try again. ");
+            System.out.println("The lengths of the triangle sides are: "+a+","+b+","+c);
+            System.out.println("The given three sides don't represent a triangle");
         } else {
             // Calculating the triangle perimeter
             trianglePerimeter = a + b + c;
@@ -44,7 +46,9 @@ public class Triangle
             triangleArea = Math.sqrt(s * (s - a) * (s - b) * (s - c));
 
             // Printing to the user the final results based on the three inputs he provided.
-            System.out.println("The Triangle area is: "+ triangleArea+"\nThe Triangle perimeter is: "+trianglePerimeter);
+            System.out.println("The lengths of the triangle sides are: "+a+","+b+","+c);
+            System.out.println("The perimeter of the triangle is: "+trianglePerimeter);
+            System.out.println("The area of the triangle is: "+ triangleArea);
         }
     }
 }
