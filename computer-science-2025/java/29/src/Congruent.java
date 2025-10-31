@@ -5,19 +5,19 @@ public class Congruent {
         Scanner scan = new Scanner(System.in);
 
         // First triangle final values for calculating the lengths.
-         double ab;
-         double bc;
-         double ca;
+        final double ab;
+        final double bc;
+        final double ca;
 
         // Second triangle final values for calculating the lengths.
-         double de;
-         double ef;
-         double fd;
+        final double de;
+        final double ef;
+        final double fd;
 
         // Does the triangle sides we found match for each of the triangles sides.
-        boolean isFirstSideMatch;
-        boolean isSecSideMatch;
-        boolean isThirdSideMatch;
+        final boolean isFirstSideMatch;
+        final boolean isSecSideMatch;
+        final boolean isThirdSideMatch;
 
         System.out.println ("Please enter the coordinates of the 3 " +
                 "vertices of the first triangle:");
@@ -78,7 +78,5 @@ public class Congruent {
         System.out.println("The triangles are not congruent.");
 
         }
-
-
     }
 }
