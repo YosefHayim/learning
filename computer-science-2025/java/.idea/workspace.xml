@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="71c37cbb-239c-48d4-a325-1d8a166058f4" name="Changes" comment="">
+    <list default="true" id="71c37cbb-239c-48d4-a325-1d8a166058f4" name="Changes" comment=".">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/29/src/Congruent.java" beforeDir="false" afterPath="$PROJECT_DIR$/29/src/Congruent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/29/src/Triangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/29/src/Triangle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/29/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/october-2025/production/29/Main.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/october-2025/production/29/Triangle.class" beforeDir="false" afterPath="$PROJECT_DIR$/october-2025/production/29/Triangle.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -113,6 +114,19 @@
       <option name="presentableId" value="Default" />
       <updated>1761583331569</updated>
     </task>
+    <task id="LOCAL-00001" summary=".">
+      <option name="closed" value="true" />
+      <created>1761843508267</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1761843508267</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="." />
+    <option name="LAST_COMMIT_MESSAGE" value="." />
   </component>
 </project>
