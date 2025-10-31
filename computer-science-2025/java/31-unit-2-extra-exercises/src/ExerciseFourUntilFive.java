@@ -23,37 +23,38 @@ public class ExerciseFourUntilFive {
         // We first check the value is not negative or equal to 0, and it is not above 365 ays.
         if (userInput <= 0 || userInput > YEAR_DURATION) {
             System.out.println("The number you provide is not between 1-365.");
+        } else {
+            // Getting the current week by dividing the user input
+            currentWeek = ((userInput - 1) / WEEK_DURATION) + 1;
+
+            // Getting the current day from the reminder of the user input.
+            currentDay = userInput % WEEK_DURATION;
+
+            // Handling all the 7 days options for the user and responding properly.
+            switch (currentDay) {
+                case 1:
+                    System.out.println("Week " + currentWeek + " and the day is Sunday");
+                    break;
+                case 2:
+                    System.out.println("Week " + currentWeek + " and the day is Monday");
+                    break;
+                case 3:
+                    System.out.println("Week " + currentWeek + " and the day is Tuesday");
+                    break;
+                case 4:
+                    System.out.println("Week " + currentWeek + " and the day is Wednesday");
+                    break;
+                case 5:
+                    System.out.println("Week " + currentWeek + " and the day is Thursday");
+                    break;
+                case 6:
+                    System.out.println("Week " + currentWeek + " and the day is Friday");
+                    break;
+                case 0:
+                    System.out.println("Week " + currentWeek + " and the day is Saturday");
+                    break;
+            }
         }
 
-        // Getting the current week by dividing the user input
-        currentWeek = ((userInput - 1) / WEEK_DURATION) + 1;
-
-        // Getting the current day from the reminder of the user input.
-        currentDay = userInput % WEEK_DURATION;
-
-        // Handling all the 7 days options for the user and responding properly.
-        switch (currentDay) {
-            case 1:
-                System.out.println("Week " + currentWeek + " and the day is Sunday");
-                break;
-            case 2:
-                System.out.println("Week " + currentWeek + " and the day is Monday");
-                break;
-            case 3:
-                System.out.println("Week " + currentWeek + " and the day is Tuesday");
-                break;
-            case 4:
-                System.out.println("Week " + currentWeek + " and the day is Wednesday");
-                break;
-            case 5:
-                System.out.println("Week " + currentWeek + " and the day is Thursday");
-                break;
-            case 6:
-                System.out.println("Week " + currentWeek + " and the day is Friday");
-                break;
-            case 0:
-                System.out.println("Week " + currentWeek + " and the day is Saturday");
-                break;
-        }
     }
 }

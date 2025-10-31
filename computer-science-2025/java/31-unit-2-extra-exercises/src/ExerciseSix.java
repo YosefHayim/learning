@@ -15,12 +15,14 @@ public class ExerciseSix {
         final int SUM;
 
         Scanner scan = new Scanner(System.in);
+
+        System.out.println("Please provide a multi digit positive number: ");
         int userInput = scan.nextInt();
 
         String userInputConvertedToString = String.valueOf(userInput);
 
         // Converting the user input into string to check the length if it is okay or not.
-        if (userInputConvertedToString.length() == NUMBER_LENGTH && userInput > MINIMUM_NUMBER && userInput < MAXIMUM_NUMBER) {
+        if (userInputConvertedToString.length() == NUMBER_LENGTH && userInput >= MINIMUM_NUMBER && userInput <= MAXIMUM_NUMBER) {
             SUM = (userInput / HUNDRED) + ((userInput / TEN) % TEN) + (userInput % TEN);
             System.out.println(SUM);
         } else {
