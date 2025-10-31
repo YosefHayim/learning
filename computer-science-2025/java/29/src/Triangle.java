@@ -14,6 +14,7 @@ public class Triangle
     {
         final int trianglePerimeter;
         final double triangleArea;
+        final double TWO = 2.0;
 
         Scanner scan = new Scanner (System.in);
         System.out.println ("This program calculates the area "
@@ -40,15 +41,15 @@ public class Triangle
         } else {
             // Calculating the triangle perimeter
             trianglePerimeter = a + b + c;
-            double s = trianglePerimeter / 2.0;
+            double s = trianglePerimeter / TWO;
 
             // Calculating the triangle area
             triangleArea = Math.sqrt(s * (s - a) * (s - b) * (s - c));
 
             // Printing to the user the final results based on the three inputs he provided.
-            System.out.println("The lengths of the triangle sides are: "+a+","+b+","+c);
-            System.out.println("The perimeter of the triangle is: "+trianglePerimeter);
-            System.out.println("The area of the triangle is: "+ triangleArea);
+            System.out.println("The lengths of the triangle sides are: " + a + "," + b + "," + c);
+            System.out.println("The perimeter of the triangle is: " + trianglePerimeter);
+            System.out.println("The area of the triangle is: " + triangleArea);
         }
     }
 }
