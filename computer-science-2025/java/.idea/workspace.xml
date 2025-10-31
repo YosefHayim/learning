@@ -6,10 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="71c37cbb-239c-48d4-a325-1d8a166058f4" name="Changes" comment=".">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/29/src/Congruent.java" beforeDir="false" afterPath="$PROJECT_DIR$/29/src/Congruent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/29/src/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/october-2025/production/29/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/october-2025/production/29/Triangle.class" beforeDir="false" afterPath="$PROJECT_DIR$/october-2025/production/29/Triangle.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/29/src/Exercises.java" beforeDir="false" afterPath="$PROJECT_DIR$/29/src/Exercises.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/october-2025/production/29/Exercises.class" beforeDir="false" afterPath="$PROJECT_DIR$/october-2025/production/29/Exercises.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,12 +30,12 @@
     &quot;assignee&quot;: &quot;YosefHayim&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/YosefHayim/learning.git",
-    "accountId": "93c01ba2-4495-4854-8e70-a6f4114977b7"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/YosefHayim/learning.git&quot;,
+    &quot;accountId&quot;: &quot;93c01ba2-4495-4854-8e70-a6f4114977b7&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
@@ -53,7 +51,7 @@
   "keyToString": {
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Application.Congruent.executor": "Run",
-    "Application.Exercises.executor": "Run",
+    "Application.Exercises.executor": "Debug",
     "Application.Main.executor": "Run",
     "Application.Triangle.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
