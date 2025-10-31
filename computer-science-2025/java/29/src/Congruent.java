@@ -54,7 +54,7 @@ public class Congruent {
         bc = Math.sqrt(Math.pow((x12-x13),2) + Math.pow((y12-y13),2));
         ca = Math.sqrt(Math.pow((x11-x13),2) + Math.pow((y11-y13),2));
         //First triangle calculate the lengths.
-        System.out.println("Its lengths are "+ab+" "+bc+" "+ca);
+        System.out.println("Its lengths are "+ab+" "+bc+" "+ca+".");
 
         // Second triangle print
         System.out.println("The second triangle is "+"("+x14+","+y14+") "+"("+x15+","+y15+") "+"("+x16+","+y16+")"+".");
@@ -62,7 +62,7 @@ public class Congruent {
         ef = Math.sqrt(Math.pow((x15-x16),2) + Math.pow((y15-y16),2));
         fd = Math.sqrt(Math.pow((x14-x16),2) + Math.pow((y14-y16),2));
         //Second triangle calculate the lengths.
-        System.out.println("Its lengths are "+de+" "+ef+" "+fd);
+        System.out.println("Its lengths are "+de+" "+ef+" "+fd+".");
 
         // Comparing between each of the triangle sides we have against the second triangle sides,
         // If at least one triangle side match the other means it could be a matching triangles.
