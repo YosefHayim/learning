@@ -13,9 +13,7 @@ public class Congruent {
         final double fd;
 
         // Does the triangle sides we found match for each of the triangles sides.
-        final boolean isFirstSideMatch;
-        final boolean isSecSideMatch;
-        final boolean isThirdSideMatch;
+        final boolean isCongruent;
 
         Scanner scan = new Scanner(System.in);
 
@@ -64,14 +62,17 @@ public class Congruent {
         //Second triangle calculate the lengths.
         System.out.println("Its lengths are " + de + " " + ef + " " + fd + ".");
 
-        // Comparing between each of the triangle sides we have against the second triangle sides,
-        // If at least one triangle side match the other means it could be a matching triangles.
-        isFirstSideMatch = ab == de || ab == ef || ab == fd;
-        isSecSideMatch = bc == de || bc == ef || bc == fd;
-        isThirdSideMatch = ca == de || ca == ef || ca == fd;
+        // Comparing between all the possible options and if one of them is true we stop and the triangles are congruent.
+        boolean isCongruent =
+                (ab == de && bc == ef && ca == fd) ||
+                        (ab == de && bc == fd && ca == ef) ||
+                        (ab == ef && bc == de && ca == fd) ||
+                        (ab == ef && bc == fd && ca == de) ||
+                        (ab == fd && bc == de && ca == ef) ||
+                        (ab == fd && bc == ef && ca == de);
 
         // if the triangle is congruent.
-        if (isFirstSideMatch && isSecSideMatch && isThirdSideMatch) {
+        if (isCongruent) {
             System.out.println("The triangles are congruent.");
             // else the triangle is not congruent.
         } else {
